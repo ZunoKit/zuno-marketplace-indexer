@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /B /A)",
+      "WebFetch(domain:ponder.sh)",
+      "WebSearch",
+      "Bash(tree \"E:\\zuno-marketplace-abis\" -L 3 -I \"node_modules|.next|.git\")",
+      "Bash(dir /s /b \"E:\\zuno-marketplace-abis\\src\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
