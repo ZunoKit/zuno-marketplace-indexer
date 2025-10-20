@@ -5,7 +5,10 @@
       "WebFetch(domain:ponder.sh)",
       "WebSearch",
       "Bash(tree \"E:\\zuno-marketplace-abis\" -L 3 -I \"node_modules|.next|.git\")",
-      "Bash(dir /s /b \"E:\\zuno-marketplace-abis\\src\")"
+      "Bash(dir /s /b \"E:\\zuno-marketplace-abis\\src\")",
+      "Bash(forge test --version)",
+      "Bash(pnpm typecheck)",
+      "WebFetch(domain:zuno-marketplace-abis.vercel.app)"
     ],
     "deny": [],
     "ask": []

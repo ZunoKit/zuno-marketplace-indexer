@@ -31,7 +31,7 @@ export default createConfig({
       id: 31337,
       rpc: process.env.PONDER_RPC_URL_31337 || "http://127.0.0.1:8545",
       ws: process.env.PONDER_WS_URL_31337,
-      maxRpcRequestsPerSecond: 100,
+      maxRequestsPerSecond: 100,
     },
   },
 
@@ -40,15 +40,13 @@ export default createConfig({
   // Use `ponder codegen` after contracts are detected
   contracts: {},
 
-  // Blocks configuration
-  blocks: {
-    // Track block data for transaction metadata
-    anvil: {
-      // Start from genesis block
-      startBlock: 0,
-      interval: 1, // Track every block
-    },
-  },
+  // Blocks configuration (optional - removed for now)
+  // blocks: {
+  //   anvil: {
+  //     startBlock: 0,
+  //     interval: 1,
+  //   },
+  // },
 });
 
 /**
@@ -57,28 +55,28 @@ export default createConfig({
  */
 export async function generateDynamicConfig() {
   console.log('[Ponder Config] Generating dynamic configuration from Zuno API...');
-  
+
   const configBuilder = getConfigBuilder();
-  const config = await configBuilder.buildConfig();
-  
+  const result = await configBuilder.build();
+
+  if (!result.success) {
+    console.error('[Ponder Config] Failed to build configuration:', result.error);
+    throw result.error;
+  }
+
+  const config = result.data;
+
   console.log('[Ponder Config] Configuration generated successfully');
   console.log(`[Ponder Config] Chains: ${Object.keys(config.chains).length}`);
   console.log(`[Ponder Config] Contracts: ${Object.keys(config.contracts).length}`);
-  
+
   return createConfig({
     ordering: "multichain",
     database: {
       kind: "postgres",
-      connectionString: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL!,
     },
-    chains: config.chains,
-    contracts: config.contracts,
-    blocks: Object.keys(config.chains).reduce((acc, chainKey) => {
-      acc[chainKey] = {
-        startBlock: 0,
-        interval: 1,
-      };
-      return acc;
-    }, {} as Record<string, { startBlock: number; interval: number }>),
+    chains: config.chains as any,
+    contracts: config.contracts as any,
   });
 }

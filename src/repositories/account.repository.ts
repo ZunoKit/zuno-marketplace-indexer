@@ -4,11 +4,27 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Account, Address, Result, Timestamp } from "../core/types";
+import type { Address, Result, Timestamp } from "../core/types";
 import { normalizeAddress } from "../core/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "./base.repository";
+import { BaseRepository, type DatabaseContext, type BaseEntity } from "./base.repository";
 
-export class AccountRepository extends BaseRepository<Account> {
+// Extend Account to include BaseEntity fields
+export interface AccountEntity extends BaseEntity {
+  address: Address;
+  totalTrades: number;
+  totalVolume: string;
+  makerTrades: number;
+  takerTrades: number;
+  nftsMinted: number;
+  nftsOwned: number;
+  collectionsCreated: number;
+  totalFeesEarned: string;
+  totalFeesPaid: string;
+  firstSeenAt: Timestamp;
+  lastActiveAt: Timestamp;
+}
+
+export class AccountRepository extends BaseRepository<AccountEntity> {
   constructor(context: DatabaseContext) {
     super(context, "account");
   }
@@ -20,7 +36,7 @@ export class AccountRepository extends BaseRepository<Account> {
   /**
    * Get or create account
    */
-  async getOrCreate(address: Address, timestamp: Timestamp): Promise<Result<Account>> {
+  async getOrCreate(address: Address, timestamp: Timestamp): Promise<Result<AccountEntity>> {
     const normalized = normalizeAddress(address);
     const existingResult = await this.findByAddress(normalized);
 
@@ -33,7 +49,7 @@ export class AccountRepository extends BaseRepository<Account> {
     }
 
     // Create new account
-    const newAccount: Partial<Account> = {
+    const newAccount: Partial<AccountEntity> = {
       address: normalized,
       totalTrades: 0,
       totalVolume: "0",
@@ -212,7 +228,7 @@ export class AccountRepository extends BaseRepository<Account> {
   /**
    * Get top traders by volume
    */
-  async getTopTraders(limit: number = 10): Promise<Result<Account[]>> {
+  async getTopTraders(limit: number = 10): Promise<Result<AccountEntity[]>> {
     try {
       const results = await this.db
         .select()
