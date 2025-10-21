@@ -16,10 +16,10 @@
  */
 
 import { ponder } from "ponder:registry";
+import { getErrorHandler } from "./core/utils/error-handler";
 import { getEventLogger } from "./core/utils/event-logger";
 import { wrapHandler } from "./core/utils/handler-wrapper";
 import { getMetrics } from "./core/utils/metrics";
-import { getErrorHandler } from "./core/utils/error-handler";
 
 // Collection handlers
 import {
@@ -28,20 +28,12 @@ import {
 } from "./handlers/collection.handler";
 
 // Transfer handlers
-import {
-  handleTransfer,
-  handleTransferSingle,
-  handleTransferBatch,
-} from "./handlers/transfer.handler";
 
 // Trade handlers
 import {
   handleNFTListed,
-  handleNFTUnlisted,
   handleNFTPurchased,
-  handleOrderFulfilled,
-  handleOrderCreated,
-  handleOrderCancelled,
+  handleNFTUnlisted
 } from "./handlers/trade.handler";
 
 const logger = getEventLogger();
@@ -52,7 +44,6 @@ const errorHandler = getErrorHandler();
 // Collection Factory Events
 // ============================================================================
 
-// Collection Factory Events
 ponder.on(
   "erc721collectionfactory_anvil_0x0dcd:ERC721CollectionCreated",
   wrapHandler("ERC721CollectionCreated", handleERC721CollectionCreated)
@@ -64,53 +55,28 @@ ponder.on(
 );
 
 // ============================================================================
-// NFT Transfer Events (ERC721)
-// ============================================================================
-
-// NFT Transfer Events (ERC721) - Using different contract
-// ponder.on(
-//   "erc721collectionfactory_anvil_0x0dcd:ERC721CollectionCreated",
-//   wrapHandler("ERC721CollectionCreated", handleTransfer)
-// );
-
-// ============================================================================
-// NFT Transfer Events (ERC1155)
-// ============================================================================
-
-// ERC1155 Transfer Events - Using different contract
-// ponder.on(
-//   "erc1155collectionfactory_anvil_0x9a67:ERC1155CollectionCreated",
-//   wrapHandler("ERC1155CollectionCreated", handleTransferSingle)
-// );
-
-// ============================================================================
 // Marketplace Trading Events
 // ============================================================================
 
-// Marketplace Trading Events - Using advanced listing manager
 ponder.on(
   "advancedlistingmanager_anvil_0x3aa5:ListingCreated",
   wrapHandler("ListingCreated", handleNFTListed)
 );
 
-// ============================================================================
-// Future: Auction Events
-// ============================================================================
+ponder.on(
+  "advancedlistingmanager_anvil_0x3aa5:ListingCancelled",
+  wrapHandler("ListingCancelled", handleNFTUnlisted)
+);
 
-// TODO: Implement auction handlers when auction contracts are ready
-// ponder.on("YourAuction:AuctionCreated", wrapHandler("AuctionCreated", handleAuctionCreated));
-// ponder.on("YourAuction:BidPlaced", wrapHandler("BidPlaced", handleBidPlaced));
-// ponder.on("YourAuction:AuctionEnded", wrapHandler("AuctionEnded", handleAuctionEnded));
-// ponder.on("YourAuction:AuctionCancelled", wrapHandler("AuctionCancelled", handleAuctionCancelled));
+ponder.on(
+  "advancedlistingmanager_anvil_0x3aa5:ListingUpdated",
+  wrapHandler("ListingUpdated", handleNFTListed)
+);
 
-// ============================================================================
-// Future: Offer Events
-// ============================================================================
-
-// TODO: Implement offer handlers when offer system is ready
-// ponder.on("YourOffer:OfferMade", wrapHandler("OfferMade", handleOfferMade));
-// ponder.on("YourOffer:OfferAccepted", wrapHandler("OfferAccepted", handleOfferAccepted));
-// ponder.on("YourOffer:OfferCancelled", wrapHandler("OfferCancelled", handleOfferCancelled));
+ponder.on(
+  "advancedlistingmanager_anvil_0x3aa5:NFTPurchased",
+  wrapHandler("NFTPurchased", handleNFTPurchased)
+);
 
 // ============================================================================
 // Lifecycle Hooks
@@ -128,11 +94,9 @@ console.log(`
 }                                ║
 ╚══════════════════════════════════════════════════════════╝
 
-📊 Available Event Handlers:
+📊 Registered Event Handlers:
   • Collection: ERC721CollectionCreated, ERC1155CollectionCreated
-  • Transfers: Transfer, TransferSingle, TransferBatch
-  • Trading: NFTListed, NFTUnlisted, NFTPurchased
-  • Orders: OrderCreated, OrderFulfilled, OrderCancelled
+  • Trading: ListingCreated, ListingCancelled, ListingUpdated, NFTPurchased
 
 🔧 Features Enabled:
   • ✅ Error handling with retry logic (3 attempts)
@@ -140,8 +104,10 @@ console.log(`
   • ✅ Event logging (verbose: ${logger ? "enabled" : "disabled"})
   • ✅ Failed event recovery
 
-⚠️  Note: Event handlers are commented out until contracts are configured.
-    Configure your contracts in ponder.config.ts and uncomment handlers in src/index.ts
+📡 Contracts Monitored:
+  • ERC721CollectionFactory: 0x0dcd...
+  • ERC1155CollectionFactory: 0x9a67...
+  • AdvancedListingManager: 0x3aa5...
 
 🚀 Ready to index events...
 `);
