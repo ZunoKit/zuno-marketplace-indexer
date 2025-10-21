@@ -112,22 +112,28 @@ export interface OrderCancelledEvent {
 // ============================================================================
 
 export interface AuctionCreatedEvent {
-  auctionId: bigint;
+  auctionId: Hash | bigint;
   nftContract: Address;
   tokenId: bigint;
   seller: Address;
   startingPrice: bigint;
-  reservePrice: bigint;
-  duration: bigint;
-  startTime: bigint;
+  reservePrice?: bigint;
+  duration?: bigint;
+  startTime?: bigint;
   endTime: bigint;
 }
 
 export interface BidPlacedEvent {
-  auctionId: bigint;
+  auctionId: bigint | Hash;
   bidder: Address;
   bidAmount: bigint;
-  timestamp: bigint;
+  timestamp?: bigint;
+}
+
+export interface AuctionFinalizedEvent {
+  auctionId: Hash | bigint;
+  winner: Address;
+  finalPrice: bigint;
 }
 
 export interface AuctionEndedEvent {
@@ -146,6 +152,17 @@ export interface AuctionCancelledEvent {
 // Offer Events
 // ============================================================================
 
+export interface OfferCreatedEvent {
+  offerId: Hash;
+  nftContract: Address;
+  tokenId: bigint;
+  offerer: Address;
+  nftOwner?: Address;
+  offerPrice: bigint;
+  paymentToken?: Address;
+  expirationTime: bigint;
+}
+
 export interface OfferMadeEvent {
   offerId: Hash;
   nftContract: Address;
@@ -162,7 +179,9 @@ export interface OfferAcceptedEvent {
   tokenId: bigint;
   offerer: Address;
   seller: Address;
-  offerAmount: bigint;
+  offerPrice: bigint;
+  offerAmount?: bigint;
+  paymentToken?: Address;
 }
 
 export interface OfferCancelledEvent {

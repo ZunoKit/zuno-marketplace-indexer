@@ -36,6 +36,18 @@ import {
   handleNFTUnlisted
 } from "./handlers/trade.handler";
 
+// Offer handlers
+import {
+  handleOfferAccepted,
+  handleOfferCancelled,
+  handleOfferCreated,
+} from "./handlers/offer.handler";
+
+// Auction handlers
+import {
+  handleAuctionCreated
+} from "./handlers/auction.handler";
+
 const logger = getEventLogger();
 const metrics = getMetrics();
 const errorHandler = getErrorHandler();
@@ -44,13 +56,26 @@ const errorHandler = getErrorHandler();
 // Collection Factory Events
 // ============================================================================
 
+// ERC721 Collection Factory
 ponder.on(
   "erc721collectionfactory_anvil_0x0dcd:ERC721CollectionCreated",
   wrapHandler("ERC721CollectionCreated", handleERC721CollectionCreated)
 );
 
+// ERC1155 Collection Factory
 ponder.on(
   "erc1155collectionfactory_anvil_0x9a67:ERC1155CollectionCreated",
+  wrapHandler("ERC1155CollectionCreated", handleERC1155CollectionCreated)
+);
+
+// Collection Factory Registry
+ponder.on(
+  "collectionfactoryregistry_anvil_0x0b30:ERC721CollectionCreated",
+  wrapHandler("ERC721CollectionCreated", handleERC721CollectionCreated)
+);
+
+ponder.on(
+  "collectionfactoryregistry_anvil_0x0b30:ERC1155CollectionCreated",
   wrapHandler("ERC1155CollectionCreated", handleERC1155CollectionCreated)
 );
 
@@ -58,6 +83,7 @@ ponder.on(
 // Marketplace Trading Events
 // ============================================================================
 
+// AdvancedListingManager Events
 ponder.on(
   "advancedlistingmanager_anvil_0x3aa5:ListingCreated",
   wrapHandler("ListingCreated", handleNFTListed)
@@ -78,6 +104,66 @@ ponder.on(
   wrapHandler("NFTPurchased", handleNFTPurchased)
 );
 
+// ERC721 NFTExchange Events
+ponder.on(
+  "erc721nftexchange_anvil_0x8a79:NFTListed",
+  wrapHandler("NFTListed", handleNFTListed)
+);
+
+ponder.on(
+  "erc721nftexchange_anvil_0x8a79:ListingCancelled",
+  wrapHandler("ListingCancelled", handleNFTUnlisted)
+);
+
+ponder.on(
+  "erc721nftexchange_anvil_0x8a79:NFTSold",
+  wrapHandler("NFTSold", handleNFTPurchased)
+);
+
+// ERC1155 NFTExchange Events  
+ponder.on(
+  "erc1155nftexchange_anvil_0xb7f8:NFTListed",
+  wrapHandler("NFTListed", handleNFTListed)
+);
+
+ponder.on(
+  "erc1155nftexchange_anvil_0xb7f8:ListingCancelled",
+  wrapHandler("ListingCancelled", handleNFTUnlisted)
+);
+
+ponder.on(
+  "erc1155nftexchange_anvil_0xb7f8:NFTSold",
+  wrapHandler("NFTSold", handleNFTPurchased)
+);
+
+// ============================================================================
+// Offer Events
+// ============================================================================
+
+ponder.on(
+  "offermanager_anvil_0x9a9f:OfferCreated",
+  wrapHandler("OfferCreated", handleOfferCreated)
+);
+
+ponder.on(
+  "offermanager_anvil_0x9a9f:OfferAccepted",
+  wrapHandler("OfferAccepted", handleOfferAccepted)
+);
+
+ponder.on(
+  "offermanager_anvil_0x9a9f:OfferCancelled",
+  wrapHandler("OfferCancelled", handleOfferCancelled)
+);
+
+// ============================================================================
+// Auction Events
+// ============================================================================
+
+ponder.on(
+  "advancedlistingmanager_anvil_0x3aa5:AuctionCreated",
+  wrapHandler("AuctionCreated", handleAuctionCreated)
+);
+
 // ============================================================================
 // Lifecycle Hooks
 // ============================================================================
@@ -94,9 +180,11 @@ console.log(`
 }                                ║
 ╚══════════════════════════════════════════════════════════╝
 
-📊 Registered Event Handlers:
-  • Collection: ERC721CollectionCreated, ERC1155CollectionCreated
-  • Trading: ListingCreated, ListingCancelled, ListingUpdated, NFTPurchased
+📊 Registered Event Handlers (17 events):
+  • Collection (4): ERC721/ERC1155 Created (Factory + Registry)
+  • Trading (10): Listings, Purchases, Orders (3 contracts)
+  • Offers (3): Created, Accepted, Cancelled
+  • Auctions (1): AuctionCreated
 
 🔧 Features Enabled:
   • ✅ Error handling with retry logic (3 attempts)
@@ -104,10 +192,14 @@ console.log(`
   • ✅ Event logging (verbose: ${logger ? "enabled" : "disabled"})
   • ✅ Failed event recovery
 
-📡 Contracts Monitored:
+📡 Contracts Monitored (6 active):
   • ERC721CollectionFactory: 0x0dcd...
   • ERC1155CollectionFactory: 0x9a67...
+  • CollectionFactoryRegistry: 0x0b30...
   • AdvancedListingManager: 0x3aa5...
+  • ERC721NFTExchange: 0x8a79...
+  • ERC1155NFTExchange: 0xb7f8...
+  • OfferManager: 0x9a9f...
 
 🚀 Ready to index events...
 `);
