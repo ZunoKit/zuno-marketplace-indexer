@@ -1,13 +1,13 @@
 /**
  * Generated Ponder Configuration
- *
+ * 
  * ⚠️  AUTO-GENERATED FILE - DO NOT EDIT MANUALLY
- *
+ * 
  * This file is generated from Zuno Marketplace ABIs API.
  * To regenerate: pnpm generate-config
- *
- * Generated: 2025-10-20T15:33:48.558Z
- * Chains: 0
+ * 
+ * Generated: 2025-10-21T05:18:22.429Z
+ * Chains: 1
  * Contracts: 28
  */
 
@@ -15,19 +15,18 @@ import { createConfig } from "ponder";
 
 export default createConfig({
   ordering: "multichain",
-
+  
   database: {
-    kind: "pglite",
-    directory: "ponder.db",
+    kind: "postgres",
+    connectionString: process.env.DATABASE_URL!,
   },
 
   chains: {
     anvil: {
       id: 31337,
-      rpc: process.env.PONDER_RPC_URL_31337 || "http://127.0.0.1:8545",
-      ws: process.env.PONDER_WS_URL_31337,
-      maxRequestsPerSecond: 100,
-    },
+      rpc: "http://127.0.0.1:8545",
+      maxRequestsPerSecond: 50
+    }
   },
 
   contracts: {
@@ -40,10 +39,10 @@ export default createConfig({
             {
               name: "superAdmin",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -53,10 +52,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "AUCTION_MANAGER_ROLE",
@@ -66,10 +65,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "COLLECTION_MANAGER_ROLE",
@@ -79,10 +78,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DAO_ROLE",
@@ -92,10 +91,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -105,10 +104,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "EMERGENCY_ROLE",
@@ -118,10 +117,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "FEE_MANAGER_ROLE",
@@ -131,10 +130,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "GOVERNANCE_ROLE",
@@ -144,10 +143,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MODERATOR_ROLE",
@@ -157,10 +156,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "OPERATOR_ROLE",
@@ -170,10 +169,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "SUPER_ADMIN_ROLE",
@@ -183,10 +182,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "VALIDATOR_ROLE",
@@ -196,10 +195,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "addNewRole",
@@ -208,16 +207,16 @@ export default createConfig({
             {
               name: "newRole",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "adminRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "getAccountRoles",
@@ -226,17 +225,17 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "activeRoles",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -245,17 +244,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -264,16 +263,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "grantRoles",
@@ -282,16 +281,16 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "roles",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasAllRoles",
@@ -300,22 +299,22 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "roles",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "hasAnyRole",
@@ -324,22 +323,22 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "roles",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "hasRole",
@@ -348,22 +347,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "hasRoleCache",
@@ -372,22 +371,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceRole",
@@ -396,16 +395,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -414,16 +413,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRoles",
@@ -432,16 +431,16 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "roles",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "roleHierarchy",
@@ -450,22 +449,22 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportsInterface",
@@ -474,17 +473,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "BulkRolesGranted",
@@ -494,16 +493,16 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "roles",
               type: "bytes32[]",
               indexed: false,
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "BulkRolesRevoked",
@@ -513,16 +512,16 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "roles",
               type: "bytes32[]",
               indexed: false,
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -532,22 +531,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -557,22 +556,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleHierarchyUpdated",
@@ -582,16 +581,16 @@ export default createConfig({
               name: "parentRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "childRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleManagerInitialized",
@@ -601,10 +600,10 @@ export default createConfig({
               name: "superAdmin",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -614,27 +613,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -643,18 +642,18 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
-        },
+              internalType: "bytes32"
+            }
+          ]
+        }
       ],
       address: "0x36c02da8a0983159322a80ffe9f24b1acff8b570",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     upgrademanager_anvil_0x809d: {
       chain: "anvil",
@@ -665,10 +664,10 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -678,10 +677,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MIN_EXECUTION_DELAY",
@@ -691,10 +690,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "UPGRADE_ADMIN_ROLE",
@@ -704,10 +703,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "addFeature",
@@ -716,16 +715,16 @@ export default createConfig({
             {
               name: "featureName",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "addModule",
@@ -734,16 +733,16 @@ export default createConfig({
             {
               name: "moduleName",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "addTokenStandard",
@@ -752,16 +751,16 @@ export default createConfig({
             {
               name: "standardName",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "currentVersion",
@@ -771,10 +770,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "executeUpgrade",
@@ -783,11 +782,11 @@ export default createConfig({
             {
               name: "proposalId",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "featureEnabled",
@@ -796,17 +795,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "featureList",
@@ -815,17 +814,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "features",
@@ -834,17 +833,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllFeatures",
@@ -854,20 +853,20 @@ export default createConfig({
             {
               name: "featureNames",
               type: "string[]",
-              internalType: "string[]",
+              internalType: "string[]"
             },
             {
               name: "implementations",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "enabled",
               type: "bool[]",
-              internalType: "bool[]",
-            },
+              internalType: "bool[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllModules",
@@ -877,20 +876,20 @@ export default createConfig({
             {
               name: "moduleNames",
               type: "string[]",
-              internalType: "string[]",
+              internalType: "string[]"
             },
             {
               name: "implementations",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "active",
               type: "bool[]",
-              internalType: "bool[]",
-            },
+              internalType: "bool[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllTokenStandards",
@@ -900,15 +899,15 @@ export default createConfig({
             {
               name: "standardNames",
               type: "string[]",
-              internalType: "string[]",
+              internalType: "string[]"
             },
             {
               name: "implementations",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -917,17 +916,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -936,16 +935,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -954,22 +953,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isFeatureAvailable",
@@ -978,17 +977,17 @@ export default createConfig({
             {
               name: "featureName",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "available",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "moduleActive",
@@ -997,17 +996,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "moduleList",
@@ -1016,17 +1015,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "modules",
@@ -1035,17 +1034,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "proposalCounter",
@@ -1055,10 +1054,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "proposeUpgrade",
@@ -1067,32 +1066,32 @@ export default createConfig({
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "data",
               type: "bytes",
-              internalType: "bytes",
+              internalType: "bytes"
             },
             {
               name: "executionDelay",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "proposalId",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -1101,16 +1100,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -1119,16 +1118,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setFeatureEnabled",
@@ -1137,16 +1136,16 @@ export default createConfig({
             {
               name: "featureName",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "enabled",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setModuleActive",
@@ -1155,16 +1154,16 @@ export default createConfig({
             {
               name: "moduleName",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "active",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportedStandards",
@@ -1173,17 +1172,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportsInterface",
@@ -1192,17 +1191,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "tokenStandardImplementations",
@@ -1211,17 +1210,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "tokenStandards",
@@ -1230,17 +1229,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateVersion",
@@ -1249,16 +1248,16 @@ export default createConfig({
             {
               name: "newVersion",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newVersionString",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "upgradeProposals",
@@ -1267,52 +1266,52 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "id",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "data",
               type: "bytes",
-              internalType: "bytes",
+              internalType: "bytes"
             },
             {
               name: "proposedAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "executionDelay",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "executed",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "proposer",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "versionString",
@@ -1322,10 +1321,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "FeatureAdded",
@@ -1335,16 +1334,16 @@ export default createConfig({
               name: "featureName",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FeatureEnabled",
@@ -1354,16 +1353,16 @@ export default createConfig({
               name: "featureName",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "enabled",
               type: "bool",
               indexed: false,
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ModuleActivated",
@@ -1373,16 +1372,16 @@ export default createConfig({
               name: "moduleName",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "active",
               type: "bool",
               indexed: false,
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ModuleAdded",
@@ -1392,16 +1391,16 @@ export default createConfig({
               name: "moduleName",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -1411,22 +1410,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -1436,22 +1435,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -1461,22 +1460,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "TokenStandardAdded",
@@ -1486,16 +1485,16 @@ export default createConfig({
               name: "standard",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "implementation",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "UpgradeExecuted",
@@ -1505,16 +1504,16 @@ export default createConfig({
               name: "proposalId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "executor",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "UpgradeProposed",
@@ -1524,22 +1523,22 @@ export default createConfig({
               name: "proposalId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "proposer",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "description",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "VersionUpdated",
@@ -1549,27 +1548,27 @@ export default createConfig({
               name: "oldVersion",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newVersion",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "versionString",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -1578,22 +1577,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
-        },
+              internalType: "bytes32"
+            }
+          ]
+        }
       ],
       address: "0x809d550fca64d94bd9f66e60752a544199cfac3d",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     configmanager_anvil_0x4c58: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -1601,10 +1599,10 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "CONFIG_ADMIN_ROLE",
@@ -1614,10 +1612,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -1627,10 +1625,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "addressConfigs",
@@ -1639,17 +1637,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "allConfigKeys",
@@ -1658,17 +1656,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "boolConfigs",
@@ -1677,17 +1675,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bytes32Configs",
@@ -1696,17 +1694,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "configExists",
@@ -1715,17 +1713,17 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "configMetadata",
@@ -1734,42 +1732,42 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "valueType",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigType",
+              internalType: "enum ConfigManager.ConfigType"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "lastUpdated",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "exists",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "configsByCategory",
@@ -1778,22 +1776,22 @@ export default createConfig({
             {
               name: "",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllConfigKeys",
@@ -1803,10 +1801,10 @@ export default createConfig({
             {
               name: "",
               type: "string[]",
-              internalType: "string[]",
-            },
+              internalType: "string[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getConfigMetadata",
@@ -1815,42 +1813,42 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "valueType",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigType",
+              internalType: "enum ConfigManager.ConfigType"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "lastUpdated",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "exists",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getConfigsByCategory",
@@ -1859,17 +1857,17 @@ export default createConfig({
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
-            },
+              internalType: "enum ConfigManager.ConfigCategory"
+            }
           ],
           outputs: [
             {
               name: "keys",
               type: "string[]",
-              internalType: "string[]",
-            },
+              internalType: "string[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -1878,17 +1876,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -1897,16 +1895,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -1915,22 +1913,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "removeConfig",
@@ -1939,11 +1937,11 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -1952,16 +1950,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -1970,16 +1968,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setAddressConfig",
@@ -1988,26 +1986,26 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "value",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setBoolConfig",
@@ -2016,26 +2014,26 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "value",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setBytes32Config",
@@ -2044,26 +2042,26 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "value",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setStringConfig",
@@ -2072,26 +2070,26 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "value",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setUintConfig",
@@ -2100,26 +2098,26 @@ export default createConfig({
             {
               name: "key",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "value",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "category",
               type: "uint8",
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "stringConfigs",
@@ -2128,17 +2126,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportsInterface",
@@ -2147,17 +2145,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "uintConfigs",
@@ -2166,17 +2164,17 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "ConfigRemoved",
@@ -2186,16 +2184,16 @@ export default createConfig({
               name: "key",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "removedBy",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ConfigSet",
@@ -2205,28 +2203,28 @@ export default createConfig({
               name: "key",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "category",
               type: "uint8",
               indexed: true,
-              internalType: "enum ConfigManager.ConfigCategory",
+              internalType: "enum ConfigManager.ConfigCategory"
             },
             {
               name: "valueType",
               type: "uint8",
               indexed: true,
-              internalType: "enum ConfigManager.ConfigType",
+              internalType: "enum ConfigManager.ConfigType"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -2236,22 +2234,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -2261,22 +2259,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -2286,27 +2284,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -2315,22 +2313,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
-        },
+              internalType: "bytes32"
+            }
+          ]
+        }
       ],
       address: "0x4c5859f0f772848b2d91f1d83e2fe57935348029",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     collectionregistry_anvil_0x4ed7: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -2338,10 +2335,10 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -2351,10 +2348,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -2364,10 +2361,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllFactories",
@@ -2377,15 +2374,15 @@ export default createConfig({
             {
               name: "tokenTypes",
               type: "string[]",
-              internalType: "string[]",
+              internalType: "string[]"
             },
             {
               name: "factories",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFactory",
@@ -2394,17 +2391,17 @@ export default createConfig({
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -2413,17 +2410,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -2432,16 +2429,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -2450,22 +2447,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isRegisteredFactory",
@@ -2474,17 +2471,17 @@ export default createConfig({
             {
               name: "factory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isVerifiedCollection",
@@ -2493,17 +2490,17 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "registerCollection",
@@ -2512,16 +2509,16 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "registerFactory",
@@ -2530,16 +2527,16 @@ export default createConfig({
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "factory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -2548,16 +2545,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -2566,16 +2563,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -2584,17 +2581,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateFactory",
@@ -2603,16 +2600,16 @@ export default createConfig({
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "newFactory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "verifyCollection",
@@ -2621,22 +2618,22 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isValid",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "CollectionVerified",
@@ -2646,16 +2643,16 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenType",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FactoryRegistered",
@@ -2665,16 +2662,16 @@ export default createConfig({
               name: "tokenType",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "factory",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FactoryUpdated",
@@ -2684,22 +2681,22 @@ export default createConfig({
               name: "tokenType",
               type: "string",
               indexed: true,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "oldFactory",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newFactory",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -2709,22 +2706,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -2734,22 +2731,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -2759,27 +2756,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -2788,47 +2785,46 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+              internalType: "bytes32"
+            }
+          ]
         },
         {
           name: "CollectionRegistry__CollectionNotVerified",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "CollectionRegistry__FactoryAlreadyRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "CollectionRegistry__FactoryNotRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "CollectionRegistry__InvalidTokenType",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "CollectionRegistry__ZeroAddress",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x4ed7c70f96b99c776995fb64377f0d4ab3b0e1c1",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     feeregistry_anvil_0x3228: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -2836,25 +2832,25 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "baseFee",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "feeManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -2864,10 +2860,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -2877,10 +2873,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "calculateAllFees",
@@ -2889,18 +2885,18 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
@@ -2910,33 +2906,33 @@ export default createConfig({
                 {
                   name: "platformFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "royaltyFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "royaltyRecipient",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "totalFees",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "sellerProceeds",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct IFeeRegistry.FeeBreakdown",
-            },
+              internalType: "struct IFeeRegistry.FeeBreakdown"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "calculatePlatformFee",
@@ -2945,17 +2941,17 @@ export default createConfig({
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "calculateRoyalty",
@@ -2964,32 +2960,32 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "recipient",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBaseFeeContract",
@@ -2999,10 +2995,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFeeManagerContract",
@@ -3012,10 +3008,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getPlatformFeePercentage",
@@ -3025,10 +3021,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -3037,17 +3033,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoyaltyManagerContract",
@@ -3057,10 +3053,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -3069,16 +3065,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -3087,22 +3083,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceRole",
@@ -3111,16 +3107,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -3129,16 +3125,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -3147,17 +3143,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateFeeContracts",
@@ -3166,21 +3162,21 @@ export default createConfig({
             {
               name: "baseFee",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "feeManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "FeeContractsUpdated",
@@ -3190,22 +3186,22 @@ export default createConfig({
               name: "baseFee",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "feeManager",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyManager",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -3215,22 +3211,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -3240,22 +3236,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -3265,27 +3261,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -3294,32 +3290,31 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+              internalType: "bytes32"
+            }
+          ]
         },
         {
           name: "FeeRegistry__ContractNotSet",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "FeeRegistry__ZeroAddress",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x322813fd9a801c5507c9de605d63cea4f2ce6c44",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     adminhub_anvil_0x4a67: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -3327,30 +3322,30 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_exchangeRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_collectionRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_feeRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_auctionRegistry",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -3360,10 +3355,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -3373,10 +3368,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "accessControl",
@@ -3386,10 +3381,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "auctionRegistry",
@@ -3399,10 +3394,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IAuctionRegistry",
-            },
+              internalType: "contract IAuctionRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionRegistry",
@@ -3412,10 +3407,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract ICollectionRegistry",
-            },
+              internalType: "contract ICollectionRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "configManager",
@@ -3425,10 +3420,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyManager",
@@ -3438,17 +3433,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyPause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "exchangeRegistry",
@@ -3458,10 +3453,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IExchangeRegistry",
-            },
+              internalType: "contract IExchangeRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "feeRegistry",
@@ -3471,10 +3466,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IFeeRegistry",
-            },
+              internalType: "contract IFeeRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllRegistries",
@@ -3484,25 +3479,25 @@ export default createConfig({
             {
               name: "exchange",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "fee",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auction",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getManagementContracts",
@@ -3512,20 +3507,20 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -3534,17 +3529,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -3553,16 +3548,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -3571,22 +3566,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "historyTracker",
@@ -3596,10 +3591,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listingValidator",
@@ -3609,10 +3604,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "registerAuction",
@@ -3621,16 +3616,16 @@ export default createConfig({
             {
               name: "auctionType",
               type: "uint8",
-              internalType: "enum IAuctionRegistry.AuctionType",
+              internalType: "enum IAuctionRegistry.AuctionType"
             },
             {
               name: "auction",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "registerCollectionFactory",
@@ -3639,16 +3634,16 @@ export default createConfig({
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "factory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "registerExchange",
@@ -3657,16 +3652,16 @@ export default createConfig({
             {
               name: "standard",
               type: "uint8",
-              internalType: "enum IExchangeRegistry.TokenStandard",
+              internalType: "enum IExchangeRegistry.TokenStandard"
             },
             {
               name: "exchange",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -3675,16 +3670,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -3693,16 +3688,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "roleManager",
@@ -3712,10 +3707,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "setAdditionalContracts",
@@ -3724,26 +3719,26 @@ export default createConfig({
             {
               name: "_listingValidator",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_emergencyManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_historyTracker",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setManagementContracts",
@@ -3752,21 +3747,21 @@ export default createConfig({
             {
               name: "_roleManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_upgradeManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_configManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -3775,17 +3770,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateAuctionFactory",
@@ -3794,11 +3789,11 @@ export default createConfig({
             {
               name: "factory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "upgradeManager",
@@ -3808,10 +3803,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "ContractsConfigured",
@@ -3821,28 +3816,28 @@ export default createConfig({
               name: "listingValidator",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "emergencyManager",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "accessControl",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "historyTracker",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -3852,22 +3847,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -3877,22 +3872,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -3902,27 +3897,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -3931,22 +3926,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
-        },
+              internalType: "bytes32"
+            }
+          ]
+        }
       ],
       address: "0x4a679253410272dd5232b3ff7cf5dbb88f295319",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     auctionregistry_anvil_0xa852: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -3954,10 +3948,10 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -3967,10 +3961,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -3980,10 +3974,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllAuctions",
@@ -3993,15 +3987,15 @@ export default createConfig({
             {
               name: "types",
               type: "uint8[]",
-              internalType: "enum IAuctionRegistry.AuctionType[]",
+              internalType: "enum IAuctionRegistry.AuctionType[]"
             },
             {
               name: "contracts",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAuctionContract",
@@ -4010,17 +4004,17 @@ export default createConfig({
             {
               name: "auctionType",
               type: "uint8",
-              internalType: "enum IAuctionRegistry.AuctionType",
-            },
+              internalType: "enum IAuctionRegistry.AuctionType"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAuctionFactory",
@@ -4030,10 +4024,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -4042,17 +4036,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -4061,16 +4055,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -4079,22 +4073,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isRegisteredAuction",
@@ -4103,17 +4097,17 @@ export default createConfig({
             {
               name: "auctionContract",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "registerAuction",
@@ -4122,16 +4116,16 @@ export default createConfig({
             {
               name: "auctionType",
               type: "uint8",
-              internalType: "enum IAuctionRegistry.AuctionType",
+              internalType: "enum IAuctionRegistry.AuctionType"
             },
             {
               name: "auctionContract",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -4140,16 +4134,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -4158,16 +4152,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -4176,17 +4170,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateAuctionFactory",
@@ -4195,11 +4189,11 @@ export default createConfig({
             {
               name: "newFactory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "AuctionFactoryUpdated",
@@ -4209,16 +4203,16 @@ export default createConfig({
               name: "oldFactory",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newFactory",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AuctionRegistered",
@@ -4228,16 +4222,16 @@ export default createConfig({
               name: "auctionType",
               type: "uint8",
               indexed: true,
-              internalType: "enum IAuctionRegistry.AuctionType",
+              internalType: "enum IAuctionRegistry.AuctionType"
             },
             {
               name: "auctionContract",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -4247,22 +4241,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -4272,22 +4266,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -4297,27 +4291,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -4326,42 +4320,41 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+              internalType: "bytes32"
+            }
+          ]
         },
         {
           name: "AuctionRegistry__AuctionAlreadyRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AuctionRegistry__AuctionNotRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AuctionRegistry__FactoryNotSet",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AuctionRegistry__ZeroAddress",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xa85233c63b9ee964add6f2cffe00fd84eb32338f",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     userhub_anvil_0x5eb3: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -4369,35 +4362,35 @@ export default createConfig({
             {
               name: "_exchangeRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_collectionRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_feeRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_auctionRegistry",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_bundleManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_offerManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "accessControl",
@@ -4407,10 +4400,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "auctionRegistry",
@@ -4420,10 +4413,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IAuctionRegistry",
-            },
+              internalType: "contract IAuctionRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundleManager",
@@ -4433,10 +4426,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionRegistry",
@@ -4446,10 +4439,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract ICollectionRegistry",
-            },
+              internalType: "contract ICollectionRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyManager",
@@ -4459,10 +4452,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "exchangeRegistry",
@@ -4472,10 +4465,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IExchangeRegistry",
-            },
+              internalType: "contract IExchangeRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "feeRegistry",
@@ -4485,10 +4478,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IFeeRegistry",
-            },
+              internalType: "contract IFeeRegistry"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAccessControl",
@@ -4498,10 +4491,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAdditionalAddresses",
@@ -4511,25 +4504,25 @@ export default createConfig({
             {
               name: "listingValidatorAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "emergencyManagerAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "accessControlAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "historyTrackerAddr",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllAddresses",
@@ -4539,55 +4532,55 @@ export default createConfig({
             {
               name: "erc721Exchange",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "erc1155Exchange",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "erc721Factory",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "erc1155Factory",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "englishAuction",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "dutchAuction",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auctionFactory",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "feeRegistryAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "bundleManagerAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "offerManagerAddr",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllRegistries",
@@ -4597,25 +4590,25 @@ export default createConfig({
             {
               name: "exchange",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "fee",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auction",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAuctionFor",
@@ -4624,17 +4617,17 @@ export default createConfig({
             {
               name: "auctionType",
               type: "uint8",
-              internalType: "enum IAuctionRegistry.AuctionType",
-            },
+              internalType: "enum IAuctionRegistry.AuctionType"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundleManager",
@@ -4644,10 +4637,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getEmergencyManager",
@@ -4657,10 +4650,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getExchangeFor",
@@ -4669,17 +4662,17 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFactoryFor",
@@ -4688,17 +4681,17 @@ export default createConfig({
             {
               name: "tokenType",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFeeRegistry",
@@ -4708,10 +4701,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getHistoryTracker",
@@ -4721,10 +4714,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListingValidator",
@@ -4734,10 +4727,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getOfferManager",
@@ -4747,10 +4740,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getSystemStatus",
@@ -4760,20 +4753,20 @@ export default createConfig({
             {
               name: "isHealthy",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "activeContracts",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "timestamp",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "historyTracker",
@@ -4783,10 +4776,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isPaused",
@@ -4796,10 +4789,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listingValidator",
@@ -4809,10 +4802,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "offerManager",
@@ -4822,10 +4815,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateAdditionalContracts",
@@ -4834,26 +4827,26 @@ export default createConfig({
             {
               name: "_listingValidator",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_emergencyManager",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_historyTracker",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "verifyCollection",
@@ -4862,35 +4855,34 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "UserHub__ContractNotSupported",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "UserHub__ZeroAddress",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x5eb3bc0a489c5a8288765d2336659ebca68fcd00",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     advancedlistingmanager_anvil_0x3aa5: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -4898,15 +4890,15 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_validator",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "accessControl",
@@ -4916,10 +4908,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "auctionParams",
@@ -4928,47 +4920,47 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "startingPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reservePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "buyNowPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "bidIncrement",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "duration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "extendOnBid",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "extensionTime",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundles",
@@ -4977,52 +4969,52 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "bundleType",
               type: "uint8",
-              internalType: "enum BundleType",
+              internalType: "enum BundleType"
             },
             {
               name: "creator",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "name",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "totalPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "createdAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "buyDutchAuction",
@@ -5031,11 +5023,11 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "buyNow",
@@ -5044,11 +5036,11 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "buyerStats",
@@ -5057,47 +5049,47 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "totalPurchases",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalSpent",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averagePurchasePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalOffers",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "acceptedOffers",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "rating",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalRatings",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "cancelListing",
@@ -5106,16 +5098,16 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createAuctionListing",
@@ -5124,17 +5116,17 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "params",
@@ -5143,50 +5135,50 @@ export default createConfig({
                 {
                   name: "startingPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "reservePrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "buyNowPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bidIncrement",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "duration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "extendOnBid",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "extensionTime",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct AuctionParams",
-            },
+              internalType: "struct AuctionParams"
+            }
           ],
           outputs: [
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createDutchAuctionListing",
@@ -5195,17 +5187,17 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "params",
@@ -5214,40 +5206,40 @@ export default createConfig({
                 {
                   name: "startingPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "endingPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "duration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "priceDropInterval",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "priceDropAmount",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct DutchAuctionParams",
-            },
+              internalType: "struct DutchAuctionParams"
+            }
           ],
           outputs: [
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createFixedPriceListing",
@@ -5256,42 +5248,42 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "duration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "acceptOffers",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "dutchAuctionParams",
@@ -5300,37 +5292,37 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "startingPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "endingPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "duration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "priceDropInterval",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "priceDropAmount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyPause",
@@ -5339,11 +5331,11 @@ export default createConfig({
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "getAuctionParams",
@@ -5352,8 +5344,8 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
@@ -5363,43 +5355,43 @@ export default createConfig({
                 {
                   name: "startingPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "reservePrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "buyNowPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bidIncrement",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "duration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "extendOnBid",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "extensionTime",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct AuctionParams",
-            },
+              internalType: "struct AuctionParams"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBuyerStats",
@@ -5408,8 +5400,8 @@ export default createConfig({
             {
               name: "buyer",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -5419,43 +5411,43 @@ export default createConfig({
                 {
                   name: "totalPurchases",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalSpent",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "averagePurchasePrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalOffers",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "acceptedOffers",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "rating",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalRatings",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct BuyerStats",
-            },
+              internalType: "struct BuyerStats"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getCurrentDutchAuctionPrice",
@@ -5464,17 +5456,17 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "currentPrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getDutchAuctionParams",
@@ -5483,8 +5475,8 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
@@ -5494,33 +5486,33 @@ export default createConfig({
                 {
                   name: "startingPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "endingPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "duration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "priceDropInterval",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "priceDropAmount",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct DutchAuctionParams",
-            },
+              internalType: "struct DutchAuctionParams"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getGlobalStats",
@@ -5534,43 +5526,43 @@ export default createConfig({
                 {
                   name: "totalListings",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "activeListings",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "soldListings",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalVolume",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "averagePrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalOffers",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "acceptedOffers",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct ListingStats",
-            },
+              internalType: "struct ListingStats"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListing",
@@ -5579,8 +5571,8 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
@@ -5590,78 +5582,78 @@ export default createConfig({
                 {
                   name: "listingId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "seller",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "price",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "nftContract",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "tokenId",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "startTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "endTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "minOfferPrice",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "quantity",
                   type: "uint32",
-                  internalType: "uint32",
+                  internalType: "uint32"
                 },
                 {
                   name: "listingType",
                   type: "uint8",
-                  internalType: "enum ListingType",
+                  internalType: "enum ListingType"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum ListingStatus",
+                  internalType: "enum ListingStatus"
                 },
                 {
                   name: "acceptOffers",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "bundleId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "metadata",
                   type: "bytes",
-                  internalType: "bytes",
-                },
+                  internalType: "bytes"
+                }
               ],
-              internalType: "struct Listing",
-            },
+              internalType: "struct Listing"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListingFees",
@@ -5675,38 +5667,38 @@ export default createConfig({
                 {
                   name: "baseFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "percentageFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "auctionFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bundleFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "offerFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "feeRecipient",
                   type: "address",
-                  internalType: "address",
-                },
+                  internalType: "address"
+                }
               ],
-              internalType: "struct ListingFees",
-            },
+              internalType: "struct ListingFees"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getSellerStats",
@@ -5715,8 +5707,8 @@ export default createConfig({
             {
               name: "seller",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -5726,43 +5718,43 @@ export default createConfig({
                 {
                   name: "totalListings",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "successfulSales",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalRevenue",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "averageSaleTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "cancelledListings",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "rating",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "totalRatings",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct SellerStats",
-            },
+              internalType: "struct SellerStats"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTimeConstraints",
@@ -5776,38 +5768,38 @@ export default createConfig({
                 {
                   name: "minListingDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxListingDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "minAuctionDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxAuctionDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "offerValidityPeriod",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "gracePeriod",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct TimeConstraints",
-            },
+              internalType: "struct TimeConstraints"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserListings",
@@ -5816,17 +5808,17 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "listingIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserOffers",
@@ -5835,17 +5827,17 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "offerIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "globalStats",
@@ -5855,40 +5847,40 @@ export default createConfig({
             {
               name: "totalListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "activeListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "soldListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalVolume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averagePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalOffers",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "acceptedOffers",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isContractSupported",
@@ -5897,17 +5889,17 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isSupported",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listingFees",
@@ -5917,35 +5909,35 @@ export default createConfig({
             {
               name: "baseFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "percentageFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "auctionFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "bundleFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "offerFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "feeRecipient",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listings",
@@ -5954,82 +5946,82 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint96",
-              internalType: "uint96",
+              internalType: "uint96"
             },
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint96",
-              internalType: "uint96",
+              internalType: "uint96"
             },
             {
               name: "startTime",
               type: "uint64",
-              internalType: "uint64",
+              internalType: "uint64"
             },
             {
               name: "endTime",
               type: "uint64",
-              internalType: "uint64",
+              internalType: "uint64"
             },
             {
               name: "minOfferPrice",
               type: "uint64",
-              internalType: "uint64",
+              internalType: "uint64"
             },
             {
               name: "quantity",
               type: "uint32",
-              internalType: "uint32",
+              internalType: "uint32"
             },
             {
               name: "listingType",
               type: "uint8",
-              internalType: "enum ListingType",
+              internalType: "enum ListingType"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum ListingStatus",
+              internalType: "enum ListingStatus"
             },
             {
               name: "acceptOffers",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "metadata",
               type: "bytes",
-              internalType: "bytes",
-            },
+              internalType: "bytes"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "maxListingsPerUser",
@@ -6039,10 +6031,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "maxOffersPerUser",
@@ -6052,10 +6044,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "offers",
@@ -6064,72 +6056,72 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerType",
               type: "uint8",
-              internalType: "enum OfferType",
+              internalType: "enum OfferType"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum OfferStatus",
+              internalType: "enum OfferStatus"
             },
             {
               name: "buyer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiry",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "traitRequirements",
               type: "bytes",
-              internalType: "bytes",
-            },
+              internalType: "bytes"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -6139,10 +6131,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -6152,17 +6144,17 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "sellerStats",
@@ -6171,47 +6163,47 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "totalListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "successfulSales",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalRevenue",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averageSaleTime",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "cancelledListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "rating",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalRatings",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "setSupportedContract",
@@ -6220,16 +6212,16 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isSupported",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportedContracts",
@@ -6238,17 +6230,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "timeConstraints",
@@ -6258,35 +6250,35 @@ export default createConfig({
             {
               name: "minListingDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxListingDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "minAuctionDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxAuctionDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "offerValidityPeriod",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "gracePeriod",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "tokenListings",
@@ -6295,22 +6287,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -6319,18 +6311,18 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "unpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateAccessControl",
@@ -6339,11 +6331,11 @@ export default createConfig({
             {
               name: "newAccessControl",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateListing",
@@ -6352,21 +6344,21 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newEndTime",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateListingFees",
@@ -6379,39 +6371,39 @@ export default createConfig({
                 {
                   name: "baseFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "percentageFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "auctionFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bundleFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "offerFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "feeRecipient",
                   type: "address",
-                  internalType: "address",
-                },
+                  internalType: "address"
+                }
               ],
-              internalType: "struct ListingFees",
-            },
+              internalType: "struct ListingFees"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateTimeConstraints",
@@ -6424,39 +6416,39 @@ export default createConfig({
                 {
                   name: "minListingDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxListingDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "minAuctionDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxAuctionDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "offerValidityPeriod",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "gracePeriod",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct TimeConstraints",
-            },
+              internalType: "struct TimeConstraints"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateUserLimits",
@@ -6465,16 +6457,16 @@ export default createConfig({
             {
               name: "newMaxListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newMaxOffers",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateValidator",
@@ -6483,11 +6475,11 @@ export default createConfig({
             {
               name: "newValidator",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userListings",
@@ -6496,22 +6488,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "userOffers",
@@ -6520,22 +6512,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "validator",
@@ -6545,10 +6537,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceValidator",
-            },
+              internalType: "contract MarketplaceValidator"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "AuctionCreated",
@@ -6558,46 +6550,46 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "auctionType",
               type: "uint8",
               indexed: true,
-              internalType: "enum ListingType",
+              internalType: "enum ListingType"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "startingPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reservePrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "duration",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ContractPaused",
@@ -6607,22 +6599,22 @@ export default createConfig({
               name: "pausedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ContractUnpaused",
@@ -6632,16 +6624,16 @@ export default createConfig({
               name: "unpausedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FeeUpdated",
@@ -6651,34 +6643,34 @@ export default createConfig({
               name: "feeType",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "oldFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ListingCancelled",
@@ -6688,28 +6680,28 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ListingCreated",
@@ -6719,58 +6711,58 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "listingType",
               type: "uint8",
               indexed: true,
-              internalType: "enum ListingType",
+              internalType: "enum ListingType"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "nftContract",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "startTime",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "endTime",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ListingUpdated",
@@ -6780,46 +6772,46 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "oldPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "oldEndTime",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newEndTime",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "NFTPurchased",
@@ -6829,58 +6821,58 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "buyer",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "nftContract",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "fees",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -6890,16 +6882,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -6909,10 +6901,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -6922,145 +6914,145 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AdvancedListing__CannotBuyOwnListing",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__FeeTooHigh",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__IncorrectPayment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InsufficientQuantity",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InvalidAuctionParams",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InvalidDuration",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InvalidDutchAuctionParams",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InvalidParameter",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InvalidPrice",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__InvalidTimeParams",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__ListingExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__ListingNotActive",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__ListingNotFound",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__ListingNotStarted",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__MaxListingsExceeded",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__MissingRole",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__NotApproved",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__NotSeller",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__NotTokenOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__PaymentFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__TokenAlreadyListed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__TransferFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__UnsupportedListingType",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__UnsupportedNFTContract",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AdvancedListing__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -7069,9 +7061,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -7080,22 +7072,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x3aa5ebb10dc797cac828524e59a333d0a371443c",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     offermanager_anvil_0x9a9f: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -7103,15 +7094,15 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_feeManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "MAX_OFFER_DURATION",
@@ -7121,10 +7112,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MIN_OFFER_DURATION",
@@ -7134,10 +7125,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "acceptCollectionOffer",
@@ -7146,16 +7137,16 @@ export default createConfig({
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "acceptNFTOffer",
@@ -7164,11 +7155,11 @@ export default createConfig({
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "accessControl",
@@ -7178,10 +7169,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "activeCollectionOffers",
@@ -7190,17 +7181,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "activeNFTOffers",
@@ -7209,17 +7200,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "activeOfferIndex",
@@ -7228,17 +7219,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "activeTraitOffers",
@@ -7247,17 +7238,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "cancelOffer",
@@ -7266,16 +7257,16 @@ export default createConfig({
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "collectionOfferIds",
@@ -7284,22 +7275,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionOfferProgress",
@@ -7308,32 +7299,32 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "filled",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "createdAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionOffers",
@@ -7342,42 +7333,42 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum OfferManager.OfferStatus",
-            },
+              internalType: "enum OfferManager.OfferStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "createCollectionOffer",
@@ -7386,37 +7377,37 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "createNFTOffer",
@@ -7425,37 +7416,37 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "createTraitOffer",
@@ -7464,47 +7455,47 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "traitType",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "traitValue",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "excludedTokens",
@@ -7513,22 +7504,22 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "feeManager",
@@ -7538,10 +7529,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract AdvancedFeeManager",
-            },
+              internalType: "contract AdvancedFeeManager"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getActiveOffers",
@@ -7550,17 +7541,17 @@ export default createConfig({
             {
               name: "offerType",
               type: "uint8",
-              internalType: "enum OfferManager.OfferType",
-            },
+              internalType: "enum OfferManager.OfferType"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getOffersByCollection",
@@ -7569,22 +7560,22 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "offerType",
               type: "uint8",
-              internalType: "enum OfferManager.OfferType",
-            },
+              internalType: "enum OfferManager.OfferType"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getOffersByOfferer",
@@ -7593,22 +7584,22 @@ export default createConfig({
             {
               name: "offerer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "offerType",
               type: "uint8",
-              internalType: "enum OfferManager.OfferType",
-            },
+              internalType: "enum OfferManager.OfferType"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "nftOfferDetails",
@@ -7617,22 +7608,22 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "acceptedBy",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "nftOfferIds",
@@ -7641,27 +7632,27 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "nftOfferTiming",
@@ -7670,27 +7661,27 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "expiration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "createdAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "acceptedAt",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "nftOffers",
@@ -7699,42 +7690,42 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum OfferManager.OfferStatus",
-            },
+              internalType: "enum OfferManager.OfferStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "offerCounter",
@@ -7744,10 +7735,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -7757,17 +7748,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "pause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "paused",
@@ -7777,17 +7768,17 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "totalOffersAccepted",
@@ -7797,10 +7788,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "totalOffersCreated",
@@ -7810,10 +7801,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "traitOfferDetails",
@@ -7822,42 +7813,42 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "traitType",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "traitValue",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "expiration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "createdAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "filled",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "traitOffers",
@@ -7866,42 +7857,42 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "offerId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "quantity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum OfferManager.OfferStatus",
-            },
+              internalType: "enum OfferManager.OfferStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -7910,18 +7901,18 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "unpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userOffers",
@@ -7930,22 +7921,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "CollectionOfferFilled",
@@ -7955,28 +7946,28 @@ export default createConfig({
               name: "offerId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OfferAccepted",
@@ -7986,34 +7977,34 @@ export default createConfig({
               name: "offerId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "accepter",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OfferCancelled",
@@ -8023,22 +8014,22 @@ export default createConfig({
               name: "offerId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerer",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OfferCreated",
@@ -8048,40 +8039,40 @@ export default createConfig({
               name: "offerId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerer",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "offerType",
               type: "uint8",
               indexed: false,
-              internalType: "enum OfferManager.OfferType",
-            },
+              internalType: "enum OfferManager.OfferType"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OfferExpired",
@@ -8091,16 +8082,16 @@ export default createConfig({
               name: "offerId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "offerer",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -8110,16 +8101,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -8129,10 +8120,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "TraitOfferFilled",
@@ -8142,34 +8133,34 @@ export default createConfig({
               name: "offerId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "traitType",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "traitValue",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -8179,70 +8170,70 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidCollection",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidDuration",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidListing",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidParameters",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidPrice",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidQuantity",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__ListingExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NotTheOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__TransferToSellerFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -8251,9 +8242,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -8262,14 +8253,14 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "SafeERC20FailedOperation",
@@ -8278,17 +8269,16 @@ export default createConfig({
             {
               name: "token",
               type: "address",
-              internalType: "address",
-            },
-          ],
-        },
+              internalType: "address"
+            }
+          ]
+        }
       ],
       address: "0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     bundlemanager_anvil_0x68b1: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -8296,15 +8286,15 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_feeManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "MAX_BUNDLE_DURATION",
@@ -8314,10 +8304,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MAX_NFTS_PER_BUNDLE",
@@ -8327,10 +8317,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MIN_BUNDLE_DURATION",
@@ -8340,10 +8330,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "accessControl",
@@ -8353,10 +8343,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "allBundles",
@@ -8365,17 +8355,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundleCounter",
@@ -8385,10 +8375,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundleItems",
@@ -8397,42 +8387,42 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "tokenType",
               type: "uint8",
-              internalType: "enum BundleManager.TokenType",
+              internalType: "enum BundleManager.TokenType"
             },
             {
               name: "isIncluded",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundleMetadata",
@@ -8441,27 +8431,27 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "buyer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "imageUrl",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundleTiming",
@@ -8470,32 +8460,32 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "startTime",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "endTime",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "createdAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "soldAt",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "bundles",
@@ -8504,42 +8494,42 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "totalPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountPercentage",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum BundleManager.BundleStatus",
-            },
+              internalType: "enum BundleManager.BundleStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "cancelBundle",
@@ -8548,16 +8538,16 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createBundle",
@@ -8570,70 +8560,70 @@ export default createConfig({
                 {
                   name: "collection",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "tokenId",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "amount",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tokenType",
                   type: "uint8",
-                  internalType: "enum BundleManager.TokenType",
+                  internalType: "enum BundleManager.TokenType"
                 },
                 {
                   name: "isIncluded",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct BundleManager.BundleItem[]",
+              internalType: "struct BundleManager.BundleItem[]"
             },
             {
               name: "totalPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountPercentage",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "paymentToken",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "endTime",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "imageUrl",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "feeManager",
@@ -8643,10 +8633,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract AdvancedFeeManager",
-            },
+              internalType: "contract AdvancedFeeManager"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getActiveBundles",
@@ -8655,22 +8645,22 @@ export default createConfig({
             {
               name: "offset",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "limit",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundleBasicInfo",
@@ -8679,42 +8669,42 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint8",
-              internalType: "enum BundleManager.BundleStatus",
-            },
+              internalType: "enum BundleManager.BundleStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundleMetadata",
@@ -8723,27 +8713,27 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundlePrice",
@@ -8752,17 +8742,17 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundleSeller",
@@ -8771,17 +8761,17 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundleStatus",
@@ -8790,17 +8780,17 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint8",
-              internalType: "enum BundleManager.BundleStatus",
-            },
+              internalType: "enum BundleManager.BundleStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBundleTimingInfo",
@@ -8809,32 +8799,32 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserBundles",
@@ -8843,17 +8833,17 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "onERC1155BatchReceived",
@@ -8862,37 +8852,37 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "",
               type: "bytes",
-              internalType: "bytes",
-            },
+              internalType: "bytes"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "onERC1155Received",
@@ -8901,37 +8891,37 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "bytes",
-              internalType: "bytes",
-            },
+              internalType: "bytes"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "owner",
@@ -8941,17 +8931,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "pause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "paused",
@@ -8961,10 +8951,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "purchaseBundle",
@@ -8973,18 +8963,18 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -8993,17 +8983,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "totalBundlesCreated",
@@ -9013,10 +9003,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "totalBundlesSold",
@@ -9026,10 +9016,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -9038,18 +9028,18 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "unpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateBundlePrice",
@@ -9058,16 +9048,16 @@ export default createConfig({
             {
               name: "bundleId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newPrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userBundles",
@@ -9076,22 +9066,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "BundleCancelled",
@@ -9101,22 +9091,22 @@ export default createConfig({
               name: "bundleId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "BundleCreated",
@@ -9126,34 +9116,34 @@ export default createConfig({
               name: "bundleId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "itemCount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountPercentage",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "BundleItemRemoved",
@@ -9163,22 +9153,22 @@ export default createConfig({
               name: "bundleId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "BundleSold",
@@ -9188,34 +9178,34 @@ export default createConfig({
               name: "bundleId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "buyer",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "totalPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "itemCount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "BundleUpdated",
@@ -9225,34 +9215,34 @@ export default createConfig({
               name: "bundleId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "oldPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -9262,16 +9252,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -9281,10 +9271,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -9294,60 +9284,60 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__AmountMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__DurationMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InsufficientBalance",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InsufficientPayment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__ListingExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NFTNotActive",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NotTheOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__PriceMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -9356,9 +9346,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -9367,14 +9357,14 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "SafeERC20FailedOperation",
@@ -9383,17 +9373,16 @@ export default createConfig({
             {
               name: "token",
               type: "address",
-              internalType: "address",
-            },
-          ],
-        },
+              internalType: "address"
+            }
+          ]
+        }
       ],
       address: "0x68b1d87f95878fe05b998f19b66f4baba5de1aed",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     exchangeregistry_anvil_0x59b6: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -9401,10 +9390,10 @@ export default createConfig({
             {
               name: "admin",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -9414,10 +9403,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -9427,10 +9416,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllExchanges",
@@ -9440,15 +9429,15 @@ export default createConfig({
             {
               name: "standards",
               type: "uint8[]",
-              internalType: "enum IExchangeRegistry.TokenStandard[]",
+              internalType: "enum IExchangeRegistry.TokenStandard[]"
             },
             {
               name: "exchanges",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getExchange",
@@ -9457,17 +9446,17 @@ export default createConfig({
             {
               name: "standard",
               type: "uint8",
-              internalType: "enum IExchangeRegistry.TokenStandard",
-            },
+              internalType: "enum IExchangeRegistry.TokenStandard"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getExchangeForListing",
@@ -9476,17 +9465,17 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getExchangeForToken",
@@ -9495,17 +9484,17 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -9514,17 +9503,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -9533,16 +9522,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasRole",
@@ -9551,22 +9540,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isRegisteredExchange",
@@ -9575,17 +9564,17 @@ export default createConfig({
             {
               name: "exchange",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "registerExchange",
@@ -9594,16 +9583,16 @@ export default createConfig({
             {
               name: "standard",
               type: "uint8",
-              internalType: "enum IExchangeRegistry.TokenStandard",
+              internalType: "enum IExchangeRegistry.TokenStandard"
             },
             {
               name: "exchange",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "registerListing",
@@ -9612,16 +9601,16 @@ export default createConfig({
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "exchange",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -9630,16 +9619,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -9648,16 +9637,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -9666,17 +9655,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "updateExchange",
@@ -9685,16 +9674,16 @@ export default createConfig({
             {
               name: "standard",
               type: "uint8",
-              internalType: "enum IExchangeRegistry.TokenStandard",
+              internalType: "enum IExchangeRegistry.TokenStandard"
             },
             {
               name: "newExchange",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ExchangeRegistered",
@@ -9704,16 +9693,16 @@ export default createConfig({
               name: "standard",
               type: "uint8",
               indexed: true,
-              internalType: "enum IExchangeRegistry.TokenStandard",
+              internalType: "enum IExchangeRegistry.TokenStandard"
             },
             {
               name: "exchange",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ExchangeUpdated",
@@ -9723,22 +9712,22 @@ export default createConfig({
               name: "standard",
               type: "uint8",
               indexed: true,
-              internalType: "enum IExchangeRegistry.TokenStandard",
+              internalType: "enum IExchangeRegistry.TokenStandard"
             },
             {
               name: "oldExchange",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newExchange",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -9748,22 +9737,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -9773,22 +9762,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -9798,27 +9787,27 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -9827,47 +9816,46 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+              internalType: "bytes32"
+            }
+          ]
         },
         {
           name: "ExchangeRegistry__ExchangeAlreadyRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExchangeRegistry__ExchangeNotRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExchangeRegistry__InvalidTokenContract",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExchangeRegistry__UnsupportedTokenStandard",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExchangeRegistry__ZeroAddress",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x59b670e9fa9d0a427751af201d676719a970857b",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     listinghistorytracker_anvil_0xc6e7: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -9875,10 +9863,10 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "MAX_HISTORY_ENTRIES",
@@ -9888,10 +9876,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MAX_PRICE_POINTS",
@@ -9901,10 +9889,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "accessControl",
@@ -9914,10 +9902,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionPriceHistory",
@@ -9926,37 +9914,37 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "volume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "source",
               type: "uint8",
-              internalType: "enum ListingHistoryTracker.TransactionType",
-            },
+              internalType: "enum ListingHistoryTracker.TransactionType"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionStats",
@@ -9965,52 +9953,52 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "totalListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalSales",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalVolume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "floorPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averagePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "highestSale",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "activeListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastUpdated",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "dailyVolumes",
@@ -10019,32 +10007,32 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "volume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "transactions",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "uniqueUsers",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averagePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getCollectionPriceHistory",
@@ -10053,13 +10041,13 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "limit",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
@@ -10069,28 +10057,28 @@ export default createConfig({
                 {
                   name: "price",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "timestamp",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "volume",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "source",
                   type: "uint8",
-                  internalType: "enum ListingHistoryTracker.TransactionType",
-                },
+                  internalType: "enum ListingHistoryTracker.TransactionType"
+                }
               ],
-              internalType: "struct ListingHistoryTracker.PricePoint[]",
-            },
+              internalType: "struct ListingHistoryTracker.PricePoint[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getNFTHistory",
@@ -10099,18 +10087,18 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "limit",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
@@ -10120,48 +10108,48 @@ export default createConfig({
                 {
                   name: "listingId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "seller",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "buyer",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "price",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "timestamp",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "txType",
                   type: "uint8",
-                  internalType: "enum ListingHistoryTracker.TransactionType",
+                  internalType: "enum ListingHistoryTracker.TransactionType"
                 },
                 {
                   name: "listingType",
                   type: "uint8",
-                  internalType: "uint8",
+                  internalType: "uint8"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct ListingHistoryTracker.TransactionRecord[]",
-            },
+              internalType: "struct ListingHistoryTracker.TransactionRecord[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "globalStats",
@@ -10171,45 +10159,45 @@ export default createConfig({
             {
               name: "totalListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalSales",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalVolume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalUsers",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalCollections",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averageSalePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "dailyActiveUsers",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastUpdated",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "nftHistory",
@@ -10218,62 +10206,62 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "seller",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "buyer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "txType",
               type: "uint8",
-              internalType: "enum ListingHistoryTracker.TransactionType",
+              internalType: "enum ListingHistoryTracker.TransactionType"
             },
             {
               name: "listingType",
               type: "uint8",
-              internalType: "uint8",
+              internalType: "uint8"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "nftHistoryMeta",
@@ -10282,42 +10270,42 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "totalTransactions",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalVolume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastSalePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastSaleTime",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "currentOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -10327,10 +10315,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -10340,10 +10328,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "recordTransaction",
@@ -10352,43 +10340,43 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "txType",
               type: "uint8",
-              internalType: "enum ListingHistoryTracker.TransactionType",
+              internalType: "enum ListingHistoryTracker.TransactionType"
             },
             {
               name: "user",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "transferOwnership",
@@ -10397,11 +10385,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userStats",
@@ -10410,57 +10398,57 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "totalListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalSales",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalPurchases",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "volumeSold",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "volumeBought",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averageSalePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averagePurchasePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "firstActivity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastActivity",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "CollectionStatsUpdated",
@@ -10470,28 +10458,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "totalVolume",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "floorPrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "averagePrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -10501,16 +10489,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -10520,10 +10508,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "PricePointAdded",
@@ -10533,28 +10521,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "source",
               type: "uint8",
               indexed: false,
-              internalType: "enum ListingHistoryTracker.TransactionType",
-            },
+              internalType: "enum ListingHistoryTracker.TransactionType"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "TransactionRecorded",
@@ -10564,40 +10552,40 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "txType",
               type: "uint8",
               indexed: false,
-              internalType: "enum ListingHistoryTracker.TransactionType",
+              internalType: "enum ListingHistoryTracker.TransactionType"
             },
             {
               name: "user",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -10607,10 +10595,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "UserStatsUpdated",
@@ -10620,48 +10608,48 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "totalSales",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalPurchases",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "volumeTraded",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidMarketplaceWallet",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NotTheOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -10670,9 +10658,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -10681,27 +10669,26 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xc6e7df5e7b4f2a278906862b61205850344d4e7d",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     erc1155nftexchange_anvil_0xb7f8: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "BPS_DENOMINATOR",
@@ -10711,10 +10698,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "batchBuyNFT",
@@ -10723,11 +10710,11 @@ export default createConfig({
             {
               name: "m_listingIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "batchCancelListing",
@@ -10736,11 +10723,11 @@ export default createConfig({
             {
               name: "m_listingIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "batchListNFT",
@@ -10749,31 +10736,31 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenIds",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "m_amounts",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "m_prices",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "m_listingDuration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "buyNFT",
@@ -10782,11 +10769,11 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "buyNFT",
@@ -10795,16 +10782,16 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "m_amount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "cancelListing",
@@ -10813,11 +10800,11 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "contractType",
@@ -10827,10 +10814,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "get24hVolume",
@@ -10839,17 +10826,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBuyerSeesPrice",
@@ -10858,17 +10845,17 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFloorDiff",
@@ -10877,17 +10864,17 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "int256",
-              internalType: "int256",
-            },
+              internalType: "int256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFloorPrice",
@@ -10896,17 +10883,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getGeneratedListingId",
@@ -10915,27 +10902,27 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_sender",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getLadderPrice",
@@ -10944,22 +10931,22 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListingsByCollection",
@@ -10968,17 +10955,17 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListingsBySeller",
@@ -10987,17 +10974,17 @@ export default createConfig({
             {
               name: "m_seller",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoyaltyInfo",
@@ -11006,32 +10993,32 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "receiver",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyAmount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTakerFee",
@@ -11041,10 +11028,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTopTraitPrice",
@@ -11053,22 +11040,22 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "initialize",
@@ -11077,16 +11064,16 @@ export default createConfig({
             {
               name: "m_marketplaceWallet",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "isActive",
@@ -11096,10 +11083,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listNFT",
@@ -11108,31 +11095,31 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_listingDuration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "marketplaceWallet",
@@ -11142,10 +11129,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -11155,17 +11142,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "s_activeListings",
@@ -11174,27 +11161,27 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_listings",
@@ -11203,52 +11190,52 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "listingDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "listingStart",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum BaseNFTExchange.ListingStatus",
+              internalType: "enum BaseNFTExchange.ListingStatus"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_listingsByCollection",
@@ -11257,22 +11244,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_listingsBySeller",
@@ -11281,22 +11268,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_marketplaceWallet",
@@ -11306,10 +11293,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_takerFee",
@@ -11319,10 +11306,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportedStandard",
@@ -11332,10 +11319,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "supportsInterface",
@@ -11344,17 +11331,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -11363,11 +11350,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateMarketplaceWallet",
@@ -11376,11 +11363,11 @@ export default createConfig({
             {
               name: "m_newMarketplaceWallet",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateTakerFee",
@@ -11389,11 +11376,11 @@ export default createConfig({
             {
               name: "m_newTakerFee",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "version",
@@ -11403,10 +11390,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "Initialized",
@@ -11416,10 +11403,10 @@ export default createConfig({
               name: "version",
               type: "uint64",
               indexed: false,
-              internalType: "uint64",
-            },
+              internalType: "uint64"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ListingCancelled",
@@ -11429,28 +11416,28 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "MarketplaceWalletUpdated",
@@ -11460,16 +11447,16 @@ export default createConfig({
               name: "oldWallet",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newWallet",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "NFTListed",
@@ -11479,34 +11466,34 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "NFTSold",
@@ -11516,40 +11503,40 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "buyer",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -11559,16 +11546,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "TakerFeeUpdated",
@@ -11578,96 +11565,96 @@ export default createConfig({
               name: "oldFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "InvalidInitialization",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__AmountMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__ArrayLengthMismatch",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__DurationMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InsufficientBalance",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InsufficientPayment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidMarketplaceWallet",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidTakerFee",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__ListingExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__MarketplaceNotApproved",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NFTAlreadyListed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NFTNotActive",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NotTheOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__PriceMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__TransferToSellerFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NotInitializing",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -11676,9 +11663,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -11687,47 +11674,46 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "PaymentDistribution__InsufficientBalance",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "PaymentDistribution__InvalidAmount",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "PaymentDistribution__TransferFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "PaymentDistribution__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xb7f8bc63bbcad18155201308c8f3540b07f84f5e",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     erc721collectionfactory_anvil_0x0dcd: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "contractType",
@@ -11737,10 +11723,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "createERC721Collection",
@@ -11753,80 +11739,80 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "symbol",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "owner",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "mintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "royaltyFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxSupply",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintLimitPerWallet",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintStartTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "publicMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistStageDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tokenURI",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct CollectionParams",
-            },
+              internalType: "struct CollectionParams"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "erc721CollectionImplementation",
@@ -11836,10 +11822,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getSupportedStandards",
@@ -11849,10 +11835,10 @@ export default createConfig({
             {
               name: "",
               type: "string[]",
-              internalType: "string[]",
-            },
+              internalType: "string[]"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "getTotalCollections",
@@ -11862,10 +11848,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isActive",
@@ -11875,10 +11861,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "isValidCollection",
@@ -11887,17 +11873,17 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportsInterface",
@@ -11906,17 +11892,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "version",
@@ -11926,10 +11912,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "ERC721CollectionCreated",
@@ -11939,16 +11925,16 @@ export default createConfig({
               name: "collectionAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "creator",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ImplementationDeployed",
@@ -11958,15 +11944,15 @@ export default createConfig({
               name: "implementation",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FailedDeployment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "InsufficientBalance",
@@ -11975,22 +11961,21 @@ export default createConfig({
             {
               name: "balance",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "needed",
               type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
+              internalType: "uint256"
+            }
+          ]
+        }
       ],
       address: "0x0dcd1bf9a1b36ce34237eeafef220932846bcd82",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     collectionfactoryregistry_anvil_0x0b30: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -11998,15 +11983,15 @@ export default createConfig({
             {
               name: "_erc721Factory",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_erc1155Factory",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "contractType",
@@ -12016,10 +12001,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "createERC1155Collection",
@@ -12032,80 +12017,80 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "symbol",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "owner",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "mintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "royaltyFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxSupply",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintLimitPerWallet",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintStartTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "publicMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistStageDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tokenURI",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct CollectionParams",
-            },
+              internalType: "struct CollectionParams"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createERC721Collection",
@@ -12118,80 +12103,80 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "symbol",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "owner",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "mintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "royaltyFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxSupply",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintLimitPerWallet",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintStartTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "publicMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistStageDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tokenURI",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct CollectionParams",
-            },
+              internalType: "struct CollectionParams"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "erc1155Factory",
@@ -12201,10 +12186,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract ERC1155CollectionFactory",
-            },
+              internalType: "contract ERC1155CollectionFactory"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "erc721Factory",
@@ -12214,10 +12199,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract ERC721CollectionFactory",
-            },
+              internalType: "contract ERC721CollectionFactory"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFactoryAddresses",
@@ -12227,15 +12212,15 @@ export default createConfig({
             {
               name: "erc721FactoryAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "erc1155FactoryAddr",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFactoryCollectionCounts",
@@ -12245,15 +12230,15 @@ export default createConfig({
             {
               name: "erc721Count",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "erc1155Count",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getSupportedStandards",
@@ -12263,10 +12248,10 @@ export default createConfig({
             {
               name: "",
               type: "string[]",
-              internalType: "string[]",
-            },
+              internalType: "string[]"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "getTotalCollections",
@@ -12276,10 +12261,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isActive",
@@ -12289,10 +12274,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "isValidCollection",
@@ -12301,17 +12286,17 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportsInterface",
@@ -12320,17 +12305,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "version",
@@ -12340,10 +12325,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "ERC1155CollectionCreated",
@@ -12353,16 +12338,16 @@ export default createConfig({
               name: "collectionAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "creator",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ERC721CollectionCreated",
@@ -12372,16 +12357,16 @@ export default createConfig({
               name: "collectionAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "creator",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FactoriesSet",
@@ -12391,29 +12376,28 @@ export default createConfig({
               name: "erc721Factory",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "erc1155Factory",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
-        },
+          anonymous: false
+        }
       ],
       address: "0x0b306bf915c4d645ff596e518faf3f9669b97016",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     erc1155collectionfactory_anvil_0x9a67: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "contractType",
@@ -12423,10 +12407,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "createERC1155Collection",
@@ -12439,80 +12423,80 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "symbol",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "owner",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "mintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "royaltyFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxSupply",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintLimitPerWallet",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "mintStartTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "publicMintPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "allowlistStageDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tokenURI",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct CollectionParams",
-            },
+              internalType: "struct CollectionParams"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "erc1155CollectionImplementation",
@@ -12522,10 +12506,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getSupportedStandards",
@@ -12535,10 +12519,10 @@ export default createConfig({
             {
               name: "",
               type: "string[]",
-              internalType: "string[]",
-            },
+              internalType: "string[]"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "getTotalCollections",
@@ -12548,10 +12532,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isActive",
@@ -12561,10 +12545,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "isValidCollection",
@@ -12573,17 +12557,17 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportsInterface",
@@ -12592,17 +12576,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "version",
@@ -12612,10 +12596,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "ERC1155CollectionCreated",
@@ -12625,16 +12609,16 @@ export default createConfig({
               name: "collectionAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "creator",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ImplementationDeployed",
@@ -12644,15 +12628,15 @@ export default createConfig({
               name: "implementation",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FailedDeployment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "InsufficientBalance",
@@ -12661,22 +12645,21 @@ export default createConfig({
             {
               name: "balance",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "needed",
               type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
+              internalType: "uint256"
+            }
+          ]
+        }
       ],
       address: "0x9a676e781a523b5d0c0e43731313a708cb607508",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     auctionfactory_anvil_0x9599: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -12684,10 +12667,10 @@ export default createConfig({
             {
               name: "_marketplaceWallet",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "allAuctionIds",
@@ -12696,17 +12679,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "auctionToContract",
@@ -12715,17 +12698,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "buyNow",
@@ -12734,11 +12717,11 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "cancelAuction",
@@ -12747,11 +12730,11 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createDutchAuction",
@@ -12760,47 +12743,47 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "startPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reservePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "duration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "priceDropPerHour",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "createEnglishAuction",
@@ -12809,42 +12792,42 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "startPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reservePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "duration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "dutchAuction",
@@ -12854,10 +12837,10 @@ export default createConfig({
             {
               name: "implementation",
               type: "address",
-              internalType: "contract DutchAuctionImplementation",
-            },
+              internalType: "contract DutchAuctionImplementation"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "dutchAuctionImplementation",
@@ -12867,10 +12850,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "englishAuction",
@@ -12880,10 +12863,10 @@ export default createConfig({
             {
               name: "implementation",
               type: "address",
-              internalType: "contract EnglishAuctionImplementation",
-            },
+              internalType: "contract EnglishAuctionImplementation"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "englishAuctionImplementation",
@@ -12893,10 +12876,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllAuctions",
@@ -12906,10 +12889,10 @@ export default createConfig({
             {
               name: "auctionIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAuction",
@@ -12918,8 +12901,8 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
@@ -12929,78 +12912,78 @@ export default createConfig({
                 {
                   name: "auctionId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "nftContract",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "tokenId",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "amount",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "seller",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "startPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "reservePrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "startTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "endTime",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum AuctionStatus",
+                  internalType: "enum AuctionStatus"
                 },
                 {
                   name: "auctionType",
                   type: "uint8",
-                  internalType: "enum AuctionType",
+                  internalType: "enum AuctionType"
                 },
                 {
                   name: "highestBidder",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "highestBid",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bidCount",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct IAuction.Auction",
-            },
+              internalType: "struct IAuction.Auction"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAuctionContract",
@@ -13009,17 +12992,17 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "contractAddress",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getCurrentPrice",
@@ -13028,17 +13011,17 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "currentPrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getPendingRefund",
@@ -13047,22 +13030,22 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "bidder",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "refundAmount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTimeToReservePrice",
@@ -13071,17 +13054,17 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserAuctions",
@@ -13090,17 +13073,17 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "auctionIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isAuctionActive",
@@ -13109,17 +13092,17 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "marketplaceValidator",
@@ -13129,10 +13112,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract IMarketplaceValidator",
-            },
+              internalType: "contract IMarketplaceValidator"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "marketplaceWallet",
@@ -13142,10 +13125,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -13155,10 +13138,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -13168,10 +13151,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "placeBid",
@@ -13180,18 +13163,18 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setMarketplaceValidator",
@@ -13200,11 +13183,11 @@ export default createConfig({
             {
               name: "validator",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setMarketplaceWallet",
@@ -13213,11 +13196,11 @@ export default createConfig({
             {
               name: "newWallet",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setPaused",
@@ -13226,11 +13209,11 @@ export default createConfig({
             {
               name: "paused",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "settleAuction",
@@ -13239,11 +13222,11 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "transferNFTFromSeller",
@@ -13252,31 +13235,31 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "from",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "to",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "transferOwnership",
@@ -13285,11 +13268,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userAuctions",
@@ -13298,22 +13281,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "withdrawBid",
@@ -13322,11 +13305,11 @@ export default createConfig({
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "AuctionCreatedViaFactory",
@@ -13336,28 +13319,28 @@ export default createConfig({
               name: "auctionId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "auctionContract",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "seller",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auctionType",
               type: "uint8",
               indexed: false,
-              internalType: "enum AuctionType",
-            },
+              internalType: "enum AuctionType"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AuctionFactoryPaused",
@@ -13367,16 +13350,16 @@ export default createConfig({
               name: "isPaused",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "admin",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AuctionImplementationsDeployed",
@@ -13386,22 +13369,22 @@ export default createConfig({
               name: "englishAuctionImplementation",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "dutchAuctionImplementation",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "marketplaceWallet",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -13411,16 +13394,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -13430,10 +13413,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -13443,65 +13426,65 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Auction__AuctionNotFound",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__NFTAlreadyInAuction",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__NFTAlreadyListed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__NFTNotAvailable",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__NFTTransferFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__NotAuctionSeller",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__UnsupportedAuctionType",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Auction__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "FailedDeployment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "InsufficientBalance",
@@ -13510,14 +13493,14 @@ export default createConfig({
             {
               name: "balance",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "needed",
               type: "uint256",
-              internalType: "uint256",
-            },
-          ],
+              internalType: "uint256"
+            }
+          ]
         },
         {
           name: "OwnableInvalidOwner",
@@ -13526,9 +13509,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -13537,22 +13520,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x959922be3caee4b8cd9a407cc3ac1c251c2007b1",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     fee_anvil_0x0165: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -13560,15 +13542,15 @@ export default createConfig({
             {
               name: "owner_",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyFee_",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "getRoyaltyFee",
@@ -13578,10 +13560,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -13591,17 +13573,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "royaltyInfo",
@@ -13610,27 +13592,27 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "receiver",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyAmount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_royaltyFee",
@@ -13640,10 +13622,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "setRoyaltyFee",
@@ -13652,11 +13634,11 @@ export default createConfig({
             {
               name: "newRoyaltyFee",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -13665,17 +13647,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -13684,11 +13666,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "FeeUpdated",
@@ -13698,16 +13680,16 @@ export default createConfig({
               name: "feeType",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "newValue",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -13717,21 +13699,21 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Fee__InvalidRoyaltyFee",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -13740,9 +13722,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -13751,17 +13733,16 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
-        },
+              internalType: "address"
+            }
+          ]
+        }
       ],
       address: "0x0165878a594ca255338adfa4d48449f69242eb8f",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     advancedfeemanager_anvil_0xa513: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -13769,15 +13750,15 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_feeRecipient",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "EMERGENCY_FEE_CAP",
@@ -13787,10 +13768,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "accessControl",
@@ -13800,10 +13781,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "baseFeeConfig",
@@ -13813,35 +13794,35 @@ export default createConfig({
             {
               name: "makerFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "takerFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "listingFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "auctionFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "bundleFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "batchUpdateUserVolumes",
@@ -13850,16 +13831,16 @@ export default createConfig({
             {
               name: "users",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "volumes",
               type: "uint256[]",
-              internalType: "uint256[]",
-            },
+              internalType: "uint256[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "calculateFees",
@@ -13868,37 +13849,37 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isMaker",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [
             {
               name: "finalFee",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "appliedDiscount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "checkTierUpgradeEligibility",
@@ -13907,27 +13888,27 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "canUpgrade",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "nextTierId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "volumeNeeded",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionFeeOverrides",
@@ -13936,49 +13917,49 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "makerFeeOverride",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "takerFeeOverride",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountBps",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "hasOverride",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "isVerified",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "setAt",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyPause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "feeRecipient",
@@ -13988,10 +13969,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "feeTierConfigs",
@@ -14000,32 +13981,32 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "volumeThreshold",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountBps",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "tierName",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllFeeTierConfigs",
@@ -14039,28 +14020,28 @@ export default createConfig({
                 {
                   name: "volumeThreshold",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "discountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tierName",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct FeeTierConfig[]",
-            },
+              internalType: "struct FeeTierConfig[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBaseFeeConfig",
@@ -14074,38 +14055,38 @@ export default createConfig({
                 {
                   name: "makerFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "takerFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "listingFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "auctionFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bundleFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct FeeConfig",
-            },
+              internalType: "struct FeeConfig"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getCollectionFeeOverride",
@@ -14114,8 +14095,8 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -14125,38 +14106,38 @@ export default createConfig({
                 {
                   name: "makerFeeOverride",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "takerFeeOverride",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "discountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "hasOverride",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "isVerified",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "setAt",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct CollectionFeeOverride",
-            },
+              internalType: "struct CollectionFeeOverride"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getEffectiveFeeRate",
@@ -14165,27 +14146,27 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isMaker",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [
             {
               name: "effectiveRate",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFeeTierConfig",
@@ -14194,8 +14175,8 @@ export default createConfig({
             {
               name: "tierId",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
@@ -14205,28 +14186,28 @@ export default createConfig({
                 {
                   name: "volumeThreshold",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "discountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tierName",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct FeeTierConfig",
-            },
+              internalType: "struct FeeTierConfig"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFeeTierCount",
@@ -14236,10 +14217,10 @@ export default createConfig({
             {
               name: "count",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserFeeTier",
@@ -14248,8 +14229,8 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -14259,23 +14240,23 @@ export default createConfig({
                 {
                   name: "tierId",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "discountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "lastUpdated",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct FeeTier",
-            },
+              internalType: "struct FeeTier"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserVIPStatus",
@@ -14284,8 +14265,8 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -14295,28 +14276,28 @@ export default createConfig({
                 {
                   name: "isVIP",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "vipDiscountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "vipExpiryTimestamp",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "vipTier",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct VIPStatus",
-            },
+              internalType: "struct VIPStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getUserVolumeData",
@@ -14325,8 +14306,8 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -14336,28 +14317,28 @@ export default createConfig({
                 {
                   name: "totalVolume",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "last30DaysVolume",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "lastTradeTimestamp",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tradeCount",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct UserVolumeData",
-            },
+              internalType: "struct UserVolumeData"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -14367,10 +14348,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -14380,17 +14361,17 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setCollectionFeeOverride",
@@ -14399,7 +14380,7 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "feeOverride",
@@ -14408,39 +14389,39 @@ export default createConfig({
                 {
                   name: "makerFeeOverride",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "takerFeeOverride",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "discountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "hasOverride",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "isVerified",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "setAt",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct CollectionFeeOverride",
-            },
+              internalType: "struct CollectionFeeOverride"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "totalMarketplaceVolume",
@@ -14450,10 +14431,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -14462,18 +14443,18 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "unpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateBaseFeeConfig",
@@ -14486,39 +14467,39 @@ export default createConfig({
                 {
                   name: "makerFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "takerFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "listingFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "auctionFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "bundleFee",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct FeeConfig",
-            },
+              internalType: "struct FeeConfig"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateFeeRecipient",
@@ -14527,11 +14508,11 @@ export default createConfig({
             {
               name: "newFeeRecipient",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateFeeTier",
@@ -14540,7 +14521,7 @@ export default createConfig({
             {
               name: "tierId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "tierConfig",
@@ -14549,29 +14530,29 @@ export default createConfig({
                 {
                   name: "volumeThreshold",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "discountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tierName",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct FeeTierConfig",
-            },
+              internalType: "struct FeeTierConfig"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateUserVolume",
@@ -14580,16 +14561,16 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tradeVolume",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateVIPStatus",
@@ -14598,7 +14579,7 @@ export default createConfig({
             {
               name: "user",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "vipData",
@@ -14607,29 +14588,29 @@ export default createConfig({
                 {
                   name: "isVIP",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "vipDiscountBps",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "vipExpiryTimestamp",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "vipTier",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct VIPStatus",
-            },
+              internalType: "struct VIPStatus"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userFeeTiers",
@@ -14638,27 +14619,27 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "tierId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountBps",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastUpdated",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "userVolumeData",
@@ -14667,32 +14648,32 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "totalVolume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "last30DaysVolume",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastTradeTimestamp",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "tradeCount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "vipStatus",
@@ -14701,32 +14682,32 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isVIP",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "vipDiscountBps",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "vipExpiryTimestamp",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "vipTier",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "CollectionFeeOverrideSet",
@@ -14736,34 +14717,34 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "makerFeeOverride",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "takerFeeOverride",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "discountBps",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isVerified",
               type: "bool",
               indexed: false,
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FeeConfigUpdated",
@@ -14773,34 +14754,34 @@ export default createConfig({
               name: "oldMakerFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newMakerFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "oldTakerFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newTakerFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FeeTierUpdated",
@@ -14810,28 +14791,28 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "oldTierId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newTierId",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newDiscountBps",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FeeUpdated",
@@ -14841,16 +14822,16 @@ export default createConfig({
               name: "feeType",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "newValue",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "FeesCalculated",
@@ -14860,40 +14841,40 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "salePrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "finalMakerFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "finalTakerFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalDiscount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -14903,16 +14884,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -14922,10 +14903,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -14935,10 +14916,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "UserVolumeUpdated",
@@ -14948,28 +14929,28 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newTotalVolume",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newLast30DaysVolume",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "tradeCount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "VIPStatusUpdated",
@@ -14979,54 +14960,54 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isVIP",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "discountBps",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiryTimestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "vipTier",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Fee__InvalidOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Fee__InvalidRoyaltyFee",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -15035,9 +15016,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -15046,22 +15027,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xa513e6e4b8f2a923d98304ec87f64353c4d5c853",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     advancedroyaltymanager_anvil_0x2279: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -15069,15 +15049,15 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_baseFeeContract",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "EMERGENCY_ROYALTY_CAP",
@@ -15087,10 +15067,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "accessControl",
@@ -15100,10 +15080,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "advancedRoyalties",
@@ -15112,47 +15092,47 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "hasAdvancedRoyalty",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "totalRoyaltyBps",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxRoyaltyBps",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "useERC2981",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "allowOverrides",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "lastUpdated",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "baseFeeContract",
@@ -15162,10 +15142,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract Fee",
-            },
+              internalType: "contract Fee"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "calculateAndDistributeRoyalties",
@@ -15174,37 +15154,37 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "totalRoyalty",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "recipients",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "amounts",
               type: "uint256[]",
-              internalType: "uint256[]",
-            },
+              internalType: "uint256[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "customRoyaltyContracts",
@@ -15213,17 +15193,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "globalCaps",
@@ -15233,25 +15213,25 @@ export default createConfig({
             {
               name: "maxTotalRoyalty",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxSingleRecipient",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxRecipients",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "enforceGlobalCaps",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -15261,10 +15241,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -15274,17 +15254,17 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "royaltyInfo",
@@ -15293,27 +15273,27 @@ export default createConfig({
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "receiver",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyAmount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "royaltyRecipients",
@@ -15322,37 +15302,37 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "recipient",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "basisPoints",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "role",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "setAdvancedRoyalty",
@@ -15361,7 +15341,7 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "recipients",
@@ -15370,34 +15350,34 @@ export default createConfig({
                 {
                   name: "recipient",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "basisPoints",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "role",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct AdvancedRoyaltyManager.RoyaltyRecipient[]",
+              internalType: "struct AdvancedRoyaltyManager.RoyaltyRecipient[]"
             },
             {
               name: "useERC2981",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -15406,17 +15386,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "totalRoyaltiesDistributed",
@@ -15426,10 +15406,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -15438,11 +15418,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "AdvancedRoyaltySet",
@@ -15452,28 +15432,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "totalRoyaltyBps",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "recipientCount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "CustomRoyaltyContractSet",
@@ -15483,16 +15463,16 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "customContract",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -15502,16 +15482,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -15521,10 +15501,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoyaltyCapsUpdated",
@@ -15534,22 +15514,22 @@ export default createConfig({
               name: "maxTotalRoyalty",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxSingleRecipient",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxRecipients",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoyaltyDistributed",
@@ -15559,34 +15539,34 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "salePrice",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalRoyalty",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "recipientCount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoyaltyRecipientAdded",
@@ -15596,28 +15576,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "recipient",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "basisPoints",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "role",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoyaltyRecipientRemoved",
@@ -15627,16 +15607,16 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "recipient",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -15646,30 +15626,30 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Fee__InvalidOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Fee__InvalidRoyaltyFee",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -15678,9 +15658,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -15689,22 +15669,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x2279b7a0a67db372996a5fab50d91eaa73d2ebe6",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     collectionverifier_anvil_0x5fc8: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -15712,20 +15691,20 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_feeRecipient",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "_verificationFee",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "accessControl",
@@ -15735,10 +15714,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "batchVerifyCollections",
@@ -15747,16 +15726,16 @@ export default createConfig({
             {
               name: "collections",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "verificationTiers",
               type: "string[]",
-              internalType: "string[]",
-            },
+              internalType: "string[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "canCollectionBeListed",
@@ -15765,17 +15744,17 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "canList",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionMetadata",
@@ -15784,57 +15763,57 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "name",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "imageUrl",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "websiteUrl",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "twitterUrl",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "discordUrl",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "creator",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "createdAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionVerifications",
@@ -15843,59 +15822,59 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isVerified",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum CollectionVerifier.VerificationStatus",
+              internalType: "enum CollectionVerifier.VerificationStatus"
             },
             {
               name: "verifiedBy",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "verifiedAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "expiryTimestamp",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "verificationTier",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "verificationHash",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "hasSpecialBenefits",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyPause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "feeRecipient",
@@ -15905,10 +15884,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllVerifiedCollections",
@@ -15918,10 +15897,10 @@ export default createConfig({
             {
               name: "collections",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getCollectionMetadata",
@@ -15930,8 +15909,8 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -15941,58 +15920,58 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "imageUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "websiteUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "twitterUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "discordUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "creator",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "createdAt",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tags",
                   type: "string[]",
-                  internalType: "string[]",
+                  internalType: "string[]"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct CollectionVerifier.CollectionMetadata",
-            },
+              internalType: "struct CollectionVerifier.CollectionMetadata"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getCollectionVerification",
@@ -16001,8 +15980,8 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -16012,48 +15991,48 @@ export default createConfig({
                 {
                   name: "isVerified",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum CollectionVerifier.VerificationStatus",
+                  internalType: "enum CollectionVerifier.VerificationStatus"
                 },
                 {
                   name: "verifiedBy",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "verifiedAt",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "expiryTimestamp",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "verificationTier",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "verificationHash",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "hasSpecialBenefits",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct CollectionVerifier.CollectionVerification",
-            },
+              internalType: "struct CollectionVerifier.CollectionVerification"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getPendingRequests",
@@ -16063,10 +16042,10 @@ export default createConfig({
             {
               name: "requests",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getVerificationRequest",
@@ -16075,8 +16054,8 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -16086,48 +16065,48 @@ export default createConfig({
                 {
                   name: "collection",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "requester",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "requestedAt",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum CollectionVerifier.VerificationStatus",
+                  internalType: "enum CollectionVerifier.VerificationStatus"
                 },
                 {
                   name: "submissionData",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "feePaid",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "reviewer",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "reviewNotes",
                   type: "string",
-                  internalType: "string",
-                },
+                  internalType: "string"
+                }
               ],
-              internalType: "struct CollectionVerifier.VerificationRequest",
-            },
+              internalType: "struct CollectionVerifier.VerificationRequest"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getVerificationStats",
@@ -16137,25 +16116,25 @@ export default createConfig({
             {
               name: "totalVerified",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalRequests",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "pendingCount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "verifiedOnlyEnabled",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getVerifiedCollectionsPaginated",
@@ -16164,27 +16143,27 @@ export default createConfig({
             {
               name: "offset",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "limit",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "collections",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "total",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isCollectionVerified",
@@ -16193,17 +16172,17 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -16213,10 +16192,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -16226,10 +16205,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "pendingRequestIndex",
@@ -16238,17 +16217,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "pendingRequests",
@@ -16257,17 +16236,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "processVerificationRequest",
@@ -16276,38 +16255,38 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "approve",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "verificationTier",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "reviewNotes",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "expiryTimestamp",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "requestVerification",
@@ -16316,7 +16295,7 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "metadata",
@@ -16325,64 +16304,64 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "imageUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "websiteUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "twitterUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "discordUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "creator",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "createdAt",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tags",
                   type: "string[]",
-                  internalType: "string[]",
+                  internalType: "string[]"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct CollectionVerifier.CollectionMetadata",
+              internalType: "struct CollectionVerifier.CollectionMetadata"
             },
             {
               name: "submissionData",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "revokeVerification",
@@ -16391,16 +16370,16 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "toggleVerifiedOnlyMode",
@@ -16409,11 +16388,11 @@ export default createConfig({
             {
               name: "enabled",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "totalRequestsProcessed",
@@ -16423,10 +16402,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "totalVerifiedCollections",
@@ -16436,10 +16415,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -16448,18 +16427,18 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "unpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateCollectionMetadata",
@@ -16468,7 +16447,7 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "metadata",
@@ -16477,59 +16456,59 @@ export default createConfig({
                 {
                   name: "name",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "imageUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "websiteUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "twitterUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "discordUrl",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "creator",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "createdAt",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "tags",
                   type: "string[]",
-                  internalType: "string[]",
+                  internalType: "string[]"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct CollectionVerifier.CollectionMetadata",
-            },
+              internalType: "struct CollectionVerifier.CollectionMetadata"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateFeeRecipient",
@@ -16538,11 +16517,11 @@ export default createConfig({
             {
               name: "newFeeRecipient",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateVerificationFee",
@@ -16551,11 +16530,11 @@ export default createConfig({
             {
               name: "newFee",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "verificationFee",
@@ -16565,10 +16544,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "verificationRequests",
@@ -16577,52 +16556,52 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "requester",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "requestedAt",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum CollectionVerifier.VerificationStatus",
+              internalType: "enum CollectionVerifier.VerificationStatus"
             },
             {
               name: "submissionData",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "feePaid",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reviewer",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reviewNotes",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "verifiedCollectionIndex",
@@ -16631,17 +16610,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "verifiedCollections",
@@ -16650,17 +16629,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "verifiedOnlyMode",
@@ -16670,10 +16649,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "CollectionMetadataUpdated",
@@ -16683,22 +16662,22 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "CollectionVerificationRevoked",
@@ -16708,28 +16687,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "revokedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "CollectionVerified",
@@ -16739,28 +16718,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "verifiedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "verificationTier",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -16770,16 +16749,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -16789,10 +16768,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -16802,10 +16781,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "VerificationFeeUpdated",
@@ -16815,22 +16794,22 @@ export default createConfig({
               name: "oldFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "VerificationRequestProcessed",
@@ -16840,28 +16819,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reviewer",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "status",
               type: "uint8",
               indexed: false,
-              internalType: "enum CollectionVerifier.VerificationStatus",
+              internalType: "enum CollectionVerifier.VerificationStatus"
             },
             {
               name: "reviewNotes",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "VerificationRequested",
@@ -16871,28 +16850,28 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "requester",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "feePaid",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "VerifiedOnlyModeToggled",
@@ -16902,82 +16881,82 @@ export default createConfig({
               name: "enabled",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "toggledBy",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Collection__AlreadyVerified",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__FeeTransferFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__InsufficientFee",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__InvalidArrayLength",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__InvalidNFTContract",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__InvalidRequestStatus",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__NotVerified",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__RequestAlreadyPending",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__UnauthorizedAccess",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Collection__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -16986,9 +16965,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -16997,27 +16976,26 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     erc721nftexchange_anvil_0x8a79: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "BPS_DENOMINATOR",
@@ -17027,10 +17005,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "batchBuyNFT",
@@ -17039,11 +17017,11 @@ export default createConfig({
             {
               name: "m_listingIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "batchCancelListing",
@@ -17052,11 +17030,11 @@ export default createConfig({
             {
               name: "m_listingIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "batchListNFT",
@@ -17065,26 +17043,26 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenIds",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "m_prices",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "m_listingDuration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "buyNFT",
@@ -17093,11 +17071,11 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "cancelListing",
@@ -17106,11 +17084,11 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "contractType",
@@ -17120,10 +17098,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "get24hVolume",
@@ -17132,17 +17110,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBatchPriceBreakdown",
@@ -17151,42 +17129,42 @@ export default createConfig({
             {
               name: "m_listingIds",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
           outputs: [
             {
               name: "totalPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "prices",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "royalties",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "takerFees",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "realityPrices",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "currentTakerFee",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getBuyerSeesPrice",
@@ -17195,17 +17173,17 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFloorDiff",
@@ -17214,17 +17192,17 @@ export default createConfig({
             {
               name: "m_listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "int256",
-              internalType: "int256",
-            },
+              internalType: "int256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getFloorPrice",
@@ -17233,17 +17211,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getGeneratedListingId",
@@ -17252,27 +17230,27 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_sender",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getLadderPrice",
@@ -17281,22 +17259,22 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListingsByCollection",
@@ -17305,17 +17283,17 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getListingsBySeller",
@@ -17324,17 +17302,17 @@ export default createConfig({
             {
               name: "m_seller",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoyaltyInfo",
@@ -17343,32 +17321,32 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_salePrice",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "receiver",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "royaltyAmount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTakerFee",
@@ -17378,10 +17356,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTopTraitPrice",
@@ -17390,22 +17368,22 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "initialize",
@@ -17414,16 +17392,16 @@ export default createConfig({
             {
               name: "m_marketplaceWallet",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "isActive",
@@ -17433,10 +17411,10 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listNFT",
@@ -17445,26 +17423,26 @@ export default createConfig({
             {
               name: "m_contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "m_tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "m_listingDuration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "marketplaceWallet",
@@ -17474,10 +17452,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -17487,17 +17465,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "s_activeListings",
@@ -17506,27 +17484,27 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_listings",
@@ -17535,52 +17513,52 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "contractAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "price",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "listingDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "listingStart",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "status",
               type: "uint8",
-              internalType: "enum BaseNFTExchange.ListingStatus",
+              internalType: "enum BaseNFTExchange.ListingStatus"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_listingsByCollection",
@@ -17589,22 +17567,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_listingsBySeller",
@@ -17613,22 +17591,22 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_marketplaceWallet",
@@ -17638,10 +17616,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "s_takerFee",
@@ -17651,10 +17629,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "supportedStandard",
@@ -17664,10 +17642,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "supportsInterface",
@@ -17676,17 +17654,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -17695,11 +17673,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateMarketplaceWallet",
@@ -17708,11 +17686,11 @@ export default createConfig({
             {
               name: "m_newMarketplaceWallet",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateTakerFee",
@@ -17721,11 +17699,11 @@ export default createConfig({
             {
               name: "m_newTakerFee",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "version",
@@ -17735,10 +17713,10 @@ export default createConfig({
             {
               name: "",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          stateMutability: "pure",
+          stateMutability: "pure"
         },
         {
           name: "Initialized",
@@ -17748,10 +17726,10 @@ export default createConfig({
               name: "version",
               type: "uint64",
               indexed: false,
-              internalType: "uint64",
-            },
+              internalType: "uint64"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ListingCancelled",
@@ -17761,28 +17739,28 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "MarketplaceWalletUpdated",
@@ -17792,16 +17770,16 @@ export default createConfig({
               name: "oldWallet",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newWallet",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "NFTListed",
@@ -17811,34 +17789,34 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "NFTSold",
@@ -17848,40 +17826,40 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "seller",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "buyer",
               type: "address",
               indexed: false,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "price",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -17891,16 +17869,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "TakerFeeUpdated",
@@ -17910,86 +17888,86 @@ export default createConfig({
               name: "oldFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newFee",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "InvalidInitialization",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__ArrayLengthMismatch",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__DurationMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InsufficientPayment",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidMarketplaceWallet",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidTakerFee",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__ListingExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__MarketplaceNotApproved",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NFTAlreadyListed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NFTNotActive",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__NotTheOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__PriceMustBeGreaterThanZero",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__TransferToSellerFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NotInitializing",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -17998,9 +17976,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -18009,51 +17987,50 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "PaymentDistribution__InsufficientBalance",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "PaymentDistribution__InvalidAmount",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "PaymentDistribution__TransferFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "PaymentDistribution__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x8a791620dd6260079bf849dc5567adc3f2fdc318",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     marketplacetimelock_anvil_0x9fe4: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           type: "receive",
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "GRACE_PERIOD",
@@ -18063,10 +18040,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MAX_TIMELOCK_DURATION",
@@ -18076,10 +18053,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MIN_TIMELOCK_DURATION",
@@ -18089,10 +18066,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "TIMELOCK_DURATION",
@@ -18102,10 +18079,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "actionData",
@@ -18114,37 +18091,37 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "target",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "data",
               type: "bytes",
-              internalType: "bytes",
+              internalType: "bytes"
             },
             {
               name: "value",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "proposer",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "cancelAction",
@@ -18153,11 +18130,11 @@ export default createConfig({
             {
               name: "actionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "cancelledActions",
@@ -18166,17 +18143,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "customTimelockDuration",
@@ -18186,10 +18163,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "executeAction",
@@ -18198,17 +18175,17 @@ export default createConfig({
             {
               name: "actionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "returnData",
               type: "bytes",
-              internalType: "bytes",
-            },
+              internalType: "bytes"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "executedActions",
@@ -18217,17 +18194,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getActionData",
@@ -18236,8 +18213,8 @@ export default createConfig({
             {
               name: "actionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
@@ -18247,33 +18224,33 @@ export default createConfig({
                 {
                   name: "target",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "data",
                   type: "bytes",
-                  internalType: "bytes",
+                  internalType: "bytes"
                 },
                 {
                   name: "value",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "description",
                   type: "string",
-                  internalType: "string",
+                  internalType: "string"
                 },
                 {
                   name: "proposer",
                   type: "address",
-                  internalType: "address",
-                },
+                  internalType: "address"
+                }
               ],
-              internalType: "struct MarketplaceTimelock.ActionData",
-            },
+              internalType: "struct MarketplaceTimelock.ActionData"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getTimeRemaining",
@@ -18282,17 +18259,17 @@ export default createConfig({
             {
               name: "actionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "timeRemaining",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isActionReady",
@@ -18301,17 +18278,17 @@ export default createConfig({
             {
               name: "actionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "isReady",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -18321,17 +18298,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "scheduleAction",
@@ -18340,32 +18317,32 @@ export default createConfig({
             {
               name: "target",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "data",
               type: "bytes",
-              internalType: "bytes",
+              internalType: "bytes"
             },
             {
               name: "value",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "description",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "actionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "scheduledActions",
@@ -18374,17 +18351,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -18393,11 +18370,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "updateTimelockDuration",
@@ -18406,11 +18383,11 @@ export default createConfig({
             {
               name: "newDuration",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ActionCancelled",
@@ -18420,16 +18397,16 @@ export default createConfig({
               name: "actionId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "canceller",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ActionExecuted",
@@ -18439,22 +18416,22 @@ export default createConfig({
               name: "actionId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "executor",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "returnData",
               type: "bytes",
               indexed: false,
-              internalType: "bytes",
-            },
+              internalType: "bytes"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ActionScheduled",
@@ -18464,46 +18441,46 @@ export default createConfig({
               name: "actionId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "target",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "data",
               type: "bytes",
               indexed: false,
-              internalType: "bytes",
+              internalType: "bytes"
             },
             {
               name: "value",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "executeTime",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "description",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "proposer",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -18513,16 +18490,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "TimelockDurationUpdated",
@@ -18532,22 +18509,22 @@ export default createConfig({
               name: "oldDuration",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newDuration",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updater",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnableInvalidOwner",
@@ -18556,9 +18533,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -18567,67 +18544,66 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__ActionAlreadyExecuted",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__ActionAlreadyScheduled",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__ActionCancelled",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__ActionNotScheduled",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__ExecutionFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__GracePeriodExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__InvalidTimelockDuration",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__TimelockNotExpired",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "Timelock__ZeroAddress",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     emergencymanager_anvil_0xe7f1: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -18635,14 +18611,14 @@ export default createConfig({
             {
               name: "_marketplaceValidator",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           type: "receive",
-          stateMutability: "payable",
+          stateMutability: "payable"
         },
         {
           name: "EMERGENCY_PAUSE_DURATION",
@@ -18652,10 +18628,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MIN_PAUSE_INTERVAL",
@@ -18665,10 +18641,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "batchSetContractBlacklist",
@@ -18677,21 +18653,21 @@ export default createConfig({
             {
               name: "contractAddrs",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "isBlacklisted",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "blacklistedContracts",
@@ -18700,17 +18676,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "blacklistedUsers",
@@ -18719,17 +18695,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyBulkResetNFTStatus",
@@ -18738,21 +18714,21 @@ export default createConfig({
             {
               name: "nftContracts",
               type: "address[]",
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "tokenIds",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "owners",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "emergencyPause",
@@ -18761,11 +18737,11 @@ export default createConfig({
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "emergencyResetCollection",
@@ -18774,28 +18750,28 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenIds",
               type: "uint256[]",
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "owners",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "emergencyUnpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "emergencyWithdraw",
@@ -18804,21 +18780,21 @@ export default createConfig({
             {
               name: "recipient",
               type: "address",
-              internalType: "address payable",
+              internalType: "address payable"
             },
             {
               name: "amount",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "getPauseCooldownRemaining",
@@ -18828,10 +18804,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isContractBlacklisted",
@@ -18840,17 +18816,17 @@ export default createConfig({
             {
               name: "contractAddr",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isUserBlacklisted",
@@ -18859,17 +18835,17 @@ export default createConfig({
             {
               name: "userAddr",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "lastEmergencyPause",
@@ -18879,10 +18855,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "marketplaceValidator",
@@ -18892,10 +18868,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceValidator",
-            },
+              internalType: "contract MarketplaceValidator"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -18905,10 +18881,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "paused",
@@ -18918,17 +18894,17 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setContractBlacklist",
@@ -18937,21 +18913,21 @@ export default createConfig({
             {
               name: "contractAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isBlacklisted",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setUserBlacklist",
@@ -18960,21 +18936,21 @@ export default createConfig({
             {
               name: "userAddr",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isBlacklisted",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "reason",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "transferOwnership",
@@ -18983,11 +18959,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "BulkNFTStatusReset",
@@ -18997,28 +18973,28 @@ export default createConfig({
               name: "nftContracts",
               type: "address[]",
               indexed: false,
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "tokenIds",
               type: "uint256[]",
               indexed: false,
-              internalType: "uint256[]",
+              internalType: "uint256[]"
             },
             {
               name: "owners",
               type: "address[]",
               indexed: false,
-              internalType: "address[]",
+              internalType: "address[]"
             },
             {
               name: "count",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ContractBlacklisted",
@@ -19028,22 +19004,22 @@ export default createConfig({
               name: "contractAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isBlacklisted",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EmergencyFundWithdrawal",
@@ -19053,28 +19029,28 @@ export default createConfig({
               name: "recipient",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "amount",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EmergencyPauseActivated",
@@ -19084,22 +19060,22 @@ export default createConfig({
               name: "activator",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EmergencyPauseDeactivated",
@@ -19109,16 +19085,16 @@ export default createConfig({
               name: "deactivator",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -19128,16 +19104,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -19147,10 +19123,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -19160,10 +19136,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "UserBlacklisted",
@@ -19173,67 +19149,67 @@ export default createConfig({
               name: "userAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isBlacklisted",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EmergencyManager__ArrayLengthMismatch",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EmergencyManager__EmptyArray",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EmergencyManager__InsufficientBalance",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EmergencyManager__NoFundsToWithdraw",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EmergencyManager__PauseCooldownActive",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EmergencyManager__WithdrawalFailed",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EmergencyManager__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -19242,9 +19218,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -19253,22 +19229,21 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     listingvalidator_anvil_0xcf7e: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
@@ -19276,10 +19251,10 @@ export default createConfig({
             {
               name: "_accessControl",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "DEFAULT_COOLDOWN",
@@ -19289,10 +19264,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MAX_LISTINGS_PER_HOUR",
@@ -19302,10 +19277,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MAX_QUALITY_SCORE",
@@ -19315,10 +19290,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MIN_AUTO_APPROVAL_SCORE",
@@ -19328,10 +19303,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "accessControl",
@@ -19341,10 +19316,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "contract MarketplaceAccessControl",
-            },
+              internalType: "contract MarketplaceAccessControl"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "collectionSettings",
@@ -19353,57 +19328,57 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "minPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "minDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "cooldownPeriod",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxListingsPerUser",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "requireVerifiedCollection",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "enableQualityCheck",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "globalSettings",
@@ -19413,50 +19388,50 @@ export default createConfig({
             {
               name: "minPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxPrice",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "minDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxDuration",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "cooldownPeriod",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maxListingsPerUser",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "requireVerifiedCollection",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "enableQualityCheck",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "listingQualityScores",
@@ -19465,17 +19440,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -19485,17 +19460,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "pause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "paused",
@@ -19505,17 +19480,17 @@ export default createConfig({
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setGlobalValidationSettings",
@@ -19528,54 +19503,54 @@ export default createConfig({
                 {
                   name: "minPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "minDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "cooldownPeriod",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxListingsPerUser",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "requireVerifiedCollection",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "enableQualityCheck",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct ListingValidator.ValidationSettings",
-            },
+              internalType: "struct ListingValidator.ValidationSettings"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setValidationSettings",
@@ -19584,7 +19559,7 @@ export default createConfig({
             {
               name: "collection",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "settings",
@@ -19593,54 +19568,54 @@ export default createConfig({
                 {
                   name: "minPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "minDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "cooldownPeriod",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxListingsPerUser",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "requireVerifiedCollection",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "enableQualityCheck",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct ListingValidator.ValidationSettings",
-            },
+              internalType: "struct ListingValidator.ValidationSettings"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "spamTrackers",
@@ -19649,32 +19624,32 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "listingsInLastHour",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "lastHourStart",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "suspiciousActivity",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isFlagged",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "totalValidatedListings",
@@ -19684,10 +19659,10 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -19696,18 +19671,18 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "unpause",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "userCooldowns",
@@ -19716,32 +19691,32 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "lastListingTime",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "activeListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "totalListings",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "isRestricted",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "validateListing",
@@ -19754,81 +19729,81 @@ export default createConfig({
                 {
                   name: "listingId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "seller",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "price",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "nftContract",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "tokenId",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "startTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "endTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "minOfferPrice",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "quantity",
                   type: "uint32",
-                  internalType: "uint32",
+                  internalType: "uint32"
                 },
                 {
                   name: "listingType",
                   type: "uint8",
-                  internalType: "enum ListingType",
+                  internalType: "enum ListingType"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum ListingStatus",
+                  internalType: "enum ListingStatus"
                 },
                 {
                   name: "acceptOffers",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "bundleId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "metadata",
                   type: "bytes",
-                  internalType: "bytes",
-                },
+                  internalType: "bytes"
+                }
               ],
-              internalType: "struct Listing",
+              internalType: "struct Listing"
             },
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
@@ -19838,28 +19813,28 @@ export default createConfig({
                 {
                   name: "isValid",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "errors",
                   type: "string[]",
-                  internalType: "string[]",
+                  internalType: "string[]"
                 },
                 {
                   name: "qualityScore",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "recommendedPrice",
                   type: "uint256",
-                  internalType: "uint256",
-                },
+                  internalType: "uint256"
+                }
               ],
-              internalType: "struct ListingValidator.ValidationResult",
-            },
+              internalType: "struct ListingValidator.ValidationResult"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "validateListingUpdate",
@@ -19872,75 +19847,75 @@ export default createConfig({
                 {
                   name: "listingId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "seller",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "price",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "nftContract",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "tokenId",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "startTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "endTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "minOfferPrice",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "quantity",
                   type: "uint32",
-                  internalType: "uint32",
+                  internalType: "uint32"
                 },
                 {
                   name: "listingType",
                   type: "uint8",
-                  internalType: "enum ListingType",
+                  internalType: "enum ListingType"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum ListingStatus",
+                  internalType: "enum ListingStatus"
                 },
                 {
                   name: "acceptOffers",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "bundleId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "metadata",
                   type: "bytes",
-                  internalType: "bytes",
-                },
+                  internalType: "bytes"
+                }
               ],
-              internalType: "struct Listing",
+              internalType: "struct Listing"
             },
             {
               name: "newListing",
@@ -19949,90 +19924,90 @@ export default createConfig({
                 {
                   name: "listingId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "seller",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "price",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "nftContract",
                   type: "address",
-                  internalType: "address",
+                  internalType: "address"
                 },
                 {
                   name: "tokenId",
                   type: "uint96",
-                  internalType: "uint96",
+                  internalType: "uint96"
                 },
                 {
                   name: "startTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "endTime",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "minOfferPrice",
                   type: "uint64",
-                  internalType: "uint64",
+                  internalType: "uint64"
                 },
                 {
                   name: "quantity",
                   type: "uint32",
-                  internalType: "uint32",
+                  internalType: "uint32"
                 },
                 {
                   name: "listingType",
                   type: "uint8",
-                  internalType: "enum ListingType",
+                  internalType: "enum ListingType"
                 },
                 {
                   name: "status",
                   type: "uint8",
-                  internalType: "enum ListingStatus",
+                  internalType: "enum ListingStatus"
                 },
                 {
                   name: "acceptOffers",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "bundleId",
                   type: "bytes32",
-                  internalType: "bytes32",
+                  internalType: "bytes32"
                 },
                 {
                   name: "metadata",
                   type: "bytes",
-                  internalType: "bytes",
-                },
+                  internalType: "bytes"
+                }
               ],
-              internalType: "struct Listing",
+              internalType: "struct Listing"
             },
             {
               name: "user",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isValid",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "ListingValidated",
@@ -20042,28 +20017,28 @@ export default createConfig({
               name: "listingId",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "isValid",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "qualityScore",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -20073,16 +20048,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Paused",
@@ -20092,10 +20067,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "SpamDetected",
@@ -20105,22 +20080,22 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "suspiciousActivity",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "Unpaused",
@@ -20130,10 +20105,10 @@ export default createConfig({
               name: "account",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "UserRestricted",
@@ -20143,22 +20118,22 @@ export default createConfig({
               name: "user",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "reason",
               type: "string",
               indexed: false,
-              internalType: "string",
+              internalType: "string"
             },
             {
               name: "restrictionEnd",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ValidationSettingsUpdated",
@@ -20168,7 +20143,7 @@ export default createConfig({
               name: "collection",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "settings",
@@ -20178,79 +20153,79 @@ export default createConfig({
                 {
                   name: "minPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxPrice",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "minDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxDuration",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "cooldownPeriod",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "maxListingsPerUser",
                   type: "uint256",
-                  internalType: "uint256",
+                  internalType: "uint256"
                 },
                 {
                   name: "requireVerifiedCollection",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "enableQualityCheck",
                   type: "bool",
-                  internalType: "bool",
+                  internalType: "bool"
                 },
                 {
                   name: "isActive",
                   type: "bool",
-                  internalType: "bool",
-                },
+                  internalType: "bool"
+                }
               ],
-              internalType: "struct ListingValidator.ValidationSettings",
+              internalType: "struct ListingValidator.ValidationSettings"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: false,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EnforcedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "ExpectedPause",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidCollection",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "NFTExchange__InvalidOwner",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -20259,9 +20234,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -20270,27 +20245,26 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     marketplacevalidator_anvil_0xdc64: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "allAuctions",
@@ -20299,17 +20273,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "allExchanges",
@@ -20318,17 +20292,17 @@ export default createConfig({
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyManager",
@@ -20338,10 +20312,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "emergencyResetNFTStatus",
@@ -20350,21 +20324,21 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "getAllAuctions",
@@ -20374,10 +20348,10 @@ export default createConfig({
             {
               name: "auctions",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getAllExchanges",
@@ -20387,10 +20361,10 @@ export default createConfig({
             {
               name: "exchanges",
               type: "address[]",
-              internalType: "address[]",
-            },
+              internalType: "address[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getNFTStatus",
@@ -20399,27 +20373,27 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "status",
               type: "uint8",
-              internalType: "enum IMarketplaceValidator.NFTStatus",
-            },
+              internalType: "enum IMarketplaceValidator.NFTStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isNFTAvailable",
@@ -20428,32 +20402,32 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isAvailable",
               type: "bool",
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "currentStatus",
               type: "uint8",
-              internalType: "enum IMarketplaceValidator.NFTStatus",
-            },
+              internalType: "enum IMarketplaceValidator.NFTStatus"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isNFTInAuction",
@@ -20462,27 +20436,27 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "inAuction",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isNFTListed",
@@ -20491,27 +20465,27 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isListed",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isRegisteredAuction",
@@ -20520,17 +20494,17 @@ export default createConfig({
             {
               name: "auctionAddress",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isRegistered",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "isRegisteredExchange",
@@ -20539,17 +20513,17 @@ export default createConfig({
             {
               name: "exchangeAddress",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "isRegistered",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -20559,10 +20533,10 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "registerAuction",
@@ -20571,16 +20545,16 @@ export default createConfig({
             {
               name: "auctionAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auctionType",
               type: "uint8",
-              internalType: "uint8",
-            },
+              internalType: "uint8"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "registerExchange",
@@ -20589,16 +20563,16 @@ export default createConfig({
             {
               name: "exchangeAddress",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "exchangeType",
               type: "uint8",
-              internalType: "uint8",
-            },
+              internalType: "uint8"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "registeredAuctions",
@@ -20607,17 +20581,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "registeredExchanges",
@@ -20626,24 +20600,24 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setEmergencyManager",
@@ -20652,11 +20626,11 @@ export default createConfig({
             {
               name: "_emergencyManager",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setNFTAvailable",
@@ -20665,21 +20639,21 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setNFTInAuction",
@@ -20688,26 +20662,26 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auctionId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setNFTListed",
@@ -20716,26 +20690,26 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "listingId",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setNFTSold",
@@ -20744,26 +20718,26 @@ export default createConfig({
             {
               name: "nftContract",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "oldOwner",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "transferOwnership",
@@ -20772,11 +20746,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "AuctionRegistered",
@@ -20786,16 +20760,16 @@ export default createConfig({
               name: "auctionAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "auctionType",
               type: "uint8",
               indexed: true,
-              internalType: "uint8",
-            },
+              internalType: "uint8"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "EmergencyManagerSet",
@@ -20805,10 +20779,10 @@ export default createConfig({
               name: "emergencyManager",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "ExchangeRegistered",
@@ -20818,16 +20792,16 @@ export default createConfig({
               name: "exchangeAddress",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "exchangeType",
               type: "uint8",
               indexed: true,
-              internalType: "uint8",
-            },
+              internalType: "uint8"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "NFTStatusChanged",
@@ -20837,34 +20811,34 @@ export default createConfig({
               name: "nftContract",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "tokenId",
               type: "uint256",
               indexed: true,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "owner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "oldStatus",
               type: "uint8",
               indexed: false,
-              internalType: "enum IMarketplaceValidator.NFTStatus",
+              internalType: "enum IMarketplaceValidator.NFTStatus"
             },
             {
               name: "newStatus",
               type: "uint8",
               indexed: false,
-              internalType: "enum IMarketplaceValidator.NFTStatus",
-            },
+              internalType: "enum IMarketplaceValidator.NFTStatus"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "OwnershipTransferred",
@@ -20874,41 +20848,41 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "MarketplaceValidator__AlreadyRegistered",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceValidator__NFTNotAvailable",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceValidator__NotAuthorized",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceValidator__NotRegisteredContract",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceValidator__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -20917,9 +20891,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -20928,27 +20902,26 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
-      startBlock: "latest",
+      startBlock: "latest"
     },
     marketplaceaccesscontrol_anvil_0x5fbd: {
       chain: "anvil",
-
       abi: [
         {
           type: "constructor",
           inputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "ADMIN_ROLE",
@@ -20958,10 +20931,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "DEFAULT_ADMIN_ROLE",
@@ -20971,10 +20944,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "EMERGENCY_ROLE",
@@ -20984,10 +20957,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "MODERATOR_ROLE",
@@ -20997,10 +20970,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "OPERATOR_ROLE",
@@ -21010,10 +20983,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "PAUSER_ROLE",
@@ -21023,10 +20996,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "VERIFIER_ROLE",
@@ -21036,10 +21009,10 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "activeRoles",
@@ -21048,17 +21021,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "currentRoleMembers",
@@ -21067,17 +21040,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getActiveRoles",
@@ -21086,17 +21059,17 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "activeUserRoles",
               type: "bytes32[]",
-              internalType: "bytes32[]",
-            },
+              internalType: "bytes32[]"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleAdmin",
@@ -21105,17 +21078,17 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "getRoleMemberInfo",
@@ -21124,22 +21097,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "current",
               type: "uint256",
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "maximum",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "grantRole",
@@ -21148,16 +21121,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "grantRoleSimple",
@@ -21166,16 +21139,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "hasPermission",
@@ -21184,22 +21157,22 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "permission",
               type: "string",
-              internalType: "string",
-            },
+              internalType: "string"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "hasRole",
@@ -21208,22 +21181,22 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "maxRoleMembers",
@@ -21232,17 +21205,17 @@ export default createConfig({
             {
               name: "",
               type: "bytes32",
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "owner",
@@ -21252,17 +21225,17 @@ export default createConfig({
             {
               name: "",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "renounceOwnership",
           type: "function",
           inputs: [],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "renounceRole",
@@ -21271,16 +21244,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "callerConfirmation",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRole",
@@ -21289,16 +21262,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "revokeRoleSimple",
@@ -21307,16 +21280,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setRoleActive",
@@ -21325,16 +21298,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "isActive",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "setRoleMemberLimit",
@@ -21343,16 +21316,16 @@ export default createConfig({
             {
               name: "role",
               type: "bytes32",
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "maxMembers",
               type: "uint256",
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "supportsInterface",
@@ -21361,17 +21334,17 @@ export default createConfig({
             {
               name: "interfaceId",
               type: "bytes4",
-              internalType: "bytes4",
-            },
+              internalType: "bytes4"
+            }
           ],
           outputs: [
             {
               name: "",
               type: "bool",
-              internalType: "bool",
-            },
+              internalType: "bool"
+            }
           ],
-          stateMutability: "view",
+          stateMutability: "view"
         },
         {
           name: "transferOwnership",
@@ -21380,11 +21353,11 @@ export default createConfig({
             {
               name: "newOwner",
               type: "address",
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "nonpayable"
         },
         {
           name: "OwnershipTransferred",
@@ -21394,16 +21367,16 @@ export default createConfig({
               name: "previousOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "newOwner",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleAdminChanged",
@@ -21413,22 +21386,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "previousAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "newAdminRole",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
-            },
+              internalType: "bytes32"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGranted",
@@ -21438,22 +21411,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleGrantedSimple",
@@ -21463,28 +21436,28 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleMemberLimitUpdated",
@@ -21494,28 +21467,28 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "oldLimit",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "newLimit",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
+              internalType: "uint256"
             },
             {
               name: "updatedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevoked",
@@ -21525,22 +21498,22 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
-            },
+              internalType: "address"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleRevokedSimple",
@@ -21550,28 +21523,28 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "account",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "sender",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "RoleStatusChanged",
@@ -21581,39 +21554,39 @@ export default createConfig({
               name: "role",
               type: "bytes32",
               indexed: true,
-              internalType: "bytes32",
+              internalType: "bytes32"
             },
             {
               name: "wasActive",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "isActive",
               type: "bool",
               indexed: false,
-              internalType: "bool",
+              internalType: "bool"
             },
             {
               name: "changedBy",
               type: "address",
               indexed: true,
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "timestamp",
               type: "uint256",
               indexed: false,
-              internalType: "uint256",
-            },
+              internalType: "uint256"
+            }
           ],
-          anonymous: false,
+          anonymous: false
         },
         {
           name: "AccessControlBadConfirmation",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "AccessControlUnauthorizedAccount",
@@ -21622,54 +21595,54 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
+              internalType: "address"
             },
             {
               name: "neededRole",
               type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+              internalType: "bytes32"
+            }
+          ]
         },
         {
           name: "MarketplaceAccessControl__CannotDeactivateAdminRole",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__InvalidMemberLimit",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__MemberLimitBelowCurrent",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__RoleAlreadyGranted",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__RoleMemberLimitExceeded",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__RoleNotActive",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__RoleNotGranted",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "MarketplaceAccessControl__ZeroAddress",
           type: "error",
-          inputs: [],
+          inputs: []
         },
         {
           name: "OwnableInvalidOwner",
@@ -21678,9 +21651,9 @@ export default createConfig({
             {
               name: "owner",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "OwnableUnauthorizedAccount",
@@ -21689,18 +21662,18 @@ export default createConfig({
             {
               name: "account",
               type: "address",
-              internalType: "address",
-            },
-          ],
+              internalType: "address"
+            }
+          ]
         },
         {
           name: "ReentrancyGuardReentrantCall",
           type: "error",
-          inputs: [],
-        },
+          inputs: []
+        }
       ],
       address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
-      startBlock: "latest",
-    },
+      startBlock: "latest"
+    }
   },
 });

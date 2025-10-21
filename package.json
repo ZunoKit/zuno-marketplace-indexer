@@ -13,7 +13,6 @@
     "lint": "eslint .",
     "typecheck": "tsc",
     "generate-config": "tsx scripts/generate-config.ts",
-    "generate-handlers": "tsx scripts/generate-handlers.ts",
     "setup": "pnpm generate-config && pnpm codegen"
   },
   "dependencies": {

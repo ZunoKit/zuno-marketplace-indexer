@@ -134,7 +134,6 @@ npm run dev              # Start development server with hot reload
 npm run start            # Start production server
 npm run codegen          # Generate TypeScript types from schema
 npm run generate-config  # Generate Ponder config from Zuno API
-npm run generate-handlers # Generate event handler boilerplate
 npm run setup            # Run generate-config + codegen
 npm run lint             # Run ESLint
 npm run typecheck        # Run TypeScript type checking

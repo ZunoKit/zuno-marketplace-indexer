@@ -8,6 +8,10 @@
  * @version 1.0.0
  */
 
+// Load environment variables from .env files
+import { config } from "dotenv";
+config({ path: [".env.local", ".env"] });
+
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { getConfigBuilder } from "../src/services/config/configBuilder.service";
@@ -16,7 +20,7 @@ import { getConfigBuilder } from "../src/services/config/configBuilder.service";
 // Constants
 // ============================================================================
 
-const CONFIG_FILE_NAME = "ponder.config.generated.ts";
+const CONFIG_FILE_NAME = "ponder.config.ts";
 const GENERATION_TIMESTAMP = new Date().toISOString();
 
 // ============================================================================
@@ -72,7 +76,122 @@ function validateEnvironment(): void {
   }
 }
 
+/**
+ * Serialize value to TypeScript code string
+ */
+function serializeValue(value: any, indent: number = 0): string {
+  const spaces = '  '.repeat(indent);
+  
+  if (value === null || value === undefined) {
+    return 'undefined';
+  }
+  
+  if (typeof value === 'string') {
+    return `"${value}"`;
+  }
+  
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return String(value);
+  }
+  
+  if (Array.isArray(value)) {
+    if (value.length === 0) return '[]';
+    
+    const items = value.map(item => 
+      `${spaces}  ${serializeValue(item, indent + 1)}`
+    ).join(',\n');
+    
+    return `[\n${items}\n${spaces}]`;
+  }
+  
+  if (typeof value === 'object') {
+    const entries = Object.entries(value);
+    if (entries.length === 0) return '{}';
+    
+    const props = entries.map(([key, val]) => 
+      `${spaces}  ${key}: ${serializeValue(val, indent + 1)}`
+    ).join(',\n');
+    
+    return `{\n${props}\n${spaces}}`;
+  }
+  
+  return String(value);
+}
+
+/**
+ * Generate chains configuration as TypeScript code
+ */
+function generateChainsConfig(chains: Record<string, any>): string {
+  const entries = Object.entries(chains);
+  if (entries.length === 0) return '{}';
+  
+  const chainsCode = entries.map(([name, chain]) => {
+    const props = [`      id: ${chain.id}`];
+    
+    // Handle RPC URL - check if it's an env var or a string
+    if (typeof chain.rpc === 'string') {
+      if (chain.rpc.includes('process.env')) {
+        props.push(`      rpc: ${chain.rpc}`);
+      } else {
+        props.push(`      rpc: "${chain.rpc}"`);
+      }
+    } else {
+      props.push(`      rpc: ${chain.rpc}`);
+    }
+    
+    // Add WebSocket if exists
+    if (chain.ws) {
+      if (typeof chain.ws === 'string' && chain.ws.includes('process.env')) {
+        props.push(`      ws: ${chain.ws}`);
+      } else if (chain.ws !== 'undefined') {
+        props.push(`      ws: ${chain.ws}`);
+      }
+    }
+    
+    // Use maxRequestsPerSecond (not maxRpcRequestsPerSecond)
+    props.push(`      maxRequestsPerSecond: ${chain.maxRpcRequestsPerSecond || 100}`);
+    
+    return `    ${name}: {\n${props.join(',\n')}\n    }`;
+  }).join(',\n');
+  
+  return `{\n${chainsCode}\n  }`;
+}
+
+/**
+ * Generate contracts configuration as TypeScript code  
+ */
+function generateContractsConfig(contracts: Record<string, any>): string {
+  const entries = Object.entries(contracts);
+  if (entries.length === 0) return '{}';
+  
+  const contractsCode = entries.map(([name, contract]) => {
+    const parts = [
+      `      chain: ${serializeValue(contract.network, 3)}`,
+      `      abi: ${serializeValue(contract.abi, 3)}`,
+      `      address: ${serializeValue(contract.address, 3)}`
+    ];
+    
+    if (contract.startBlock) {
+      parts.push(`      startBlock: ${serializeValue(contract.startBlock, 3)}`);
+    }
+    
+    if (contract.filter) {
+      parts.push(`      filter: ${serializeValue(contract.filter, 3)}`);
+    }
+    
+    return `    ${name}: {\n${parts.join(',\n')}\n    }`;
+  }).join(',\n');
+  
+  return `{\n${contractsCode}\n  }`;
+}
+
+/**
+ * Generate complete configuration file content
+ */
 function generateConfigFileContent(config: any): string {
+  const chainsConfig = generateChainsConfig(config.chains);
+  const contractsConfig = generateContractsConfig(config.contracts);
+  
   return `/**
  * Generated Ponder Configuration
  * 
@@ -96,9 +215,9 @@ export default createConfig({
     connectionString: process.env.DATABASE_URL!,
   },
 
-  chains: ${JSON.stringify(config.chains, null, 2)},
+  chains: ${chainsConfig},
 
-  contracts: ${JSON.stringify(config.contracts, null, 2)},
+  contracts: ${contractsConfig},
 });
 `;
 }
@@ -136,13 +255,9 @@ function displayResults(configPath: string, config: any): void {
 
 function displayNextSteps(): void {
   console.log("\n🎯 Next Steps:");
-  console.log("1. Copy ponder.config.generated.ts to ponder.config.ts");
-  console.log("2. Update event handlers in src/index.ts");
-  console.log("3. Run: pnpm codegen");
-  console.log("4. Run: pnpm dev");
-  console.log(
-    "\n💡 Tip: Use pnpm generate-handlers to auto-generate event handlers"
-  );
+  console.log("1. Update event handlers in src/index.ts");
+  console.log("2. Run: pnpm codegen");
+  console.log("3. Run: pnpm dev");
 }
 
 // ============================================================================
@@ -153,3 +268,4 @@ function displayNextSteps(): void {
 generateConfig();
 
 export { generateConfig };
+
