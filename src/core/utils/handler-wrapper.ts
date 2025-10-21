@@ -12,10 +12,10 @@ const errorHandler = getErrorHandler();
 const logger = getEventLogger();
 const metrics = getMetrics();
 
-export type EventHandler<TEvent = any, TContext = any> = (
-  event: TEvent,
-  context: TContext
-) => Promise<void>;
+export type EventHandler<TEvent = any, TContext = any> = (args: {
+  event: TEvent;
+  context: TContext;
+}) => Promise<void>;
 
 /**
  * Wrap handler with error handling, retry logic, and metrics
@@ -24,7 +24,7 @@ export function wrapHandler<TEvent = any, TContext = any>(
   eventName: string,
   handler: EventHandler<TEvent, TContext>
 ): EventHandler<TEvent, TContext> {
-  return async (event: any, context: any) => {
+  return async ({ event, context }: { event: any; context: any }) => {
     const startTime = Date.now();
     const blockNumber = event.block.number;
     const transactionHash = event.transaction.hash;
@@ -42,7 +42,7 @@ export function wrapHandler<TEvent = any, TContext = any>(
     try {
       // Execute handler with retry logic
       const result = await errorHandler.withRetry(
-        () => handler(event, context),
+        () => handler({ event, context }),
         errorContext,
         {
           maxRetries: 3,
@@ -59,11 +59,14 @@ export function wrapHandler<TEvent = any, TContext = any>(
         metrics.histogram(MetricNames.EVENT_PROCESSING_TIME, processingTime);
         metrics.gauge(MetricNames.CURRENT_BLOCK, Number(blockNumber));
 
-        logger.logMetric(`${eventName} Processing Time`, processingTime, 'ms');
+        logger.logMetric(`${eventName} Processing Time`, processingTime, "ms");
       } else {
         // Record failure metrics
         metrics.increment(MetricNames.EVENTS_FAILED);
-        metrics.gauge(`${eventName}.failed_count`, metrics.getCounter(MetricNames.EVENTS_FAILED));
+        metrics.gauge(
+          `${eventName}.failed_count`,
+          metrics.getCounter(MetricNames.EVENTS_FAILED)
+        );
 
         logger.logEventError(eventName, result.error, errorContext);
       }
@@ -105,11 +108,11 @@ export function monitoredHandler<TEvent = any, TContext = any>(
   eventName: string,
   handler: EventHandler<TEvent, TContext>
 ): EventHandler<TEvent, TContext> {
-  return async (event: any, context: any) => {
+  return async ({ event, context }: { event: any; context: any }) => {
     const startTime = Date.now();
 
     try {
-      await handler(event, context);
+      await handler({ event, context });
 
       const processingTime = Date.now() - startTime;
       metrics.increment(MetricNames.EVENTS_PROCESSED);

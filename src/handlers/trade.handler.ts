@@ -27,23 +27,49 @@ const logger = getEventLogger();
 /**
  * NFT Listed Handler
  */
-export async function handleNFTListed(event: any, context: any) {
+export async function handleNFTListed({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as NFTListedEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("NFTListed", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "NFTListed",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
-    const listingRepo = new ListingRepository({ db: context.db, network: context.network });
-    const accountRepo = new AccountRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const listingRepo = new ListingRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const accountRepo = new AccountRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
 
     // Log the event
-    await eventLogRepo.createFromEvent("NFTListed", contractAddress, null, args, {
-      block: event.block,
-      transaction: event.transaction,
-      log: event.log,
-    });
+    await eventLogRepo.createFromEvent(
+      "NFTListed",
+      contractAddress,
+      null,
+      args,
+      {
+        block: event.block,
+        transaction: event.transaction,
+        log: event.log,
+      }
+    );
 
     // Get or create seller account
     await accountRepo.getOrCreate(args.seller, event.block.timestamp);
@@ -85,25 +111,52 @@ export async function handleNFTListed(event: any, context: any) {
 /**
  * NFT Unlisted Handler
  */
-export async function handleNFTUnlisted(event: any, context: any) {
+export async function handleNFTUnlisted({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as NFTUnlistedEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("NFTUnlisted", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "NFTUnlisted",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
-    const listingRepo = new ListingRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
-
-    // Log the event
-    await eventLogRepo.createFromEvent("NFTUnlisted", contractAddress, null, args, {
-      block: event.block,
-      transaction: event.transaction,
-      log: event.log,
+    const listingRepo = new ListingRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
     });
 
+    // Log the event
+    await eventLogRepo.createFromEvent(
+      "NFTUnlisted",
+      contractAddress,
+      null,
+      args,
+      {
+        block: event.block,
+        transaction: event.transaction,
+        log: event.log,
+      }
+    );
+
     // Update listing status to cancelled
-    await listingRepo.updateStatus(args.listingId, ListingStatus.CANCELLED, event.block.timestamp);
+    await listingRepo.updateStatus(
+      args.listingId,
+      ListingStatus.CANCELLED,
+      event.block.timestamp
+    );
 
     logger.logEventSuccess("NFTUnlisted", {
       listingId: args.listingId,
@@ -118,26 +171,61 @@ export async function handleNFTUnlisted(event: any, context: any) {
 /**
  * NFT Purchased Handler
  */
-export async function handleNFTPurchased(event: any, context: any) {
+export async function handleNFTPurchased({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as NFTPurchasedEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("NFTPurchased", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "NFTPurchased",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
-    const tradeRepo = new TradeRepository({ db: context.db, network: context.network });
-    const listingRepo = new ListingRepository({ db: context.db, network: context.network });
-    const accountRepo = new AccountRepository({ db: context.db, network: context.network });
-    const collectionRepo = new CollectionRepository({ db: context.db, network: context.network });
-    const tokenRepo = new TokenRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const tradeRepo = new TradeRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const listingRepo = new ListingRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const accountRepo = new AccountRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const collectionRepo = new CollectionRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const tokenRepo = new TokenRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
 
     // Log the event
-    await eventLogRepo.createFromEvent("NFTPurchased", contractAddress, null, args, {
-      block: event.block,
-      transaction: event.transaction,
-      log: event.log,
-    });
+    await eventLogRepo.createFromEvent(
+      "NFTPurchased",
+      contractAddress,
+      null,
+      args,
+      {
+        block: event.block,
+        transaction: event.transaction,
+        log: event.log,
+      }
+    );
 
     // Get or create accounts
     await Promise.all([
@@ -170,7 +258,11 @@ export async function handleNFTPurchased(event: any, context: any) {
     });
 
     // Update listing status
-    await listingRepo.updateStatus(args.listingId, ListingStatus.FILLED, event.block.timestamp);
+    await listingRepo.updateStatus(
+      args.listingId,
+      ListingStatus.FILLED,
+      event.block.timestamp
+    );
 
     // Update account trade statistics
     const volume = BigInt(args.price);
@@ -180,8 +272,15 @@ export async function handleNFTPurchased(event: any, context: any) {
     ]);
 
     // Update collection statistics
-    const collectionId = generateCollectionId(context.network.chainId, args.nftContract);
-    await collectionRepo.incrementTradeStats(collectionId, volume, event.block.timestamp);
+    const collectionId = generateCollectionId(
+      context.network.chainId,
+      args.nftContract
+    );
+    await collectionRepo.incrementTradeStats(
+      collectionId,
+      volume,
+      event.block.timestamp
+    );
 
     // Update collection floor price
     await collectionRepo.updateFloorPrice(collectionId, args.price.toString());
@@ -215,25 +314,57 @@ export async function handleNFTPurchased(event: any, context: any) {
 /**
  * Order Fulfilled Handler (Generic marketplace)
  */
-export async function handleOrderFulfilled(event: any, context: any) {
+export async function handleOrderFulfilled({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as OrderFulfilledEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("OrderFulfilled", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "OrderFulfilled",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
-    const tradeRepo = new TradeRepository({ db: context.db, network: context.network });
-    const accountRepo = new AccountRepository({ db: context.db, network: context.network });
-    const collectionRepo = new CollectionRepository({ db: context.db, network: context.network });
-    const tokenRepo = new TokenRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const tradeRepo = new TradeRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const accountRepo = new AccountRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const collectionRepo = new CollectionRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const tokenRepo = new TokenRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
 
     // Log the event
-    await eventLogRepo.createFromEvent("OrderFulfilled", contractAddress, null, args, {
-      block: event.block,
-      transaction: event.transaction,
-      log: event.log,
-    });
+    await eventLogRepo.createFromEvent(
+      "OrderFulfilled",
+      contractAddress,
+      null,
+      args,
+      {
+        block: event.block,
+        transaction: event.transaction,
+        log: event.log,
+      }
+    );
 
     // Get or create accounts
     await Promise.all([
@@ -272,8 +403,15 @@ export async function handleOrderFulfilled(event: any, context: any) {
       accountRepo.incrementTrades(args.buyer, false, volume),
     ]);
 
-    const collectionId = generateCollectionId(context.network.chainId, args.nftContract);
-    await collectionRepo.incrementTradeStats(collectionId, volume, event.block.timestamp);
+    const collectionId = generateCollectionId(
+      context.network.chainId,
+      args.nftContract
+    );
+    await collectionRepo.incrementTradeStats(
+      collectionId,
+      volume,
+      event.block.timestamp
+    );
 
     const tokenId = generateTokenId(
       context.network.chainId,
@@ -302,23 +440,49 @@ export async function handleOrderFulfilled(event: any, context: any) {
 /**
  * Order Created Handler
  */
-export async function handleOrderCreated(event: any, context: any) {
+export async function handleOrderCreated({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as OrderCreatedEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("OrderCreated", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "OrderCreated",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
-    const listingRepo = new ListingRepository({ db: context.db, network: context.network });
-    const accountRepo = new AccountRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const listingRepo = new ListingRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const accountRepo = new AccountRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
 
     // Log the event
-    await eventLogRepo.createFromEvent("OrderCreated", contractAddress, null, args, {
-      block: event.block,
-      transaction: event.transaction,
-      log: event.log,
-    });
+    await eventLogRepo.createFromEvent(
+      "OrderCreated",
+      contractAddress,
+      null,
+      args,
+      {
+        block: event.block,
+        transaction: event.transaction,
+        log: event.log,
+      }
+    );
 
     // Get or create maker account
     await accountRepo.getOrCreate(args.maker, event.block.timestamp);
@@ -360,25 +524,52 @@ export async function handleOrderCreated(event: any, context: any) {
 /**
  * Order Cancelled Handler
  */
-export async function handleOrderCancelled(event: any, context: any) {
+export async function handleOrderCancelled({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as OrderCancelledEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("OrderCancelled", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "OrderCancelled",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
-    const listingRepo = new ListingRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
-
-    // Log the event
-    await eventLogRepo.createFromEvent("OrderCancelled", contractAddress, null, args, {
-      block: event.block,
-      transaction: event.transaction,
-      log: event.log,
+    const listingRepo = new ListingRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
     });
 
+    // Log the event
+    await eventLogRepo.createFromEvent(
+      "OrderCancelled",
+      contractAddress,
+      null,
+      args,
+      {
+        block: event.block,
+        transaction: event.transaction,
+        log: event.log,
+      }
+    );
+
     // Update listing status
-    await listingRepo.updateStatus(args.orderHash, ListingStatus.CANCELLED, event.block.timestamp);
+    await listingRepo.updateStatus(
+      args.orderHash,
+      ListingStatus.CANCELLED,
+      event.block.timestamp
+    );
 
     logger.logEventSuccess("OrderCancelled", {
       orderHash: args.orderHash,

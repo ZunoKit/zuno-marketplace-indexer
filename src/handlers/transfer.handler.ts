@@ -5,7 +5,11 @@
 
 // import type { Context } from "ponder:registry";
 import { TokenType } from "../core/types";
-import type { TransferEvent, TransferSingleEvent, TransferBatchEvent } from "../core/types/events";
+import type {
+  TransferEvent,
+  TransferSingleEvent,
+  TransferBatchEvent,
+} from "../core/types/events";
 import { getEventLogger } from "../core/utils/event-logger";
 import { generateTokenId } from "../core/utils/helpers";
 import { AccountRepository } from "../repositories/account.repository";
@@ -19,18 +23,41 @@ const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000" as const;
 /**
  * ERC721 Transfer Handler
  */
-export async function handleTransfer(event: any, context: any) {
+export async function handleTransfer({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as TransferEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("Transfer", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "Transfer",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
     // Initialize repositories
-    const accountRepo = new AccountRepository({ db: context.db, network: context.network });
-    const tokenRepo = new TokenRepository({ db: context.db, network: context.network });
-    const collectionRepo = new CollectionRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const accountRepo = new AccountRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const tokenRepo = new TokenRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const collectionRepo = new CollectionRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
 
     // Log the event
     await eventLogRepo.createFromEvent(
@@ -79,7 +106,11 @@ export async function handleTransfer(event: any, context: any) {
       );
 
       if (collectionResult.success && collectionResult.data) {
-        await collectionRepo.updateSupplyMetrics(collectionResult.data.id, 1, 0);
+        await collectionRepo.updateSupplyMetrics(
+          collectionResult.data.id,
+          1,
+          0
+        );
       }
     } else if (isBurn) {
       // Handle burn
@@ -104,7 +135,11 @@ export async function handleTransfer(event: any, context: any) {
       );
 
       if (collectionResult.success && collectionResult.data) {
-        await collectionRepo.updateSupplyMetrics(collectionResult.data.id, 0, 1);
+        await collectionRepo.updateSupplyMetrics(
+          collectionResult.data.id,
+          0,
+          1
+        );
       }
     } else {
       // Handle regular transfer
@@ -138,7 +173,7 @@ export async function handleTransfer(event: any, context: any) {
       from: args.from,
       to: args.to,
       tokenId: args.tokenId.toString(),
-      type: isMint ? 'mint' : isBurn ? 'burn' : 'transfer',
+      type: isMint ? "mint" : isBurn ? "burn" : "transfer",
     });
   } catch (error) {
     logger.logEventError("Transfer", error as Error, {
@@ -148,7 +183,10 @@ export async function handleTransfer(event: any, context: any) {
     });
 
     // Log failed event for retry
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
     await eventLogRepo.createFromEvent(
       "Transfer",
       contractAddress,
@@ -168,17 +206,37 @@ export async function handleTransfer(event: any, context: any) {
 /**
  * ERC1155 TransferSingle Handler
  */
-export async function handleTransferSingle(event: any, context: any) {
+export async function handleTransferSingle({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as TransferSingleEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("TransferSingle", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "TransferSingle",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
     // Initialize repositories
-    const accountRepo = new AccountRepository({ db: context.db, network: context.network });
-    const tokenRepo = new TokenRepository({ db: context.db, network: context.network });
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const accountRepo = new AccountRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const tokenRepo = new TokenRepository({
+      db: context.db,
+      network: context.network,
+    });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
 
     // Log the event
     await eventLogRepo.createFromEvent(
@@ -271,15 +329,29 @@ export async function handleTransferSingle(event: any, context: any) {
 /**
  * ERC1155 TransferBatch Handler
  */
-export async function handleTransferBatch(event: any, context: any) {
+export async function handleTransferBatch({
+  event,
+  context,
+}: {
+  event: any;
+  context: any;
+}) {
   const args = event.args as TransferBatchEvent;
   const contractAddress = event.log.address;
 
-  logger.logEventStart("TransferBatch", contractAddress, event.block.number, event.transaction.hash);
+  logger.logEventStart(
+    "TransferBatch",
+    contractAddress,
+    event.block.number,
+    event.transaction.hash
+  );
 
   try {
     // Log the event
-    const eventLogRepo = new EventLogRepository({ db: context.db, network: context.network });
+    const eventLogRepo = new EventLogRepository({
+      db: context.db,
+      network: context.network,
+    });
     await eventLogRepo.createFromEvent(
       "TransferBatch",
       contractAddress,
@@ -300,8 +372,8 @@ export async function handleTransferBatch(event: any, context: any) {
       if (!id || value === undefined) continue;
 
       // Create a synthetic TransferSingle event for each token
-      await handleTransferSingle(
-        {
+      await handleTransferSingle({
+        event: {
           args: {
             operator: args.operator,
             from: args.from,
@@ -313,8 +385,8 @@ export async function handleTransferBatch(event: any, context: any) {
           transaction: event.transaction,
           log: { ...event.log, logIndex: event.log.logIndex + i },
         },
-        context
-      );
+        context,
+      });
     }
 
     logger.logEventSuccess("TransferBatch", {

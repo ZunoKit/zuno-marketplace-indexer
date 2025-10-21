@@ -654,7 +654,6 @@ export default createConfig({
         },
       ],
       address: "0x36c02da8a0983159322a80ffe9f24b1acff8b570",
-      network: "anvil",
       startBlock: "latest",
     },
     upgrademanager_anvil_0x809d: {
@@ -1590,7 +1589,6 @@ export default createConfig({
         },
       ],
       address: "0x809d550fca64d94bd9f66e60752a544199cfac3d",
-      network: "anvil",
       startBlock: "latest",
     },
     configmanager_anvil_0x4c58: {
@@ -2328,7 +2326,6 @@ export default createConfig({
         },
       ],
       address: "0x4c5859f0f772848b2d91f1d83e2fe57935348029",
-      network: "anvil",
       startBlock: "latest",
     },
     collectionregistry_anvil_0x4ed7: {
@@ -2827,7 +2824,6 @@ export default createConfig({
         },
       ],
       address: "0x4ed7c70f96b99c776995fb64377f0d4ab3b0e1c1",
-      network: "anvil",
       startBlock: "latest",
     },
     feeregistry_anvil_0x3228: {
@@ -3319,7 +3315,6 @@ export default createConfig({
         },
       ],
       address: "0x322813fd9a801c5507c9de605d63cea4f2ce6c44",
-      network: "anvil",
       startBlock: "latest",
     },
     adminhub_anvil_0x4a67: {
@@ -3947,7 +3942,6 @@ export default createConfig({
         },
       ],
       address: "0x4a679253410272dd5232b3ff7cf5dbb88f295319",
-      network: "anvil",
       startBlock: "latest",
     },
     auctionregistry_anvil_0xa852: {
@@ -4363,7 +4357,6 @@ export default createConfig({
         },
       ],
       address: "0xa85233c63b9ee964add6f2cffe00fd84eb32338f",
-      network: "anvil",
       startBlock: "latest",
     },
     userhub_anvil_0x5eb3: {
@@ -4893,7 +4886,6 @@ export default createConfig({
         },
       ],
       address: "0x5eb3bc0a489c5a8288765d2336659ebca68fcd00",
-      network: "anvil",
       startBlock: "latest",
     },
     advancedlistingmanager_anvil_0x3aa5: {
@@ -7099,7 +7091,6 @@ export default createConfig({
         },
       ],
       address: "0x3aa5ebb10dc797cac828524e59a333d0a371443c",
-      network: "anvil",
       startBlock: "latest",
     },
     offermanager_anvil_0x9a9f: {
@@ -8293,7 +8284,6 @@ export default createConfig({
         },
       ],
       address: "0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae",
-      network: "anvil",
       startBlock: "latest",
     },
     bundlemanager_anvil_0x68b1: {
@@ -9399,7 +9389,6 @@ export default createConfig({
         },
       ],
       address: "0x68b1d87f95878fe05b998f19b66f4baba5de1aed",
-      network: "anvil",
       startBlock: "latest",
     },
     exchangeregistry_anvil_0x59b6: {
@@ -9874,7 +9863,6 @@ export default createConfig({
         },
       ],
       address: "0x59b670e9fa9d0a427751af201d676719a970857b",
-      network: "anvil",
       startBlock: "latest",
     },
     listinghistorytracker_anvil_0xc6e7: {
@@ -10704,7 +10692,6 @@ export default createConfig({
         },
       ],
       address: "0xc6e7df5e7b4f2a278906862b61205850344d4e7d",
-      network: "anvil",
       startBlock: "latest",
     },
     erc1155nftexchange_anvil_0xb7f8: {
@@ -11731,7 +11718,6 @@ export default createConfig({
         },
       ],
       address: "0xb7f8bc63bbcad18155201308c8f3540b07f84f5e",
-      network: "anvil",
       startBlock: "latest",
     },
     erc721collectionfactory_anvil_0x0dcd: {
@@ -12000,7 +11986,6 @@ export default createConfig({
         },
       ],
       address: "0x0dcd1bf9a1b36ce34237eeafef220932846bcd82",
-      network: "anvil",
       startBlock: "latest",
     },
     collectionfactoryregistry_anvil_0x0b30: {
@@ -12419,7 +12404,6 @@ export default createConfig({
         },
       ],
       address: "0x0b306bf915c4d645ff596e518faf3f9669b97016",
-      network: "anvil",
       startBlock: "latest",
     },
     erc1155collectionfactory_anvil_0x9a67: {
@@ -12688,7 +12672,6 @@ export default createConfig({
         },
       ],
       address: "0x9a676e781a523b5d0c0e43731313a708cb607508",
-      network: "anvil",
       startBlock: "latest",
     },
     auctionfactory_anvil_0x9599: {
@@ -13565,7 +13548,6 @@ export default createConfig({
         },
       ],
       address: "0x959922be3caee4b8cd9a407cc3ac1c251c2007b1",
-      network: "anvil",
       startBlock: "latest",
     },
     fee_anvil_0x0165: {
@@ -13775,7 +13757,6 @@ export default createConfig({
         },
       ],
       address: "0x0165878a594ca255338adfa4d48449f69242eb8f",
-      network: "anvil",
       startBlock: "latest",
     },
     advancedfeemanager_anvil_0xa513: {
@@ -15076,7 +15057,6 @@ export default createConfig({
         },
       ],
       address: "0xa513e6e4b8f2a923d98304ec87f64353c4d5c853",
-      network: "anvil",
       startBlock: "latest",
     },
     advancedroyaltymanager_anvil_0x2279: {
@@ -15720,7 +15700,6 @@ export default createConfig({
         },
       ],
       address: "0x2279b7a0a67db372996a5fab50d91eaa73d2ebe6",
-      network: "anvil",
       startBlock: "latest",
     },
     collectionverifier_anvil_0x5fc8: {
@@ -17029,7 +17008,6 @@ export default createConfig({
         },
       ],
       address: "0x5fc8d32690cc91d4c39d9d3abcbd16989f875707",
-      network: "anvil",
       startBlock: "latest",
     },
     erc721nftexchange_anvil_0x8a79: {
@@ -18062,7 +18040,6 @@ export default createConfig({
         },
       ],
       address: "0x8a791620dd6260079bf849dc5567adc3f2fdc318",
-      network: "anvil",
       startBlock: "latest",
     },
     marketplacetimelock_anvil_0x9fe4: {
@@ -18646,7 +18623,6 @@ export default createConfig({
         },
       ],
       address: "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
-      network: "anvil",
       startBlock: "latest",
     },
     emergencymanager_anvil_0xe7f1: {
@@ -19288,7 +19264,6 @@ export default createConfig({
         },
       ],
       address: "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
-      network: "anvil",
       startBlock: "latest",
     },
     listingvalidator_anvil_0xcf7e: {
@@ -20306,7 +20281,6 @@ export default createConfig({
         },
       ],
       address: "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
-      network: "anvil",
       startBlock: "latest",
     },
     marketplacevalidator_anvil_0xdc64: {
@@ -20965,7 +20939,6 @@ export default createConfig({
         },
       ],
       address: "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
-      network: "anvil",
       startBlock: "latest",
     },
     marketplaceaccesscontrol_anvil_0x5fbd: {
@@ -21727,7 +21700,6 @@ export default createConfig({
         },
       ],
       address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
-      network: "anvil",
       startBlock: "latest",
     },
   },
