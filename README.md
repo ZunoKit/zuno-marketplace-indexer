@@ -8,34 +8,99 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-_Production-ready, scalable indexer with real-time GraphQL and REST APIs_
+_Production-ready, scalable indexer with domain-driven architecture and real-time APIs_
 
 </div>
 
 ## 🌟 Overview
 
-A high-performance blockchain event indexer that tracks and indexes all Zuno NFT Marketplace events across multiple chains. Built with clean architecture principles, featuring automatic configuration generation from the Zuno Marketplace ABIs API.
+A high-performance blockchain event indexer that tracks and indexes all Zuno NFT Marketplace events across multiple chains. Built with **Domain-Driven Design (DDD)** architecture, featuring automatic configuration generation from the Zuno Marketplace ABIs API and comprehensive event processing across trading, collections, offers, and auctions.
 
 ## 🎯 Key Features
 
 ### Core Features
+
 - ✅ **Multi-chain Support** - Indexes events across multiple EVM chains (Ethereum, Polygon, Base, Optimism, Arbitrum & more)
 - ✅ **Real-time Indexing** - Tracks all marketplace events in real-time with block reorganization handling
 - ✅ **Dynamic Configuration** - Automatically fetches and generates contract ABIs and configurations from Zuno API
-- ✅ **PGlite Database** - Built-in high-performance embedded PostgreSQL database (no external DB required)
+- ✅ **PostgreSQL Database** - High-performance database with comprehensive schema for all marketplace data
 
-### Architecture & Code Quality
-- ✅ **Clean Architecture** - Follows hexagonal architecture with clear separation of concerns
-- ✅ **Design Patterns** - Implements Repository, Singleton, Builder, Factory, Strategy patterns
-- ✅ **Error Handling** - Comprehensive error handling with retry logic (3 attempts)
-- ✅ **Event Logging** - Detailed event tracking and processing logs
+### Domain-Driven Architecture
+
+- ✅ **Domain Separation** - Clean separation into Trading, Collection, Offer, and Auction domains
+- ✅ **Event Handlers** - Specialized handlers for each marketplace event type
+- ✅ **Repository Pattern** - Data access layer with base repository and specialized implementations
+- ✅ **Type Safety** - Full TypeScript with strict typing and comprehensive event type definitions
+
+### Infrastructure & Monitoring
+
+- ✅ **Error Handling** - Comprehensive error handling with retry logic and monitoring
+- ✅ **Event Logging** - Detailed event tracking and processing logs with structured logging
 - ✅ **Metrics & Monitoring** - Built-in metrics tracking for performance monitoring
-- ✅ **Type Safety** - Full TypeScript with strict typing throughout
+- ✅ **Handler Wrapping** - Automatic error handling and metrics collection for all event handlers
 
 ### API & Integration
+
 - ✅ **GraphQL API** - Flexible querying with built-in GraphQL endpoint
-- ✅ **REST API** - RESTful endpoints for collections, tokens, trades, accounts, and stats
+- ✅ **REST API** - RESTful endpoints for collections, tokens, trades, accounts, events, and stats
 - ✅ **Hono Framework** - High-performance API server with CORS and logging middleware
+- ✅ **Zuno API Integration** - Dynamic ABI fetching and configuration generation
+
+## 📁 Project Structure
+
+```
+zuno-marketplace-indexer/
+├── src/
+│   ├── api/                    # REST API endpoints (Hono framework)
+│   ├── config/                 # Configuration management
+│   ├── domain/                 # Domain-driven design modules
+│   │   ├── account/           # Account domain
+│   │   ├── auction/           # Auction domain & handlers
+│   │   ├── collection/         # Collection domain & handlers
+│   │   ├── offer/             # Offer domain & handlers
+│   │   └── trading/           # Trading domain & handlers
+│   ├── infrastructure/         # Infrastructure layer
+│   │   ├── external/          # External services (Zuno API)
+│   │   ├── logging/           # Event logging
+│   │   └── monitoring/        # Error handling & metrics
+│   ├── repositories/          # Data access layer
+│   ├── shared/               # Shared utilities & types
+│   └── index.ts              # Main entry point
+├── scripts/                   # Build & deployment scripts
+├── ponder.config.ts          # Ponder configuration
+├── ponder.schema.ts          # Database schema
+└── package.json              # Dependencies & scripts
+```
+
+### Domain Architecture
+
+- **Trading Domain**: Handles NFT listings, purchases, and cancellations
+- **Collection Domain**: Manages ERC721/ERC1155 collection creation
+- **Offer Domain**: Processes NFT offers and acceptances
+- **Auction Domain**: Handles auction creation and management
+- **Account Domain**: User account management and statistics
+
+## 🗄️ Database Schema
+
+The indexer uses a comprehensive PostgreSQL schema with the following main tables:
+
+### Core Tables
+
+- **`account`** - User accounts with trading statistics
+- **`collection`** - NFT collections (ERC721/ERC1155)
+- **`token`** - Individual NFT tokens
+- **`listing`** - Marketplace listings/orders
+- **`trade`** - Trading transactions and sales
+- **`event_log`** - Raw blockchain event logs
+- **`transaction`** - Transaction summaries
+
+### Analytics Tables
+
+- **`daily_collection_stats`** - Daily collection statistics
+- **`marketplace_stats`** - Global marketplace metrics
+- **`indexed_contract`** - Indexed contract registry
+
+All tables include proper indexing for optimal query performance across chains.
 
 ## 📋 Prerequisites
 
@@ -49,7 +114,7 @@ A high-performance blockchain event indexer that tracks and indexes all Zuno NFT
 ### 1. Clone and Install
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ZunoKit/zuno-marketplace-indexer.git
 cd zuno-marketplace-indexer
 npm install
 ```
@@ -91,6 +156,7 @@ npm run generate-config
 ```
 
 This command:
+
 - Fetches all contract ABIs from Zuno API
 - Generates `ponder.config.generated.ts` with all configured chains and contracts
 - Lists all available networks and contracts
@@ -121,22 +187,38 @@ Once running, you can access:
 
 - **GraphQL API**: http://localhost:42069/graphql
 - **REST API**: http://localhost:42069/api
-  - Collections: `/api/collections`
-  - Tokens: `/api/tokens`
-  - Trades: `/api/trades`
-  - Accounts: `/api/accounts`
-  - Stats: `/api/stats`
+  - **Collections**: `/api/collections` - NFT collections data
+  - **Tokens**: `/api/tokens` - Individual NFT tokens
+  - **Trades**: `/api/trades` - Trading transactions
+  - **Accounts**: `/api/accounts` - User accounts and stats
+  - **Events**: `/api/events` - Raw event logs
+  - **Stats**: `/api/stats` - Marketplace statistics
+  - **Status**: `/api/status` - Health check endpoint
 
 ## 📚 Available Scripts
 
 ```bash
-npm run dev              # Start development server with hot reload
-npm run start            # Start production server
-npm run codegen          # Generate TypeScript types from schema
-npm run generate-config  # Generate Ponder config from Zuno API
-npm run setup            # Run generate-config + codegen
-npm run lint             # Run ESLint
-npm run typecheck        # Run TypeScript type checking
+# Development
+pnpm dev                 # Start development server with hot reload
+pnpm start              # Start production server
+pnpm serve              # Serve the built indexer
+
+# Database
+pnpm db                 # Database management commands
+
+# Code Generation
+pnpm codegen            # Generate TypeScript types from schema
+pnpm generate-config    # Generate Ponder config from Zuno API
+pnpm setup              # Run generate-config + codegen
+
+# Build & Deployment
+pnpm build              # Build the project (generate-config + codegen)
+pnpm railway:build      # Railway build command
+pnpm railway:start      # Railway start command
+
+# Code Quality
+pnpm lint               # Run ESLint
+pnpm typecheck          # Run TypeScript type checking
 ```
 
 ### Environment Variables
@@ -197,6 +279,23 @@ bash scripts/setup-railway-env.sh
 railway up
 ```
 
+### Railway Configuration
+
+The project includes Railway-specific configuration:
+
+- **`railway.json`**: Railway deployment configuration
+- **`railway.toml`**: Railway service configuration
+- **`Procfile`**: Process definition for Railway
+- **`scripts/deploy-railway.sh`**: Automated deployment script
+- **`scripts/setup-railway-env.sh`**: Environment setup script
+
+### Build Commands
+
+Railway uses the following build commands:
+
+- **Build**: `pnpm railway:build` (installs dependencies + generates config)
+- **Start**: `pnpm railway:start` (starts the indexer)
+
 See **[RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)** for complete deployment guide.
 
 ### Deploy Button
@@ -224,4 +323,4 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 **Built with ❤️ by the Zuno Team**
 
-_Version 1.0.0_
+_Version 2.0.0 - Domain-Driven Architecture_
