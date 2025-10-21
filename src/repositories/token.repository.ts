@@ -4,9 +4,9 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Result, Timestamp, Token } from "../core/types";
-import { generateTokenId, normalizeAddress } from "../core/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "./base.repository";
+import type { Address, Result, Timestamp, Token } from "../shared/types";
+import { generateTokenId, normalizeAddress } from "../shared/utils/helpers";
+import { BaseRepository, type DatabaseContext } from "../shared/base/base.repository";
 
 export class TokenRepository extends BaseRepository<Token> {
   constructor(context: DatabaseContext) {

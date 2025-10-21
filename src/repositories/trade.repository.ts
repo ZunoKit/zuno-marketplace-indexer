@@ -4,9 +4,9 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Result, Trade, TradeType } from "../core/types";
-import { normalizeAddress } from "../core/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "./base.repository";
+import type { Address, Result, Trade, TradeType } from "../shared/types";
+import { normalizeAddress } from "../shared/utils/helpers";
+import { BaseRepository, type DatabaseContext } from "../shared/base/base.repository";
 
 export class TradeRepository extends BaseRepository<Trade> {
   constructor(context: DatabaseContext) {

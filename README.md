@@ -173,6 +173,36 @@ PONDER_RPC_URL_8453   # Base
 - Add JSDoc comments for public functions
 - Write descriptive commit messages
 
+## 🚂 Railway Deployment
+
+### Quick Deploy to Railway
+
+```bash
+# Install Railway CLI
+npm install -g @railway/cli
+
+# Login
+railway login
+
+# Initialize project
+railway init
+
+# Add PostgreSQL
+railway add --database postgres
+
+# Setup environment variables
+bash scripts/setup-railway-env.sh
+
+# Deploy!
+railway up
+```
+
+See **[RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)** for complete deployment guide.
+
+### Deploy Button
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/yourusername/zuno-marketplace-indexer)
+
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) file for details

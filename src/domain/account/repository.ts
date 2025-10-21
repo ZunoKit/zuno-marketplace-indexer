@@ -4,9 +4,9 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Result, Timestamp } from "../shared/types";
-import { normalizeAddress } from "../shared/utils/helpers";
-import { BaseRepository, type DatabaseContext, type BaseEntity } from "../shared/base/base.repository";
+import type { Address, Result, Timestamp } from "../../shared/types";
+import { normalizeAddress } from "../../shared/utils/helpers";
+import { BaseRepository, type DatabaseContext, type BaseEntity } from "../../shared/base/base.repository";
 
 // Extend Account to include BaseEntity fields
 export interface AccountEntity extends BaseEntity {

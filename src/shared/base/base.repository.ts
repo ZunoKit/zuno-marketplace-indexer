@@ -4,7 +4,7 @@
  * Following Repository pattern for data access abstraction
  */
 
-import type { Address, Result, Timestamp } from "../shared/types";
+import type { Address, Result, Timestamp } from "../types";
 
 export interface BaseEntity {
   id?: string;

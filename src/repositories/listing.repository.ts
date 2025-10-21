@@ -4,10 +4,10 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Result } from "../core/types";
-import { ListingStatus } from "../core/types";
-import { normalizeAddress } from "../core/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "./base.repository";
+import type { Address, Result } from "../shared/types";
+import { ListingStatus } from "../shared/types";
+import { normalizeAddress } from "../shared/utils/helpers";
+import { BaseRepository, type DatabaseContext } from "../shared/base/base.repository";
 
 export interface Listing {
   id: string;

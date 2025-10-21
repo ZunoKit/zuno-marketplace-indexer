@@ -4,9 +4,9 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Collection, Result, Timestamp } from "../core/types";
-import { generateCollectionId, normalizeAddress } from "../core/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "./base.repository";
+import type { Address, Collection, Result, Timestamp } from "../shared/types";
+import { generateCollectionId, normalizeAddress } from "../shared/utils/helpers";
+import { BaseRepository, type DatabaseContext } from "../shared/base/base.repository";
 
 export class CollectionRepository extends BaseRepository<Collection> {
   constructor(context: DatabaseContext) {
