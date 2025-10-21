@@ -1,8 +1,20 @@
 # Zuno Marketplace Indexer
 
-> **Enterprise-grade blockchain event indexer for Zuno NFT Marketplace** built with [Ponder](https://ponder.sh)
+<div align="center">
 
-A production-ready, scalable indexer that tracks and indexes all marketplace events (NFT mints, transfers, trades, collections) with real-time GraphQL and REST APIs.
+**🚀 Enterprise-grade blockchain event indexer for Zuno NFT Marketplace**
+
+[![Built with Ponder](https://img.shields.io/badge/Built%20with-Ponder-blue)](https://ponder.sh)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+_Production-ready, scalable indexer with real-time GraphQL and REST APIs_
+
+</div>
+
+## 🌟 Overview
+
+A high-performance blockchain event indexer that tracks and indexes all Zuno NFT Marketplace events across multiple chains. Built with clean architecture principles, featuring automatic configuration generation from the Zuno Marketplace ABIs API.
 
 ## 🎯 Features
 
@@ -24,7 +36,16 @@ A production-ready, scalable indexer that tracks and indexes all marketplace eve
 
 ## 🚀 Quick Start
 
-### 1. Clone & Install
+### Option 1: Automated Setup (Windows)
+
+```bash
+# Run the setup script
+setup.bat
+```
+
+### Option 2: Manual Setup
+
+#### 1. Clone & Install
 
 ```bash
 git clone <repository-url>
@@ -32,7 +53,7 @@ cd zuno-marketplace-indexer
 pnpm install
 ```
 
-### 2. Configure Environment
+#### 2. Configure Environment
 
 Create `.env` file:
 
@@ -240,7 +261,9 @@ Example:
 // src/handlers/myevent.handler.ts
 export async function handleMyEvent(event: any, context: Context<any, any>) {
   const repo = new MyRepository({ db: context.db, network: context.network });
-  await repo.create({ /* data */ });
+  await repo.create({
+    /* data */
+  });
 }
 
 // src/index.ts
@@ -323,4 +346,3 @@ MIT License - see [LICENSE](LICENSE) file for details
 ---
 
 **Built with ❤️ by the Zuno Team**
-

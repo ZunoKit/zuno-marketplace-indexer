@@ -65,7 +65,7 @@ export class ConfigBuilderService {
     for (const network of networks) {
       if (!network.isActive) continue;
 
-      const chainKey = network.slug;
+      const chainKey = sanitizeConfigKey(network.slug);
       const envRpcKey = `PONDER_RPC_URL_${network.chainId}`;
       const envWsKey = `PONDER_WS_URL_${network.chainId}`;
       const rpcUrl = process.env[envRpcKey];
@@ -141,7 +141,7 @@ export class ConfigBuilderService {
           const network = networks.find(n => n.id === contract.networkId);
           if (!network) continue;
 
-          networkMapping[network.slug] = {
+          networkMapping[sanitizeConfigKey(network.slug)] = {
             address: contract.address,
             startBlock: this.parseStartBlock(contract.deployedAt) as any,
           };
@@ -168,7 +168,7 @@ export class ConfigBuilderService {
           contractConfigs[configKey] = {
             abi: abi.abi,
             address: contract.address,
-            network: network.slug,
+            network: sanitizeConfigKey(network.slug),
             startBlock: this.parseStartBlock(contract.deployedAt) as any,
           };
         }

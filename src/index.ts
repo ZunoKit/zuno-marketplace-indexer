@@ -24,7 +24,7 @@ import { getErrorHandler } from "./core/utils/error-handler";
 // Collection handlers
 import {
   handleERC1155CollectionCreated,
-  handleERC721CollectionCreated
+  handleERC721CollectionCreated,
 } from "./handlers/collection.handler";
 
 // Transfer handlers
@@ -52,43 +52,46 @@ const errorHandler = getErrorHandler();
 // Collection Factory Events
 // ============================================================================
 
-// TODO: Uncomment when contracts are configured
-// ponder.on(
-//   "YourCollectionFactory:ERC721CollectionCreated",
-//   wrapHandler("ERC721CollectionCreated", handleERC721CollectionCreated)
-// );
+// Collection Factory Events
+ponder.on(
+  "erc721collectionfactory_anvil_0x0dcd:ERC721CollectionCreated",
+  wrapHandler("ERC721CollectionCreated", handleERC721CollectionCreated)
+);
 
-// ponder.on(
-//   "YourCollectionFactory:ERC1155CollectionCreated",
-//   wrapHandler("ERC1155CollectionCreated", handleERC1155CollectionCreated)
-// );
+ponder.on(
+  "erc1155collectionfactory_anvil_0x9a67:ERC1155CollectionCreated",
+  wrapHandler("ERC1155CollectionCreated", handleERC1155CollectionCreated)
+);
 
 // ============================================================================
 // NFT Transfer Events (ERC721)
 // ============================================================================
 
-// TODO: Uncomment when NFT contracts are configured
-// ponder.on("YourNFTContract:Transfer", wrapHandler("Transfer", handleTransfer));
+// NFT Transfer Events (ERC721) - Using different contract
+// ponder.on(
+//   "erc721collectionfactory_anvil_0x0dcd:ERC721CollectionCreated",
+//   wrapHandler("ERC721CollectionCreated", handleTransfer)
+// );
 
 // ============================================================================
 // NFT Transfer Events (ERC1155)
 // ============================================================================
 
-// TODO: Uncomment when ERC1155 contracts are configured
-// ponder.on("YourERC1155Contract:TransferSingle", wrapHandler("TransferSingle", handleTransferSingle));
-// ponder.on("YourERC1155Contract:TransferBatch", wrapHandler("TransferBatch", handleTransferBatch));
+// ERC1155 Transfer Events - Using different contract
+// ponder.on(
+//   "erc1155collectionfactory_anvil_0x9a67:ERC1155CollectionCreated",
+//   wrapHandler("ERC1155CollectionCreated", handleTransferSingle)
+// );
 
 // ============================================================================
 // Marketplace Trading Events
 // ============================================================================
 
-// TODO: Uncomment when marketplace contract is configured
-// ponder.on("YourMarketplace:NFTListed", wrapHandler("NFTListed", handleNFTListed));
-// ponder.on("YourMarketplace:NFTUnlisted", wrapHandler("NFTUnlisted", handleNFTUnlisted));
-// ponder.on("YourMarketplace:NFTPurchased", wrapHandler("NFTPurchased", handleNFTPurchased));
-// ponder.on("YourMarketplace:OrderFulfilled", wrapHandler("OrderFulfilled", handleOrderFulfilled));
-// ponder.on("YourMarketplace:OrderCreated", wrapHandler("OrderCreated", handleOrderCreated));
-// ponder.on("YourMarketplace:OrderCancelled", wrapHandler("OrderCancelled", handleOrderCancelled));
+// Marketplace Trading Events - Using advanced listing manager
+ponder.on(
+  "advancedlistingmanager_anvil_0x3aa5:ListingCreated",
+  wrapHandler("ListingCreated", handleNFTListed)
+);
 
 // ============================================================================
 // Future: Auction Events
@@ -120,7 +123,9 @@ console.log(`
 ╔══════════════════════════════════════════════════════════╗
 ║   Zuno Marketplace Indexer                               ║
 ║   Version: 1.0.0                                         ║
-║   Environment: ${process.env.NODE_ENV || 'development'}                                ║
+║   Environment: ${
+  process.env.NODE_ENV || "development"
+}                                ║
 ╚══════════════════════════════════════════════════════════╝
 
 📊 Available Event Handlers:
@@ -132,7 +137,7 @@ console.log(`
 🔧 Features Enabled:
   • ✅ Error handling with retry logic (3 attempts)
   • ✅ Metrics tracking and monitoring
-  • ✅ Event logging (verbose: ${logger ? 'enabled' : 'disabled'})
+  • ✅ Event logging (verbose: ${logger ? "enabled" : "disabled"})
   • ✅ Failed event recovery
 
 ⚠️  Note: Event handlers are commented out until contracts are configured.
@@ -142,7 +147,7 @@ console.log(`
 `);
 
 // Print metrics report every 5 minutes (development only)
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   setInterval(() => {
     metrics.printReport();
 

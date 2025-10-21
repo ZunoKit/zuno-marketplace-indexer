@@ -4,7 +4,7 @@
  */
 
 // ============================================================================
-// Blockchain Types
+// Primitive Blockchain Types
 // ============================================================================
 
 export type Address = `0x${string}`;
@@ -12,6 +12,28 @@ export type Hash = `0x${string}`;
 export type BlockNumber = bigint;
 export type Timestamp = bigint;
 export type ChainId = number;
+
+// ============================================================================
+// Common Enums
+// ============================================================================
+
+export enum TokenType {
+  ERC721 = "ERC721",
+  ERC1155 = "ERC1155",
+}
+
+export enum TradeType {
+  SALE = "sale",
+  OFFER_ACCEPTED = "offer_accepted",
+  AUCTION_WON = "auction_won",
+}
+
+export enum ListingStatus {
+  ACTIVE = "active",
+  FILLED = "filled",
+  CANCELLED = "cancelled",
+  EXPIRED = "expired",
+}
 
 // ============================================================================
 // Entity Types
@@ -123,28 +145,6 @@ export interface EventLog {
 }
 
 // ============================================================================
-// Enum Types
-// ============================================================================
-
-export enum TokenType {
-  ERC721 = "ERC721",
-  ERC1155 = "ERC1155",
-}
-
-export enum TradeType {
-  SALE = "sale",
-  OFFER_ACCEPTED = "offer_accepted",
-  AUCTION_WON = "auction_won",
-}
-
-export enum ListingStatus {
-  ACTIVE = "active",
-  FILLED = "filled",
-  CANCELLED = "cancelled",
-  EXPIRED = "expired",
-}
-
-// ============================================================================
 // Event Context Types
 // ============================================================================
 
@@ -176,7 +176,7 @@ export interface NetworkContext {
 }
 
 // ============================================================================
-// API Types
+// External API Types (Zuno Marketplace ABIs API)
 // ============================================================================
 
 export interface ApiNetwork {
@@ -212,11 +212,19 @@ export interface ApiContract {
 export interface AbiItem {
   type: string;
   name?: string;
-  inputs?: any[];
-  outputs?: any[];
+  inputs?: Array<{
+    name: string;
+    type: string;
+    internalType?: string;
+    indexed?: boolean;
+  }>;
+  outputs?: Array<{
+    name: string;
+    type: string;
+    internalType?: string;
+  }>;
   stateMutability?: string;
   anonymous?: boolean;
-  indexed?: boolean;
 }
 
 export interface ApiAbiDetail {
@@ -243,7 +251,7 @@ export interface ApiAbiDetail {
 // Result Types
 // ============================================================================
 
-export type Result<T, E = Error> = 
+export type Result<T, E = Error> =
   | { success: true; data: T }
   | { success: false; error: E };
 
@@ -258,4 +266,3 @@ export interface PaginatedResult<T> {
     hasPrev?: boolean;
   };
 }
-
