@@ -36,18 +36,11 @@ app.get("/", (c) => {
         accounts: "/api/accounts",
         events: "/api/events",
         stats: "/api/stats",
-        status: "/api/status",
       },
     },
   });
 });
 
-app.get("/api/status", (c) => {
-  return c.json({
-    status: "healthy",
-    timestamp: new Date().toISOString(),
-  });
-});
 
 // ============================================================================
 // REST API Routes - Simplified Implementation
