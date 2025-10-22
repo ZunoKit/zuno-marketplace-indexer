@@ -253,8 +253,6 @@ PONDER_RPC_URL_8453   # Base
 - Add JSDoc comments for public functions
 - Write descriptive commit messages
 
- 
-
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) file for details

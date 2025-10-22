@@ -36,6 +36,7 @@ app.get("/", (c) => {
         accounts: "/api/accounts",
         events: "/api/events",
         stats: "/api/stats",
+        status: "/api/status",
       },
     },
   });

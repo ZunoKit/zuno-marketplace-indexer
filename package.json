@@ -13,10 +13,7 @@
     "serve": "ponder serve",
     "lint": "eslint .",
     "typecheck": "tsc",
-    "generate-config": "tsx scripts/generate-config.ts",
-    "setup": "pnpm generate-config && pnpm codegen",
-    "railway:build": "pnpm install && pnpm build",
-    "railway:start": "pnpm start"
+    "generate-config": "tsx scripts/generate-config.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

@@ -25,7 +25,9 @@ export default createConfig({
     anvil: {
       id: 31337,
       rpc: "http://127.0.0.1:8545",
-      maxRequestsPerSecond: 50
+      maxRequestsPerSecond: 50,
+      disableCache: true,
+
     }
   },
 
