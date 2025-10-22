@@ -35,7 +35,6 @@ app.get("/", (c) => {
         trades: "/api/trades",
         accounts: "/api/accounts",
         events: "/api/events",
-        stats: "/api/stats",
       },
     },
   });
@@ -201,37 +200,6 @@ app.get("/api/events", async (c) => {
   }
 });
 
-/**
- * Get stats - Simplified version
- */
-app.get("/api/stats", async (c) => {
-  try {
-    const [collections, tokens, trades, accounts] = await Promise.all([
-      db.select().from(schema.collection).execute(),
-      db.select().from(schema.token).execute(),
-      db.select().from(schema.trade).execute(),
-      db.select().from(schema.account).execute(),
-    ]);
-
-    return c.json({
-      success: true,
-      data: {
-        collections: collections.length,
-        tokens: tokens.length,
-        trades: trades.length,
-        accounts: accounts.length,
-        totalVolume: trades.reduce(
-          (sum, trade) => sum + parseFloat(trade.price || "0"),
-          0
-        ),
-        lastUpdated: new Date().toISOString(),
-      },
-    });
-  } catch (error) {
-    console.error("Error fetching stats:", error);
-    return c.json({ error: "Failed to fetch stats" }, 500);
-  }
-});
 
 // ============================================================================
 // GraphQL Integration

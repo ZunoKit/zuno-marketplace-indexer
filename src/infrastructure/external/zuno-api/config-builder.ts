@@ -4,9 +4,17 @@
  * Implements Builder pattern for complex configuration assembly
  */
 
-import type { ApiAbiDetail, ApiContract, ApiNetwork, Result } from "../../../shared/types";
+import type {
+  ApiAbiDetail,
+  ApiContract,
+  ApiNetwork,
+  Result,
+} from "../../../shared/types";
 import { sanitizeConfigKey } from "../../../shared/utils/helpers";
-import { discoverIndexedContracts, matchesDiscoveredContract } from "../../../shared/utils/handler-discovery";
+import {
+  discoverIndexedContracts,
+  matchesDiscoveredContract,
+} from "../../../shared/utils/handler-discovery";
 import { getZunoApiClient } from "./client";
 
 export interface ChainConfig {
@@ -73,7 +81,9 @@ export class ConfigBuilderService {
 
       // Skip if no RPC URL configured
       if (!rpcUrl) {
-        console.warn(`[ConfigBuilder] No RPC URL configured for ${network.name} (${envRpcKey})`);
+        console.warn(
+          `[ConfigBuilder] No RPC URL configured for ${network.name} (${envRpcKey})`
+        );
         continue;
       }
 
@@ -91,7 +101,9 @@ export class ConfigBuilderService {
   /**
    * Group contracts by ABI ID for efficient configuration
    */
-  private groupContractsByAbi(contracts: ApiContract[]): Map<string, ApiContract[]> {
+  private groupContractsByAbi(
+    contracts: ApiContract[]
+  ): Map<string, ApiContract[]> {
     const grouped = new Map<string, ApiContract[]>();
 
     for (const contract of contracts) {
@@ -126,20 +138,27 @@ export class ConfigBuilderService {
     for (const [abiId, contractGroup] of grouped.entries()) {
       const abi = abis.get(abiId);
       if (!abi) {
-        console.warn(`[ConfigBuilder] ABI not found for ${abiId}, skipping contracts`);
+        console.warn(
+          `[ConfigBuilder] ABI not found for ${abiId}, skipping contracts`
+        );
         continue;
       }
 
       // Check if this is a multi-chain contract
-      const uniqueAddresses = new Set(contractGroup.map(c => c.address.toLowerCase()));
+      const uniqueAddresses = new Set(
+        contractGroup.map((c) => c.address.toLowerCase())
+      );
       const isMultiChain = contractGroup.length > 1 && uniqueAddresses.size > 1;
 
       if (isMultiChain) {
         // Multi-chain configuration
-        const networkMapping: Record<string, { address: string; startBlock?: number }> = {};
+        const networkMapping: Record<
+          string,
+          { address: string; startBlock?: number }
+        > = {};
 
         for (const contract of contractGroup) {
-          const network = networks.find(n => n.id === contract.networkId);
+          const network = networks.find((n) => n.id === contract.networkId);
           if (!network) continue;
 
           networkMapping[sanitizeConfigKey(network.slug)] = {
@@ -153,19 +172,19 @@ export class ConfigBuilderService {
         const configKey = sanitizeConfigKey(abi.contractName);
         contractConfigs[configKey] = {
           abi: abi.abi,
-          address: '', // Not used in multi-chain
+          address: "", // Not used in multi-chain
           network: networkMapping,
         };
       } else {
         // Single contract configuration
         for (const contract of contractGroup) {
-          const network = networks.find(n => n.id === contract.networkId);
+          const network = networks.find((n) => n.id === contract.networkId);
           if (!network) continue;
 
           const configKey = sanitizeConfigKey(
-            `${abi.contractName}_${network.slug}_${contract.address.slice(0, 6)}`
+            `${abi.contractName}_${network.slug}`
           );
-          
+
           contractConfigs[configKey] = {
             abi: abi.abi,
             address: contract.address,
@@ -183,7 +202,7 @@ export class ConfigBuilderService {
    * Build complete Ponder configuration
    */
   async build(): Promise<Result<PonderConfig>> {
-    console.log('[ConfigBuilder] Fetching configuration from Zuno API...');
+    console.log("[ConfigBuilder] Fetching configuration from Zuno API...");
 
     // Fetch all data
     const [networksResult, contractsResult] = await Promise.all([
@@ -202,38 +221,48 @@ export class ConfigBuilderService {
     const networks = networksResult.data;
     const contracts = contractsResult.data;
 
-    console.log(`[ConfigBuilder] Found ${networks.length} networks and ${contracts.length} contracts`);
+    console.log(
+      `[ConfigBuilder] Found ${networks.length} networks and ${contracts.length} contracts`
+    );
 
     // Filter contracts by active networks
-    const activeNetworkIds = new Set(networks.map(n => n.id));
+    const activeNetworkIds = new Set(networks.map((n) => n.id));
 
     // Auto-discover contracts that have event handlers
     const discoveredContracts = discoverIndexedContracts();
 
     if (discoveredContracts.length === 0) {
-      console.warn('[ConfigBuilder] No contracts with handlers discovered. Check src/domain/*');
+      console.warn(
+        "[ConfigBuilder] No contracts with handlers discovered. Check src/domain/*"
+      );
       return {
         success: false,
-        error: new Error('No contracts with event handlers found in src/domain'),
+        error: new Error(
+          "No contracts with event handlers found in src/domain"
+        ),
       };
     }
 
     // Only include contracts that have event handlers
-    const activeContracts = contracts.filter(c => {
+    const activeContracts = contracts.filter((c) => {
       if (!activeNetworkIds.has(c.networkId) || !c.isVerified) return false;
 
       // Check if contract name matches any discovered handler
       return matchesDiscoveredContract(c.name, discoveredContracts);
     });
 
-    console.log(`[ConfigBuilder] ${activeContracts.length} active contracts after filtering (only contracts with handlers)`);
+    console.log(
+      `[ConfigBuilder] ${activeContracts.length} active contracts after filtering (only contracts with handlers)`
+    );
 
     // Fetch ABIs
-    const uniqueAbiIds = [...new Set(activeContracts.map(c => c.abiId))];
-    console.log(`[ConfigBuilder] Fetching ${uniqueAbiIds.length} unique ABIs...`);
+    const uniqueAbiIds = [...new Set(activeContracts.map((c) => c.abiId))];
+    console.log(
+      `[ConfigBuilder] Fetching ${uniqueAbiIds.length} unique ABIs...`
+    );
 
     const abisResult = await this.apiClient.getAbisByIds(uniqueAbiIds);
-    
+
     if (!abisResult.success) {
       return { success: false, error: abisResult.error };
     }
@@ -243,18 +272,24 @@ export class ConfigBuilderService {
 
     // Build configurations
     const chains = this.buildChainConfig(networks);
-    const contractConfigs = await this.buildContractConfig(activeContracts, networks, abis);
+    const contractConfigs = await this.buildContractConfig(
+      activeContracts,
+      networks,
+      abis
+    );
 
-    console.log('[ConfigBuilder] Configuration built successfully');
-    console.log(`[ConfigBuilder] Chains: ${Object.keys(chains).join(', ')}`);
-    console.log(`[ConfigBuilder] Contracts: ${Object.keys(contractConfigs).length}`);
+    console.log("[ConfigBuilder] Configuration built successfully");
+    console.log(`[ConfigBuilder] Chains: ${Object.keys(chains).join(", ")}`);
+    console.log(
+      `[ConfigBuilder] Contracts: ${Object.keys(contractConfigs).length}`
+    );
 
     return {
       success: true,
       data: {
         chains,
         contracts: contractConfigs,
-      }
+      },
     };
   }
 
@@ -266,10 +301,10 @@ export class ConfigBuilderService {
     abis: Map<string, ApiAbiDetail>,
     tags: string[]
   ): ApiContract[] {
-    return contracts.filter(contract => {
+    return contracts.filter((contract) => {
       const abi = abis.get(contract.abiId);
       if (!abi) return false;
-      return tags.some(tag => abi.tags.includes(tag));
+      return tags.some((tag) => abi.tags.includes(tag));
     });
   }
 
@@ -281,7 +316,7 @@ export class ConfigBuilderService {
     abis: Map<string, ApiAbiDetail>,
     eventName: string
   ): ApiContract[] {
-    return contracts.filter(contract => {
+    return contracts.filter((contract) => {
       const abi = abis.get(contract.abiId);
       if (!abi) return false;
       return this.apiClient.hasEvent(abi.abi, eventName);
@@ -293,4 +328,3 @@ export class ConfigBuilderService {
 export function getConfigBuilder(): ConfigBuilderService {
   return ConfigBuilderService.getInstance();
 }
-

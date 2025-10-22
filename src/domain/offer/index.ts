@@ -14,17 +14,17 @@ import { handleOfferCancelled } from "./handlers/offer-cancelled.handler";
  */
 export function registerOfferHandlers() {
   ponder.on(
-    "offermanager_anvil_0x9a9f:OfferCreated",
+    "offermanager_anvil:OfferCreated",
     wrapHandler("OfferCreated", handleOfferCreated)
   );
 
   ponder.on(
-    "offermanager_anvil_0x9a9f:OfferAccepted",
+    "offermanager_anvil:OfferAccepted",
     wrapHandler("OfferAccepted", handleOfferAccepted)
   );
 
   ponder.on(
-    "offermanager_anvil_0x9a9f:OfferCancelled",
+    "offermanager_anvil:OfferCancelled",
     wrapHandler("OfferCancelled", handleOfferCancelled)
   );
 }

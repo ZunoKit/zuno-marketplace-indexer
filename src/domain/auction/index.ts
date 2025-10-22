@@ -12,7 +12,7 @@ import { handleAuctionCreated } from "./handlers/auction-created.handler";
  */
 export function registerAuctionHandlers() {
   ponder.on(
-    "advancedlistingmanager_anvil_0x3aa5:AuctionCreated",
+    "advancedlistingmanager_anvil:AuctionCreated",
     wrapHandler("AuctionCreated", handleAuctionCreated)
   );
 }

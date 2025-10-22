@@ -15,54 +15,54 @@ import { handleNFTPurchased } from "./handlers/nft-purchased.handler";
 export function registerTradingHandlers() {
   // AdvancedListingManager Events
   ponder.on(
-    "advancedlistingmanager_anvil_0x3aa5:ListingCreated",
+    "advancedlistingmanager_anvil:ListingCreated",
     wrapHandler("ListingCreated", handleListingCreated)
   );
 
   ponder.on(
-    "advancedlistingmanager_anvil_0x3aa5:ListingCancelled",
+    "advancedlistingmanager_anvil:ListingCancelled",
     wrapHandler("ListingCancelled", handleListingCancelled)
   );
 
   ponder.on(
-    "advancedlistingmanager_anvil_0x3aa5:ListingUpdated",
+    "advancedlistingmanager_anvil:ListingUpdated",
     wrapHandler("ListingUpdated", handleListingCreated)
   );
 
   ponder.on(
-    "advancedlistingmanager_anvil_0x3aa5:NFTPurchased",
+    "advancedlistingmanager_anvil:NFTPurchased",
     wrapHandler("NFTPurchased", handleNFTPurchased)
   );
 
   // ERC721 NFTExchange Events
   ponder.on(
-    "erc721nftexchange_anvil_0x8a79:NFTListed",
+    "erc721nftexchange_anvil:NFTListed",
     wrapHandler("NFTListed", handleListingCreated)
   );
 
   ponder.on(
-    "erc721nftexchange_anvil_0x8a79:ListingCancelled",
+    "erc721nftexchange_anvil:ListingCancelled",
     wrapHandler("ListingCancelled", handleListingCancelled)
   );
 
   ponder.on(
-    "erc721nftexchange_anvil_0x8a79:NFTSold",
+    "erc721nftexchange_anvil:NFTSold",
     wrapHandler("NFTSold", handleNFTPurchased)
   );
 
   // ERC1155 NFTExchange Events
   ponder.on(
-    "erc1155nftexchange_anvil_0xb7f8:NFTListed",
+    "erc1155nftexchange_anvil:NFTListed",
     wrapHandler("NFTListed", handleListingCreated)
   );
 
   ponder.on(
-    "erc1155nftexchange_anvil_0xb7f8:ListingCancelled",
+    "erc1155nftexchange_anvil:ListingCancelled",
     wrapHandler("ListingCancelled", handleListingCancelled)
   );
 
   ponder.on(
-    "erc1155nftexchange_anvil_0xb7f8:NFTSold",
+    "erc1155nftexchange_anvil:NFTSold",
     wrapHandler("NFTSold", handleNFTPurchased)
   );
 }

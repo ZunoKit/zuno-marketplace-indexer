@@ -6,7 +6,7 @@
  * This file is generated from Zuno Marketplace ABIs API.
  * To regenerate: pnpm generate-config
  * 
- * Generated: 2025-10-21T14:14:06.006Z
+ * Generated: 2025-10-22T10:34:18.471Z
  * Chains: 1
  * Contracts: 7
  */
@@ -27,12 +27,1202 @@ export default createConfig({
       rpc: "http://127.0.0.1:8545",
       maxRequestsPerSecond: 50,
       disableCache: true,
-
     }
   },
 
   contracts: {
-    advancedlistingmanager_anvil_0x3aa5: {
+    offermanager_anvil: {
+      chain: "anvil",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_accessControl",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "_feeManager",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "MAX_OFFER_DURATION",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "MIN_OFFER_DURATION",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "acceptCollectionOffer",
+          type: "function",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "acceptNFTOffer",
+          type: "function",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "accessControl",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract MarketplaceAccessControl"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "activeCollectionOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "activeNFTOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "activeOfferIndex",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "activeTraitOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "cancelOffer",
+          type: "function",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            },
+            {
+              name: "reason",
+              type: "string",
+              internalType: "string"
+            }
+          ],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "collectionOfferIds",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "collectionOfferProgress",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "filled",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "expiration",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "createdAt",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "paymentToken",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "collectionOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            },
+            {
+              name: "offerer",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "quantity",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "status",
+              type: "uint8",
+              internalType: "enum OfferManager.OfferStatus"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "createCollectionOffer",
+          type: "function",
+          inputs: [
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "paymentToken",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "quantity",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "expiration",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "payable"
+        },
+        {
+          name: "createNFTOffer",
+          type: "function",
+          inputs: [
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "paymentToken",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "expiration",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "payable"
+        },
+        {
+          name: "createTraitOffer",
+          type: "function",
+          inputs: [
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "traitType",
+              type: "string",
+              internalType: "string"
+            },
+            {
+              name: "traitValue",
+              type: "string",
+              internalType: "string"
+            },
+            {
+              name: "paymentToken",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "quantity",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "expiration",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "payable"
+        },
+        {
+          name: "excludedTokens",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "feeManager",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract AdvancedFeeManager"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getActiveOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "offerType",
+              type: "uint8",
+              internalType: "enum OfferManager.OfferType"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getOffersByCollection",
+          type: "function",
+          inputs: [
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "offerType",
+              type: "uint8",
+              internalType: "enum OfferManager.OfferType"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getOffersByOfferer",
+          type: "function",
+          inputs: [
+            {
+              name: "offerer",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "offerType",
+              type: "uint8",
+              internalType: "enum OfferManager.OfferType"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32[]",
+              internalType: "bytes32[]"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "nftOfferDetails",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "paymentToken",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "acceptedBy",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "nftOfferIds",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "nftOfferTiming",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "expiration",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "createdAt",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "acceptedAt",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "nftOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            },
+            {
+              name: "offerer",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "status",
+              type: "uint8",
+              internalType: "enum OfferManager.OfferStatus"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "offerCounter",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "owner",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "pause",
+          type: "function",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "paused",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "renounceOwnership",
+          type: "function",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "totalOffersAccepted",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "totalOffersCreated",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "traitOfferDetails",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "traitType",
+              type: "string",
+              internalType: "string"
+            },
+            {
+              name: "traitValue",
+              type: "string",
+              internalType: "string"
+            },
+            {
+              name: "paymentToken",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "expiration",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "createdAt",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "filled",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "traitOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          outputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              internalType: "bytes32"
+            },
+            {
+              name: "offerer",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "quantity",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "status",
+              type: "uint8",
+              internalType: "enum OfferManager.OfferStatus"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "transferOwnership",
+          type: "function",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "unpause",
+          type: "function",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "userOffers",
+          type: "function",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "CollectionOfferFilled",
+          type: "event",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32"
+            },
+            {
+              name: "seller",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: true,
+              internalType: "uint256"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "OfferAccepted",
+          type: "event",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32"
+            },
+            {
+              name: "accepter",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "collection",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "OfferCancelled",
+          type: "event",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32"
+            },
+            {
+              name: "offerer",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "reason",
+              type: "string",
+              indexed: false,
+              internalType: "string"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "OfferCreated",
+          type: "event",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32"
+            },
+            {
+              name: "offerer",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "collection",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256"
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256"
+            },
+            {
+              name: "offerType",
+              type: "uint8",
+              indexed: false,
+              internalType: "enum OfferManager.OfferType"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "OfferExpired",
+          type: "event",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32"
+            },
+            {
+              name: "offerer",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "OwnershipTransferred",
+          type: "event",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "Paused",
+          type: "event",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              indexed: false,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "TraitOfferFilled",
+          type: "event",
+          inputs: [
+            {
+              name: "offerId",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32"
+            },
+            {
+              name: "seller",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: true,
+              internalType: "uint256"
+            },
+            {
+              name: "traitType",
+              type: "string",
+              indexed: false,
+              internalType: "string"
+            },
+            {
+              name: "traitValue",
+              type: "string",
+              indexed: false,
+              internalType: "string"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "Unpaused",
+          type: "event",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              indexed: false,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "EnforcedPause",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "ExpectedPause",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidCollection",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidDuration",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidListing",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidOwner",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidParameters",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidPrice",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__InvalidQuantity",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__ListingExpired",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__NotTheOwner",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "NFTExchange__TransferToSellerFailed",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "OwnableInvalidOwner",
+          type: "error",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address"
+            }
+          ]
+        },
+        {
+          name: "OwnableUnauthorizedAccount",
+          type: "error",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address"
+            }
+          ]
+        },
+        {
+          name: "ReentrancyGuardReentrantCall",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "SafeERC20FailedOperation",
+          type: "error",
+          inputs: [
+            {
+              name: "token",
+              type: "address",
+              internalType: "address"
+            }
+          ]
+        }
+      ],
+      address: "0x68b1d87f95878fe05b998f19b66f4baba5de1aed"
+    },
+    advancedlistingmanager_anvil: {
       chain: "anvil",
       abi: [
         {
@@ -2233,21 +3423,21 @@ export default createConfig({
           inputs: []
         }
       ],
-      address: "0x3aa5ebb10dc797cac828524e59a333d0a371443c"
+      address: "0xc6e7df5e7b4f2a278906862b61205850344d4e7d"
     },
-    offermanager_anvil_0x9a9f: {
+    collectionfactoryregistry_anvil: {
       chain: "anvil",
       abi: [
         {
           type: "constructor",
           inputs: [
             {
-              name: "_accessControl",
+              name: "_erc721Factory",
               type: "address",
               internalType: "address"
             },
             {
-              name: "_feeManager",
+              name: "_erc1155Factory",
               type: "address",
               internalType: "address"
             }
@@ -2255,7 +3445,267 @@ export default createConfig({
           stateMutability: "nonpayable"
         },
         {
-          name: "MAX_OFFER_DURATION",
+          name: "contractType",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "createERC1155Collection",
+          type: "function",
+          inputs: [
+            {
+              name: "params",
+              type: "tuple",
+              components: [
+                {
+                  name: "name",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "symbol",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "owner",
+                  type: "address",
+                  internalType: "address"
+                },
+                {
+                  name: "description",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "mintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "royaltyFee",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "maxSupply",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintLimitPerWallet",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintStartTime",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "publicMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistStageDuration",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "tokenURI",
+                  type: "string",
+                  internalType: "string"
+                }
+              ],
+              internalType: "struct CollectionParams"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "createERC721Collection",
+          type: "function",
+          inputs: [
+            {
+              name: "params",
+              type: "tuple",
+              components: [
+                {
+                  name: "name",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "symbol",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "owner",
+                  type: "address",
+                  internalType: "address"
+                },
+                {
+                  name: "description",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "mintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "royaltyFee",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "maxSupply",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintLimitPerWallet",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintStartTime",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "publicMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistStageDuration",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "tokenURI",
+                  type: "string",
+                  internalType: "string"
+                }
+              ],
+              internalType: "struct CollectionParams"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "erc1155Factory",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract ERC1155CollectionFactory"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "erc721Factory",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract ERC721CollectionFactory"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getFactoryAddresses",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "erc721FactoryAddr",
+              type: "address",
+              internalType: "address"
+            },
+            {
+              name: "erc1155FactoryAddr",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getFactoryCollectionCounts",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "erc721Count",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "erc1155Count",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getSupportedStandards",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string[]",
+              internalType: "string[]"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "getTotalCollections",
           type: "function",
           inputs: [],
           outputs: [
@@ -2268,398 +3718,26 @@ export default createConfig({
           stateMutability: "view"
         },
         {
-          name: "MIN_OFFER_DURATION",
+          name: "isActive",
           type: "function",
           inputs: [],
           outputs: [
             {
               name: "",
-              type: "uint256",
-              internalType: "uint256"
+              type: "bool",
+              internalType: "bool"
             }
           ],
-          stateMutability: "view"
+          stateMutability: "pure"
         },
         {
-          name: "acceptCollectionOffer",
-          type: "function",
-          inputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            },
-            {
-              name: "tokenId",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "acceptNFTOffer",
-          type: "function",
-          inputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "accessControl",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "contract MarketplaceAccessControl"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "activeCollectionOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "activeNFTOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "activeOfferIndex",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "activeTraitOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "cancelOffer",
-          type: "function",
-          inputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            },
-            {
-              name: "reason",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          outputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "collectionOfferIds",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "collectionOfferProgress",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "filled",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "expiration",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "createdAt",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "paymentToken",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "collectionOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            },
-            {
-              name: "offerer",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "quantity",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "status",
-              type: "uint8",
-              internalType: "enum OfferManager.OfferStatus"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "createCollectionOffer",
+          name: "isValidCollection",
           type: "function",
           inputs: [
             {
               name: "collection",
               type: "address",
               internalType: "address"
-            },
-            {
-              name: "paymentToken",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "quantity",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "expiration",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "payable"
-        },
-        {
-          name: "createNFTOffer",
-          type: "function",
-          inputs: [
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "tokenId",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "paymentToken",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "expiration",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "payable"
-        },
-        {
-          name: "createTraitOffer",
-          type: "function",
-          inputs: [
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "traitType",
-              type: "string",
-              internalType: "string"
-            },
-            {
-              name: "traitValue",
-              type: "string",
-              internalType: "string"
-            },
-            {
-              name: "paymentToken",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "quantity",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "expiration",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "payable"
-        },
-        {
-          name: "excludedTokens",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            },
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
             }
           ],
           outputs: [
@@ -2672,248 +3750,15 @@ export default createConfig({
           stateMutability: "view"
         },
         {
-          name: "feeManager",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "contract AdvancedFeeManager"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getActiveOffers",
+          name: "supportsInterface",
           type: "function",
           inputs: [
             {
-              name: "offerType",
-              type: "uint8",
-              internalType: "enum OfferManager.OfferType"
+              name: "interfaceId",
+              type: "bytes4",
+              internalType: "bytes4"
             }
           ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32[]",
-              internalType: "bytes32[]"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getOffersByCollection",
-          type: "function",
-          inputs: [
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "offerType",
-              type: "uint8",
-              internalType: "enum OfferManager.OfferType"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32[]",
-              internalType: "bytes32[]"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getOffersByOfferer",
-          type: "function",
-          inputs: [
-            {
-              name: "offerer",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "offerType",
-              type: "uint8",
-              internalType: "enum OfferManager.OfferType"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32[]",
-              internalType: "bytes32[]"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "nftOfferDetails",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "paymentToken",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "acceptedBy",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "nftOfferIds",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "nftOfferTiming",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "expiration",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "createdAt",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "acceptedAt",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "nftOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            },
-            {
-              name: "offerer",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "tokenId",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "status",
-              type: "uint8",
-              internalType: "enum OfferManager.OfferStatus"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "offerCounter",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "owner",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "pause",
-          type: "function",
-          inputs: [],
-          outputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "paused",
-          type: "function",
-          inputs: [],
           outputs: [
             {
               name: "",
@@ -2924,14 +3769,213 @@ export default createConfig({
           stateMutability: "view"
         },
         {
-          name: "renounceOwnership",
+          name: "version",
           type: "function",
           inputs: [],
-          outputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "ERC1155CollectionCreated",
+          type: "event",
+          inputs: [
+            {
+              name: "collectionAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "creator",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "ERC721CollectionCreated",
+          type: "event",
+          inputs: [
+            {
+              name: "collectionAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "creator",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "FactoriesSet",
+          type: "event",
+          inputs: [
+            {
+              name: "erc721Factory",
+              type: "address",
+              indexed: false,
+              internalType: "address"
+            },
+            {
+              name: "erc1155Factory",
+              type: "address",
+              indexed: false,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        }
+      ],
+      address: "0x959922be3caee4b8cd9a407cc3ac1c251c2007b1"
+    },
+    erc1155collectionfactory_anvil: {
+      chain: "anvil",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [],
           stateMutability: "nonpayable"
         },
         {
-          name: "totalOffersAccepted",
+          name: "contractType",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "createERC1155Collection",
+          type: "function",
+          inputs: [
+            {
+              name: "params",
+              type: "tuple",
+              components: [
+                {
+                  name: "name",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "symbol",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "owner",
+                  type: "address",
+                  internalType: "address"
+                },
+                {
+                  name: "description",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "mintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "royaltyFee",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "maxSupply",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintLimitPerWallet",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintStartTime",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "publicMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistStageDuration",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "tokenURI",
+                  type: "string",
+                  internalType: "string"
+                }
+              ],
+              internalType: "struct CollectionParams"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "erc1155CollectionImplementation",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getSupportedStandards",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string[]",
+              internalType: "string[]"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "getTotalCollections",
           type: "function",
           inputs: [],
           outputs: [
@@ -2944,489 +3988,392 @@ export default createConfig({
           stateMutability: "view"
         },
         {
-          name: "totalOffersCreated",
+          name: "isActive",
           type: "function",
           inputs: [],
           outputs: [
             {
               name: "",
-              type: "uint256",
-              internalType: "uint256"
+              type: "bool",
+              internalType: "bool"
             }
           ],
-          stateMutability: "view"
+          stateMutability: "pure"
         },
         {
-          name: "traitOfferDetails",
+          name: "isValidCollection",
           type: "function",
           inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "traitType",
-              type: "string",
-              internalType: "string"
-            },
-            {
-              name: "traitValue",
-              type: "string",
-              internalType: "string"
-            },
-            {
-              name: "paymentToken",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "expiration",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "createdAt",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "filled",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "traitOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "bytes32",
-              internalType: "bytes32"
-            }
-          ],
-          outputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              internalType: "bytes32"
-            },
-            {
-              name: "offerer",
-              type: "address",
-              internalType: "address"
-            },
             {
               name: "collection",
               type: "address",
               internalType: "address"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "quantity",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "status",
-              type: "uint8",
-              internalType: "enum OfferManager.OfferStatus"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "transferOwnership",
-          type: "function",
-          inputs: [
-            {
-              name: "newOwner",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          outputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "unpause",
-          type: "function",
-          inputs: [],
-          outputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "userOffers",
-          type: "function",
-          inputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
             }
           ],
           outputs: [
             {
               name: "",
-              type: "bytes32",
-              internalType: "bytes32"
+              type: "bool",
+              internalType: "bool"
             }
           ],
           stateMutability: "view"
         },
         {
-          name: "CollectionOfferFilled",
-          type: "event",
+          name: "supportsInterface",
+          type: "function",
           inputs: [
             {
-              name: "offerId",
-              type: "bytes32",
-              indexed: true,
-              internalType: "bytes32"
-            },
-            {
-              name: "seller",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "tokenId",
-              type: "uint256",
-              indexed: true,
-              internalType: "uint256"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              indexed: false,
-              internalType: "uint256"
+              name: "interfaceId",
+              type: "bytes4",
+              internalType: "bytes4"
             }
           ],
-          anonymous: false
-        },
-        {
-          name: "OfferAccepted",
-          type: "event",
-          inputs: [
+          outputs: [
             {
-              name: "offerId",
-              type: "bytes32",
-              indexed: true,
-              internalType: "bytes32"
-            },
-            {
-              name: "accepter",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "collection",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "tokenId",
-              type: "uint256",
-              indexed: false,
-              internalType: "uint256"
-            },
-            {
-              name: "amount",
-              type: "uint256",
-              indexed: false,
-              internalType: "uint256"
+              name: "",
+              type: "bool",
+              internalType: "bool"
             }
           ],
-          anonymous: false
+          stateMutability: "view"
         },
         {
-          name: "OfferCancelled",
-          type: "event",
-          inputs: [
+          name: "version",
+          type: "function",
+          inputs: [],
+          outputs: [
             {
-              name: "offerId",
-              type: "bytes32",
-              indexed: true,
-              internalType: "bytes32"
-            },
-            {
-              name: "offerer",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "reason",
+              name: "",
               type: "string",
-              indexed: false,
               internalType: "string"
             }
           ],
-          anonymous: false
+          stateMutability: "pure"
         },
         {
-          name: "OfferCreated",
+          name: "ERC1155CollectionCreated",
           type: "event",
           inputs: [
             {
-              name: "offerId",
-              type: "bytes32",
-              indexed: true,
-              internalType: "bytes32"
-            },
-            {
-              name: "offerer",
+              name: "collectionAddress",
               type: "address",
               indexed: true,
               internalType: "address"
             },
             {
-              name: "collection",
+              name: "creator",
               type: "address",
               indexed: true,
               internalType: "address"
-            },
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "ImplementationDeployed",
+          type: "event",
+          inputs: [
             {
-              name: "tokenId",
+              name: "implementation",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "FailedDeployment",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "InsufficientBalance",
+          type: "error",
+          inputs: [
+            {
+              name: "balance",
               type: "uint256",
-              indexed: false,
               internalType: "uint256"
             },
             {
-              name: "amount",
+              name: "needed",
               type: "uint256",
-              indexed: false,
               internalType: "uint256"
-            },
-            {
-              name: "offerType",
-              type: "uint8",
-              indexed: false,
-              internalType: "enum OfferManager.OfferType"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "OfferExpired",
-          type: "event",
-          inputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              indexed: true,
-              internalType: "bytes32"
-            },
-            {
-              name: "offerer",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "OwnershipTransferred",
-          type: "event",
-          inputs: [
-            {
-              name: "previousOwner",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "newOwner",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "Paused",
-          type: "event",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              indexed: false,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "TraitOfferFilled",
-          type: "event",
-          inputs: [
-            {
-              name: "offerId",
-              type: "bytes32",
-              indexed: true,
-              internalType: "bytes32"
-            },
-            {
-              name: "seller",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "tokenId",
-              type: "uint256",
-              indexed: true,
-              internalType: "uint256"
-            },
-            {
-              name: "traitType",
-              type: "string",
-              indexed: false,
-              internalType: "string"
-            },
-            {
-              name: "traitValue",
-              type: "string",
-              indexed: false,
-              internalType: "string"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "Unpaused",
-          type: "event",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              indexed: false,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "EnforcedPause",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "ExpectedPause",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidCollection",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidDuration",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidListing",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidOwner",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidParameters",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidPrice",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__InvalidQuantity",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__ListingExpired",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__NotTheOwner",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "NFTExchange__TransferToSellerFailed",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "OwnableInvalidOwner",
-          type: "error",
-          inputs: [
-            {
-              name: "owner",
-              type: "address",
-              internalType: "address"
-            }
-          ]
-        },
-        {
-          name: "OwnableUnauthorizedAccount",
-          type: "error",
-          inputs: [
-            {
-              name: "account",
-              type: "address",
-              internalType: "address"
-            }
-          ]
-        },
-        {
-          name: "ReentrancyGuardReentrantCall",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "SafeERC20FailedOperation",
-          type: "error",
-          inputs: [
-            {
-              name: "token",
-              type: "address",
-              internalType: "address"
             }
           ]
         }
       ],
-      address: "0x9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae"
+      address: "0x0b306bf915c4d645ff596e518faf3f9669b97016"
     },
-    erc1155nftexchange_anvil_0xb7f8: {
+    erc721collectionfactory_anvil: {
+      chain: "anvil",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "contractType",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "createERC721Collection",
+          type: "function",
+          inputs: [
+            {
+              name: "params",
+              type: "tuple",
+              components: [
+                {
+                  name: "name",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "symbol",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "owner",
+                  type: "address",
+                  internalType: "address"
+                },
+                {
+                  name: "description",
+                  type: "string",
+                  internalType: "string"
+                },
+                {
+                  name: "mintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "royaltyFee",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "maxSupply",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintLimitPerWallet",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "mintStartTime",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "publicMintPrice",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "allowlistStageDuration",
+                  type: "uint256",
+                  internalType: "uint256"
+                },
+                {
+                  name: "tokenURI",
+                  type: "string",
+                  internalType: "string"
+                }
+              ],
+              internalType: "struct CollectionParams"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "nonpayable"
+        },
+        {
+          name: "erc721CollectionImplementation",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "getSupportedStandards",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string[]",
+              internalType: "string[]"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "getTotalCollections",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "isActive",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "isValidCollection",
+          type: "function",
+          inputs: [
+            {
+              name: "collection",
+              type: "address",
+              internalType: "address"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "supportsInterface",
+          type: "function",
+          inputs: [
+            {
+              name: "interfaceId",
+              type: "bytes4",
+              internalType: "bytes4"
+            }
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool"
+            }
+          ],
+          stateMutability: "view"
+        },
+        {
+          name: "version",
+          type: "function",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string"
+            }
+          ],
+          stateMutability: "pure"
+        },
+        {
+          name: "ERC721CollectionCreated",
+          type: "event",
+          inputs: [
+            {
+              name: "collectionAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            },
+            {
+              name: "creator",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "ImplementationDeployed",
+          type: "event",
+          inputs: [
+            {
+              name: "implementation",
+              type: "address",
+              indexed: true,
+              internalType: "address"
+            }
+          ],
+          anonymous: false
+        },
+        {
+          name: "FailedDeployment",
+          type: "error",
+          inputs: []
+        },
+        {
+          name: "InsufficientBalance",
+          type: "error",
+          inputs: [
+            {
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256"
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256"
+            }
+          ]
+        }
+      ],
+      address: "0x9a676e781a523b5d0c0e43731313a708cb607508"
+    },
+    erc1155nftexchange_anvil: {
       chain: "anvil",
       abi: [
         {
@@ -4448,957 +5395,9 @@ export default createConfig({
           inputs: []
         }
       ],
-      address: "0xb7f8bc63bbcad18155201308c8f3540b07f84f5e"
+      address: "0xa51c1fc2f0d1a1b8494ed1fe312d7c3a78ed91c0"
     },
-    erc721collectionfactory_anvil_0x0dcd: {
-      chain: "anvil",
-      abi: [
-        {
-          type: "constructor",
-          inputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "contractType",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "createERC721Collection",
-          type: "function",
-          inputs: [
-            {
-              name: "params",
-              type: "tuple",
-              components: [
-                {
-                  name: "name",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "symbol",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "owner",
-                  type: "address",
-                  internalType: "address"
-                },
-                {
-                  name: "description",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "mintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "royaltyFee",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "maxSupply",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintLimitPerWallet",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintStartTime",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "publicMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistStageDuration",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "tokenURI",
-                  type: "string",
-                  internalType: "string"
-                }
-              ],
-              internalType: "struct CollectionParams"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "erc721CollectionImplementation",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getSupportedStandards",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string[]",
-              internalType: "string[]"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "getTotalCollections",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "isActive",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "isValidCollection",
-          type: "function",
-          inputs: [
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "supportsInterface",
-          type: "function",
-          inputs: [
-            {
-              name: "interfaceId",
-              type: "bytes4",
-              internalType: "bytes4"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "version",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "ERC721CollectionCreated",
-          type: "event",
-          inputs: [
-            {
-              name: "collectionAddress",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "creator",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "ImplementationDeployed",
-          type: "event",
-          inputs: [
-            {
-              name: "implementation",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "FailedDeployment",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "InsufficientBalance",
-          type: "error",
-          inputs: [
-            {
-              name: "balance",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "needed",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ]
-        }
-      ],
-      address: "0x0dcd1bf9a1b36ce34237eeafef220932846bcd82"
-    },
-    collectionfactoryregistry_anvil_0x0b30: {
-      chain: "anvil",
-      abi: [
-        {
-          type: "constructor",
-          inputs: [
-            {
-              name: "_erc721Factory",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "_erc1155Factory",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "contractType",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "createERC1155Collection",
-          type: "function",
-          inputs: [
-            {
-              name: "params",
-              type: "tuple",
-              components: [
-                {
-                  name: "name",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "symbol",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "owner",
-                  type: "address",
-                  internalType: "address"
-                },
-                {
-                  name: "description",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "mintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "royaltyFee",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "maxSupply",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintLimitPerWallet",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintStartTime",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "publicMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistStageDuration",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "tokenURI",
-                  type: "string",
-                  internalType: "string"
-                }
-              ],
-              internalType: "struct CollectionParams"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "createERC721Collection",
-          type: "function",
-          inputs: [
-            {
-              name: "params",
-              type: "tuple",
-              components: [
-                {
-                  name: "name",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "symbol",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "owner",
-                  type: "address",
-                  internalType: "address"
-                },
-                {
-                  name: "description",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "mintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "royaltyFee",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "maxSupply",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintLimitPerWallet",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintStartTime",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "publicMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistStageDuration",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "tokenURI",
-                  type: "string",
-                  internalType: "string"
-                }
-              ],
-              internalType: "struct CollectionParams"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "erc1155Factory",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "contract ERC1155CollectionFactory"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "erc721Factory",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "contract ERC721CollectionFactory"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getFactoryAddresses",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "erc721FactoryAddr",
-              type: "address",
-              internalType: "address"
-            },
-            {
-              name: "erc1155FactoryAddr",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getFactoryCollectionCounts",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "erc721Count",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "erc1155Count",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getSupportedStandards",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string[]",
-              internalType: "string[]"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "getTotalCollections",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "isActive",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "isValidCollection",
-          type: "function",
-          inputs: [
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "supportsInterface",
-          type: "function",
-          inputs: [
-            {
-              name: "interfaceId",
-              type: "bytes4",
-              internalType: "bytes4"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "version",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "ERC1155CollectionCreated",
-          type: "event",
-          inputs: [
-            {
-              name: "collectionAddress",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "creator",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "ERC721CollectionCreated",
-          type: "event",
-          inputs: [
-            {
-              name: "collectionAddress",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "creator",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "FactoriesSet",
-          type: "event",
-          inputs: [
-            {
-              name: "erc721Factory",
-              type: "address",
-              indexed: false,
-              internalType: "address"
-            },
-            {
-              name: "erc1155Factory",
-              type: "address",
-              indexed: false,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        }
-      ],
-      address: "0x0b306bf915c4d645ff596e518faf3f9669b97016"
-    },
-    erc1155collectionfactory_anvil_0x9a67: {
-      chain: "anvil",
-      abi: [
-        {
-          type: "constructor",
-          inputs: [],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "contractType",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "createERC1155Collection",
-          type: "function",
-          inputs: [
-            {
-              name: "params",
-              type: "tuple",
-              components: [
-                {
-                  name: "name",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "symbol",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "owner",
-                  type: "address",
-                  internalType: "address"
-                },
-                {
-                  name: "description",
-                  type: "string",
-                  internalType: "string"
-                },
-                {
-                  name: "mintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "royaltyFee",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "maxSupply",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintLimitPerWallet",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "mintStartTime",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "publicMintPrice",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "allowlistStageDuration",
-                  type: "uint256",
-                  internalType: "uint256"
-                },
-                {
-                  name: "tokenURI",
-                  type: "string",
-                  internalType: "string"
-                }
-              ],
-              internalType: "struct CollectionParams"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "nonpayable"
-        },
-        {
-          name: "erc1155CollectionImplementation",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "getSupportedStandards",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string[]",
-              internalType: "string[]"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "getTotalCollections",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "isActive",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "isValidCollection",
-          type: "function",
-          inputs: [
-            {
-              name: "collection",
-              type: "address",
-              internalType: "address"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "supportsInterface",
-          type: "function",
-          inputs: [
-            {
-              name: "interfaceId",
-              type: "bytes4",
-              internalType: "bytes4"
-            }
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bool",
-              internalType: "bool"
-            }
-          ],
-          stateMutability: "view"
-        },
-        {
-          name: "version",
-          type: "function",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string"
-            }
-          ],
-          stateMutability: "pure"
-        },
-        {
-          name: "ERC1155CollectionCreated",
-          type: "event",
-          inputs: [
-            {
-              name: "collectionAddress",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            },
-            {
-              name: "creator",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "ImplementationDeployed",
-          type: "event",
-          inputs: [
-            {
-              name: "implementation",
-              type: "address",
-              indexed: true,
-              internalType: "address"
-            }
-          ],
-          anonymous: false
-        },
-        {
-          name: "FailedDeployment",
-          type: "error",
-          inputs: []
-        },
-        {
-          name: "InsufficientBalance",
-          type: "error",
-          inputs: [
-            {
-              name: "balance",
-              type: "uint256",
-              internalType: "uint256"
-            },
-            {
-              name: "needed",
-              type: "uint256",
-              internalType: "uint256"
-            }
-          ]
-        }
-      ],
-      address: "0x9a676e781a523b5d0c0e43731313a708cb607508"
-    },
-    erc721nftexchange_anvil_0x8a79: {
+    erc721nftexchange_anvil: {
       chain: "anvil",
       abi: [
         {
@@ -6426,7 +6425,7 @@ export default createConfig({
           inputs: []
         }
       ],
-      address: "0x8a791620dd6260079bf849dc5567adc3f2fdc318"
+      address: "0x610178da211fef7d417bc0e6fed39f05609ad788"
     }
   },
 });

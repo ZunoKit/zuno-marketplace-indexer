@@ -14,24 +14,24 @@ import { handleERC1155Created } from "./handlers/erc1155-created.handler";
 export function registerCollectionHandlers() {
   // ERC721 Collection Factory
   ponder.on(
-    "erc721collectionfactory_anvil_0x0dcd:ERC721CollectionCreated",
+    "erc721collectionfactory_anvil:ERC721CollectionCreated",
     wrapHandler("ERC721CollectionCreated", handleERC721Created)
   );
 
   // ERC1155 Collection Factory
   ponder.on(
-    "erc1155collectionfactory_anvil_0x9a67:ERC1155CollectionCreated",
+    "erc1155collectionfactory_anvil:ERC1155CollectionCreated",
     wrapHandler("ERC1155CollectionCreated", handleERC1155Created)
   );
 
   // Collection Factory Registry
   ponder.on(
-    "collectionfactoryregistry_anvil_0x0b30:ERC721CollectionCreated",
+    "collectionfactoryregistry_anvil:ERC721CollectionCreated",
     wrapHandler("ERC721CollectionCreated", handleERC721Created)
   );
 
   ponder.on(
-    "collectionfactoryregistry_anvil_0x0b30:ERC1155CollectionCreated",
+    "collectionfactoryregistry_anvil:ERC1155CollectionCreated",
     wrapHandler("ERC1155CollectionCreated", handleERC1155Created)
   );
 }
