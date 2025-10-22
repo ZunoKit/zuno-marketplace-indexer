@@ -213,8 +213,6 @@ pnpm setup              # Run generate-config + codegen
 
 # Build & Deployment
 pnpm build              # Build the project (generate-config + codegen)
-pnpm railway:build      # Railway build command
-pnpm railway:start      # Railway start command
 
 # Code Quality
 pnpm lint               # Run ESLint
@@ -255,52 +253,7 @@ PONDER_RPC_URL_8453   # Base
 - Add JSDoc comments for public functions
 - Write descriptive commit messages
 
-## 🚂 Railway Deployment
-
-### Quick Deploy to Railway
-
-```bash
-# Install Railway CLI
-npm install -g @railway/cli
-
-# Login
-railway login
-
-# Initialize project
-railway init
-
-# Add PostgreSQL
-railway add --database postgres
-
-# Setup environment variables
-bash scripts/setup-railway-env.sh
-
-# Deploy!
-railway up
-```
-
-### Railway Configuration
-
-The project includes Railway-specific configuration:
-
-- **`railway.json`**: Railway deployment configuration
-- **`railway.toml`**: Railway service configuration
-- **`Procfile`**: Process definition for Railway
-- **`scripts/deploy-railway.sh`**: Automated deployment script
-- **`scripts/setup-railway-env.sh`**: Environment setup script
-
-### Build Commands
-
-Railway uses the following build commands:
-
-- **Build**: `pnpm railway:build` (installs dependencies + generates config)
-- **Start**: `pnpm railway:start` (starts the indexer)
-
-See **[RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)** for complete deployment guide.
-
-### Deploy Button
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/yourusername/zuno-marketplace-indexer)
+ 
 
 ## 📝 License
 
