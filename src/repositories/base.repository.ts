@@ -4,7 +4,8 @@
  * Following Repository pattern for data access abstraction
  */
 
-import type { Address, Result, Timestamp } from "../shared/types";
+import type { Address, Result, Timestamp } from "@/shared/types";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
 
 export interface BaseEntity {
   id?: string;
@@ -23,6 +24,7 @@ export interface DatabaseContext {
 export abstract class BaseRepository<T extends BaseEntity> {
   protected context: DatabaseContext;
   protected tableName: string;
+  protected logger = getEventLogger();
 
   constructor(context: DatabaseContext, tableName: string) {
     this.context = context;
@@ -52,10 +54,14 @@ export abstract class BaseRepository<T extends BaseEntity> {
       await this.db.insert(table).values(entity);
       return { success: true, data: entity as T };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] Create error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.create`,
+        error as Error,
+        { entity }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Create failed')
+        error: error instanceof Error ? error : new Error("Create failed"),
       };
     }
   }
@@ -75,13 +81,17 @@ export abstract class BaseRepository<T extends BaseEntity> {
 
       return {
         success: true,
-        data: results.length > 0 ? results[0] : null
+        data: results.length > 0 ? results[0] : null,
       };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] FindById error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.findById`,
+        error as Error,
+        { id }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('FindById failed')
+        error: error instanceof Error ? error : new Error("FindById failed"),
       };
     }
   }
@@ -101,13 +111,18 @@ export abstract class BaseRepository<T extends BaseEntity> {
 
       return {
         success: true,
-        data: results.length > 0 ? results[0] : null
+        data: results.length > 0 ? results[0] : null,
       };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] FindByAddress error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.findByAddress`,
+        error as Error,
+        { address }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('FindByAddress failed')
+        error:
+          error instanceof Error ? error : new Error("FindByAddress failed"),
       };
     }
   }
@@ -118,9 +133,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
   async update(id: string, data: Partial<T>): Promise<Result<T>> {
     try {
       const table = this.getTable();
-      await this.db
-        .update(table, { id })
-        .set(data);
+      await this.db.update(table, { id }).set(data);
 
       // Return updated entity
       const result = await this.findById(id);
@@ -130,13 +143,17 @@ export abstract class BaseRepository<T extends BaseEntity> {
 
       return {
         success: false,
-        error: new Error('Entity not found after update')
+        error: new Error("Entity not found after update"),
       };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] Update error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.update`,
+        error as Error,
+        { id, data }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Update failed')
+        error: error instanceof Error ? error : new Error("Update failed"),
       };
     }
   }
@@ -147,16 +164,18 @@ export abstract class BaseRepository<T extends BaseEntity> {
   async delete(id: string): Promise<Result<boolean>> {
     try {
       const table = this.getTable();
-      await this.db
-        .delete(table)
-        .where((q: any) => q.id.equals(id));
+      await this.db.delete(table).where((q: any) => q.id.equals(id));
 
       return { success: true, data: true };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] Delete error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.delete`,
+        error as Error,
+        { id }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Delete failed')
+        error: error instanceof Error ? error : new Error("Delete failed"),
       };
     }
   }
@@ -179,10 +198,14 @@ export abstract class BaseRepository<T extends BaseEntity> {
       const results = await query.execute();
       return { success: true, data: results };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] FindAll error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.findAll`,
+        error as Error,
+        { filters }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('FindAll failed')
+        error: error instanceof Error ? error : new Error("FindAll failed"),
       };
     }
   }
@@ -198,10 +221,14 @@ export abstract class BaseRepository<T extends BaseEntity> {
       }
       return { success: true, data: result.data.length };
     } catch (error) {
-      console.error(`[${this.tableName}Repository] Count error:`, error);
+      this.logger.logEventError(
+        `${this.tableName}Repository.count`,
+        error as Error,
+        { filters }
+      );
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Count failed')
+        error: error instanceof Error ? error : new Error("Count failed"),
       };
     }
   }
@@ -227,7 +254,7 @@ export abstract class BaseRepository<T extends BaseEntity> {
    */
   async upsert(id: string, data: Partial<T>): Promise<Result<T>> {
     const existsResult = await this.exists(id);
-    
+
     if (!existsResult.success) {
       return existsResult;
     }
@@ -239,4 +266,3 @@ export abstract class BaseRepository<T extends BaseEntity> {
     }
   }
 }
-

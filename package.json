@@ -19,7 +19,8 @@
     "dotenv": "^16.4.5",
     "hono": "^4.5.0",
     "ponder": "^0.14.3",
-    "viem": "^2.21.3"
+    "viem": "^2.21.3",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

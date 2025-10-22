@@ -3,9 +3,9 @@
  * Detects ERC721 vs ERC1155 using ERC165 interface checks
  */
 
-import type { Address } from "../types/blockchain";
-import { ERC165_IDS } from "../../config";
-import type { PonderContext } from "../types/ponder";
+import type { Address } from "@/shared/types/blockchain";
+import { ERC165_IDS } from "@/config";
+import type { PonderContext } from "@/shared/types/ponder";
 
 const ERC165_ABI = [
   {

@@ -54,10 +54,8 @@ zuno-marketplace-indexer/
 │   ├── api/                    # REST API endpoints (Hono framework)
 │   ├── config/                 # Configuration management
 │   ├── domain/                 # Domain-driven design modules
-│   │   ├── account/           # Account domain
 │   │   ├── auction/           # Auction domain & handlers
 │   │   ├── collection/         # Collection domain & handlers
-│   │   ├── offer/             # Offer domain & handlers
 │   │   └── trading/           # Trading domain & handlers
 │   ├── infrastructure/         # Infrastructure layer
 │   │   ├── external/          # External services (Zuno API)
@@ -75,10 +73,8 @@ zuno-marketplace-indexer/
 ### Domain Architecture
 
 - **Trading Domain**: Handles NFT listings, purchases, and cancellations
-- **Collection Domain**: Manages ERC721/ERC1155 collection creation
-- **Offer Domain**: Processes NFT offers and acceptances
-- **Auction Domain**: Handles auction creation and management
-- **Account Domain**: User account management and statistics
+- **Collection Domain**: Manages ERC721/ERC1155 collection creation and minting
+- **Auction Domain**: Processes auction creation, bidding, and settlement
 
 ## 🗄️ Database Schema
 

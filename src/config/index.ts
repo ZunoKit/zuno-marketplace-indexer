@@ -108,23 +108,6 @@ export const RETRY = {
   BACKOFF: 2,
 } as const;
 
-// ============================================================================
-// Indexed Contracts (Auto-Discovery)
-// ============================================================================
-
-/**
- * Contracts are now auto-discovered from src/domain/* handlers
- *
- * The system automatically scans all domain handlers and extracts
- * contract names from ponder.on() registrations.
- *
- * To add a new contract:
- * 1. Create handler in src/domain/{domain}/handlers/
- * 2. Register handler in src/domain/{domain}/index.ts
- * 3. Run pnpm generate-config
- *
- * No manual configuration needed!
- */
 
 // ============================================================================
 // Constants

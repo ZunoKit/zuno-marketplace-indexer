@@ -14,7 +14,7 @@ config({ path: [".env.local", ".env"] });
 
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { getConfigBuilder } from "../src/infrastructure/external/zuno-api/config-builder";
+import { getConfigBuilder } from "@/infrastructure/external/zuno-api/config-builder";
 
 // ============================================================================
 // Constants

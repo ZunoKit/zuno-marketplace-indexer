@@ -4,11 +4,37 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Result, Trade, TradeType } from "../shared/types";
-import { normalizeAddress } from "../shared/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "../shared/base/base.repository";
+import type { Address, Result } from "@/shared/types";
 
-export class TradeRepository extends BaseRepository<Trade> {
+export interface TradeEntity {
+  id: string;
+  maker: Address;
+  taker: Address;
+  collection: Address;
+  tokenId: string;
+  tokenType: string;
+  amount: string;
+  price: string;
+  paymentToken: Address;
+  makerFee: string;
+  takerFee: string;
+  royaltyFee: string;
+  royaltyRecipient: Address | null;
+  tradeType: string;
+  sourceEventId: string | null;
+  blockNumber: bigint;
+  blockTimestamp: bigint;
+  transactionHash: `0x${string}`;
+  logIndex: number;
+  chainId: number;
+}
+import { normalizeAddress } from "@/shared/utils/helpers";
+import {
+  BaseRepository,
+  type DatabaseContext,
+} from "@/shared/base/base.repository";
+
+export class TradeRepository extends BaseRepository<TradeEntity> {
   constructor(context: DatabaseContext) {
     super(context, "trade");
   }
@@ -20,12 +46,14 @@ export class TradeRepository extends BaseRepository<Trade> {
   /**
    * Create trade record
    */
-  async createTrade(trade: Omit<Trade, 'id'>): Promise<Result<Trade>> {
+  async createTrade(
+    trade: Omit<TradeEntity, "id">
+  ): Promise<Result<TradeEntity>> {
     try {
       // Generate trade ID from tx hash and log index
       const id = `${trade.transactionHash}:${trade.logIndex}`;
 
-      const normalizedTrade: Partial<Trade> = {
+      const normalizedTrade: Partial<TradeEntity> = {
         id,
         maker: normalizeAddress(trade.maker),
         taker: normalizeAddress(trade.taker),
@@ -38,10 +66,11 @@ export class TradeRepository extends BaseRepository<Trade> {
         makerFee: trade.makerFee,
         takerFee: trade.takerFee,
         royaltyFee: trade.royaltyFee,
-        royaltyRecipient: trade.royaltyRecipient ? normalizeAddress(trade.royaltyRecipient) : null,
-        orderHash: trade.orderHash,
-        listingId: trade.listingId,
+        royaltyRecipient: trade.royaltyRecipient
+          ? normalizeAddress(trade.royaltyRecipient)
+          : null,
         tradeType: trade.tradeType,
+        sourceEventId: trade.sourceEventId,
         blockNumber: trade.blockNumber,
         blockTimestamp: trade.blockTimestamp,
         transactionHash: trade.transactionHash,
@@ -53,7 +82,8 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Create trade failed')
+        error:
+          error instanceof Error ? error : new Error("Create trade failed"),
       };
     }
   }
@@ -64,7 +94,7 @@ export class TradeRepository extends BaseRepository<Trade> {
   async findByCollection(
     collection: Address,
     limit: number = 100
-  ): Promise<Result<Trade[]>> {
+  ): Promise<Result<TradeEntity[]>> {
     try {
       const results = await this.db
         .select()
@@ -78,7 +108,10 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Find by collection failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Find by collection failed"),
       };
     }
   }
@@ -86,7 +119,10 @@ export class TradeRepository extends BaseRepository<Trade> {
   /**
    * Get trades by maker
    */
-  async findByMaker(maker: Address, limit: number = 100): Promise<Result<Trade[]>> {
+  async findByMaker(
+    maker: Address,
+    limit: number = 100
+  ): Promise<Result<TradeEntity[]>> {
     try {
       const results = await this.db
         .select()
@@ -100,7 +136,8 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Find by maker failed')
+        error:
+          error instanceof Error ? error : new Error("Find by maker failed"),
       };
     }
   }
@@ -108,7 +145,10 @@ export class TradeRepository extends BaseRepository<Trade> {
   /**
    * Get trades by taker
    */
-  async findByTaker(taker: Address, limit: number = 100): Promise<Result<Trade[]>> {
+  async findByTaker(
+    taker: Address,
+    limit: number = 100
+  ): Promise<Result<TradeEntity[]>> {
     try {
       const results = await this.db
         .select()
@@ -122,7 +162,8 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Find by taker failed')
+        error:
+          error instanceof Error ? error : new Error("Find by taker failed"),
       };
     }
   }
@@ -134,14 +175,15 @@ export class TradeRepository extends BaseRepository<Trade> {
     collection: Address,
     tokenId: string,
     limit: number = 100
-  ): Promise<Result<Trade[]>> {
+  ): Promise<Result<TradeEntity[]>> {
     try {
       const results = await this.db
         .select()
         .from(schema.trade)
-        .where((t: any) =>
-          t.collection.equals(normalizeAddress(collection)) &&
-          t.tokenId.equals(tokenId)
+        .where(
+          (t: any) =>
+            t.collection.equals(normalizeAddress(collection)) &&
+            t.tokenId.equals(tokenId)
         )
         .orderBy((t: any) => t.blockTimestamp, "desc")
         .limit(limit)
@@ -151,7 +193,8 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Find by token failed')
+        error:
+          error instanceof Error ? error : new Error("Find by token failed"),
       };
     }
   }
@@ -159,7 +202,9 @@ export class TradeRepository extends BaseRepository<Trade> {
   /**
    * Calculate total volume for a collection
    */
-  async getTotalVolumeByCollection(collection: Address): Promise<Result<bigint>> {
+  async getTotalVolumeByCollection(
+    collection: Address
+  ): Promise<Result<bigint>> {
     try {
       const trades = await this.findByCollection(collection, 10000); // Large limit
 
@@ -175,7 +220,8 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Get total volume failed')
+        error:
+          error instanceof Error ? error : new Error("Get total volume failed"),
       };
     }
   }
@@ -183,7 +229,10 @@ export class TradeRepository extends BaseRepository<Trade> {
   /**
    * Get recent trades across all collections
    */
-  async getRecentTrades(limit: number = 20, chainId?: number): Promise<Result<Trade[]>> {
+  async getRecentTrades(
+    limit: number = 20,
+    chainId?: number
+  ): Promise<Result<TradeEntity[]>> {
     try {
       let query = this.db.select().from(schema.trade);
 
@@ -200,7 +249,10 @@ export class TradeRepository extends BaseRepository<Trade> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Get recent trades failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Get recent trades failed"),
       };
     }
   }

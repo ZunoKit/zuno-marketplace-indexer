@@ -3,7 +3,7 @@
  * Centralized error handling with retry logic and dead letter queue
  */
 
-import type { Result } from "../../shared/types";
+import type { Result } from "@/shared/types";
 
 export interface RetryOptions {
   maxRetries: number;

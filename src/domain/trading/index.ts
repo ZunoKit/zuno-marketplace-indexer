@@ -4,7 +4,7 @@
  */
 
 import { ponder } from "ponder:registry";
-import { wrapHandler } from "../../infrastructure/monitoring/handler-wrapper";
+import { wrapHandler } from "@/infrastructure/monitoring/handler-wrapper";
 import { handleListingCreated } from "./handlers/listing-created.handler";
 import { handleListingCancelled } from "./handlers/listing-cancelled.handler";
 import { handleNFTPurchased } from "./handlers/nft-purchased.handler";

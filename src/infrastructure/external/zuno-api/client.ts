@@ -12,7 +12,7 @@ import type {
   ApiNetwork,
   PaginatedResult,
   Result,
-} from "../../../shared/types";
+} from "@/shared/types";
 
 // ============================================================================
 // API Response Types

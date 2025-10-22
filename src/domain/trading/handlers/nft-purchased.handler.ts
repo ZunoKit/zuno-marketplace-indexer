@@ -3,17 +3,21 @@
  * Handles NFT purchase/sale events
  */
 
-import { ListingStatus, TokenType, TradeType } from "../../../shared/types";
-import type { NFTPurchasedEvent } from "../../../shared/types/events";
-import { getEventLogger } from "../../../infrastructure/logging/event-logger";
-import { generateCollectionId, generateTokenId } from "../../../shared/utils/helpers";
-import { getTokenTypeOrDefault } from "../../../shared/utils/token-detector";
-import { AccountRepository } from "../../account/repository";
-import { CollectionRepository } from "../../../repositories/collection.repository";
-import { EventLogRepository } from "../../../repositories/event-log.repository";
-import { ListingRepository } from "../../../repositories/listing.repository";
-import { TokenRepository } from "../../../repositories/token.repository";
-import { TradeRepository } from "../../../repositories/trade.repository";
+import type { NFTPurchasedEvent } from "@/shared/types/events";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
+import { generateCollectionId, generateTokenId } from "@/shared/utils/helpers";
+import { getTokenTypeOrDefault } from "@/shared/utils/token-detector";
+import {
+  AccountRepository,
+  CollectionRepository,
+  EventRepository,
+  TokenRepository,
+  TradeRepository,
+} from "@/repositories";
+import {
+  validateEventData,
+  type NFTPurchasedData,
+} from "@/shared/schemas/event.schemas";
 
 const logger = getEventLogger();
 
@@ -42,10 +46,6 @@ export async function handleNFTPurchased({
       db: context.db,
       network: context.network,
     });
-    const listingRepo = new ListingRepository({
-      db: context.db,
-      network: context.network,
-    });
     const accountRepo = new AccountRepository({
       db: context.db,
       network: context.network,
@@ -58,23 +58,41 @@ export async function handleNFTPurchased({
       db: context.db,
       network: context.network,
     });
-    const eventLogRepo = new EventLogRepository({
+    const eventRepo = new EventRepository({
       db: context.db,
       network: context.network,
     });
 
-    // Log the event
-    await eventLogRepo.createFromEvent(
-      "NFTPurchased",
-      contractAddress,
-      null,
-      args,
-      {
-        block: event.block,
-        transaction: event.transaction,
-        log: event.log,
-      }
-    );
+    // Prepare event data
+    const eventData: NFTPurchasedData = {
+      price: args.price.toString(),
+      paymentToken: args.paymentToken,
+      makerFee: "0",
+      takerFee: args.platformFee.toString(),
+      royaltyFee: args.royaltyFee.toString(),
+      royaltyRecipient: args.royaltyRecipient,
+      amount: "1", // Default for single NFT purchase
+    };
+
+    // Validate with Zod schema
+    const validatedData = validateEventData("nft_purchased", eventData);
+
+    // Create event record (source of truth)
+    const eventResult = await eventRepo.createEvent({
+      eventType: "nft_purchased",
+      category: "trade",
+      actor: args.seller,
+      counterparty: args.buyer,
+      collection: args.nftContract,
+      tokenId: args.tokenId.toString(),
+      data: validatedData,
+      contractName: "Marketplace",
+      event,
+    });
+
+    if (!eventResult.success) {
+      throw new Error(`Failed to create event: ${eventResult.error?.message}`);
+    }
 
     // Get or create accounts
     await Promise.all([
@@ -84,11 +102,14 @@ export async function handleNFTPurchased({
 
     // Get token type from cache (already detected in listing handler)
     const detectedType = getTokenTypeOrDefault(context, args.nftContract);
-    const tokenType = detectedType === "ERC721" ? TokenType.ERC721
-                    : detectedType === "ERC1155" ? TokenType.ERC1155
-                    : TokenType.ERC721; // fallback
+    const tokenType =
+      detectedType === "ERC721"
+        ? "ERC721"
+        : detectedType === "ERC1155"
+        ? "ERC1155"
+        : "ERC721"; // fallback
 
-    // Create trade record
+    // Create trade record (projection from event)
     await tradeRepo.createTrade({
       maker: args.seller,
       taker: args.buyer,
@@ -102,22 +123,14 @@ export async function handleNFTPurchased({
       takerFee: args.platformFee.toString(),
       royaltyFee: args.royaltyFee.toString(),
       royaltyRecipient: args.royaltyRecipient,
-      orderHash: args.listingId,
-      listingId: args.listingId,
-      tradeType: TradeType.SALE,
+      tradeType: "sale",
+      sourceEventId: eventResult.data.id,
       blockNumber: event.block.number,
       blockTimestamp: event.block.timestamp,
       transactionHash: event.transaction.hash,
       logIndex: event.log.logIndex,
       chainId: context.network.chainId,
     });
-
-    // Update listing status
-    await listingRepo.updateStatus(
-      args.listingId,
-      ListingStatus.FILLED,
-      event.block.timestamp
-    );
 
     // Update account trade statistics
     const volume = BigInt(args.price);
@@ -152,6 +165,12 @@ export async function handleNFTPurchased({
       args.paymentToken,
       event.block.timestamp
     );
+
+    // Update account activity
+    await Promise.all([
+      accountRepo.updateActivity(args.seller, event.block.timestamp),
+      accountRepo.updateActivity(args.buyer, event.block.timestamp),
+    ]);
 
     logger.logEventSuccess("NFTPurchased", {
       listingId: args.listingId,

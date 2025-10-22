@@ -1,77 +1,27 @@
 /**
  * Zuno Marketplace Event Handlers Registry
- * Domain-Driven Architecture
+ * Event-First Architecture with Domain-Driven Design
  *
- * @version 2.0.0
- * @architecture Domain-Driven Design
+ * @version 3.0.0
+ * @architecture Event Sourcing + Domain-Driven Design
+ * @schema Event-first with aggregate projections
  */
 
-import { registerCollectionHandlers } from './domain/collection';
-import { registerTradingHandlers } from './domain/trading';
-import { registerOfferHandlers } from './domain/offer';
-import { registerAuctionHandlers } from './domain/auction';
+import { registerCollectionHandlers } from "@/domain/collection";
+import { registerTradingHandlers } from "@/domain/trading";
+import { registerAuctionHandlers } from "@/domain/auction";
 
-import { getEventLogger } from "./infrastructure/logging/event-logger";
-import { getMetrics } from "./infrastructure/monitoring/metrics";
-import { getErrorHandler } from "./infrastructure/monitoring/error-handler";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
+import { getMetrics } from "@/infrastructure/monitoring/metrics";
+import { getErrorHandler } from "@/infrastructure/monitoring/error-handler";
 
 const logger = getEventLogger();
 const metrics = getMetrics();
 const errorHandler = getErrorHandler();
 
-// ============================================================================
-// Startup Banner
-// ============================================================================
-
-console.log(`
-╔══════════════════════════════════════════════════════════╗
-║   Zuno Marketplace Indexer v2.0                          ║
-║   Domain-Driven Architecture                             ║
-╚══════════════════════════════════════════════════════════╝
-
-🚀 Registering event handlers...
-`);
-
-// ============================================================================
-// Register All Domain Handlers
-// ============================================================================
-
 registerCollectionHandlers();
 registerTradingHandlers();
-registerOfferHandlers();
 registerAuctionHandlers();
-
-// ============================================================================
-// Startup Summary
-// ============================================================================
-
-console.log(`
-✅ All event handlers registered successfully!
-
-📊 Registered Domains:
-  • Collection Domain: ✅ (4 events)
-  • Trading Domain: ✅ (10 events)
-  • Offer Domain: ✅ (3 events)
-  • Auction Domain: ✅ (1 event)
-
-🔧 Features:
-  • ✅ Error handling with retry (3 attempts)
-  • ✅ Metrics tracking and monitoring
-  • ✅ Event logging (verbose mode)
-  • ✅ Token type auto-detection
-  • ✅ Failed event recovery
-
-📡 Contracts Monitored (7 active):
-  • ERC721CollectionFactory
-  • ERC1155CollectionFactory
-  • CollectionFactoryRegistry
-  • AdvancedListingManager
-  • ERC721NFTExchange
-  • ERC1155NFTExchange
-  • OfferManager
-
-🚀 Ready to index events...
-`);
 
 // ============================================================================
 // Development Monitoring

@@ -3,7 +3,7 @@
  * Centralized logging for blockchain events
  */
 
-import type { Address, Hash } from "../../shared/types";
+import type { Address, Hash } from "@/shared/types";
 
 export interface EventLoggerOptions {
   enabled: boolean;

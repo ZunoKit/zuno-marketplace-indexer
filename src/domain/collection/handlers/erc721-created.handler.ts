@@ -3,12 +3,14 @@
  */
 
 import * as schema from "ponder:schema";
-import { TokenType } from "../../../shared/types";
-import type { ERC721CollectionCreatedEvent } from "../../../shared/types/events";
-import { getEventLogger } from "../../../infrastructure/logging/event-logger";
-import { generateCollectionId, normalizeAddress } from "../../../shared/utils/helpers";
-import { AccountRepository } from "../../account/repository";
-import { EventLogRepository } from "../../../repositories/event-log.repository";
+import type { ERC721CollectionCreatedEvent } from "@/shared/types/events";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
+import { generateCollectionId, normalizeAddress } from "@/shared/utils/helpers";
+import { AccountRepository, EventRepository } from "@/repositories";
+import {
+  validateEventData,
+  type CollectionCreatedData,
+} from "@/shared/schemas/event.schemas";
 
 const logger = getEventLogger();
 
@@ -22,6 +24,8 @@ export async function handleERC721Created({
   event: any;
   context: any;
 }) {
+  console.log("ERC721CollectionCreated", event);
+  console.log("context", context);
   const args = event.args as ERC721CollectionCreatedEvent;
   const contractAddress = event.log.address;
 
@@ -38,23 +42,37 @@ export async function handleERC721Created({
       db: context.db,
       network: context.network,
     });
-    const eventLogRepo = new EventLogRepository({
+    const eventRepo = new EventRepository({
       db: context.db,
       network: context.network,
     });
 
-    // Log the event
-    await eventLogRepo.createFromEvent(
-      "ERC721CollectionCreated",
-      contractAddress,
-      null,
-      args,
-      {
-        block: event.block,
-        transaction: event.transaction,
-        log: event.log,
-      }
-    );
+    // Prepare event data with fallbacks since contract only emits collectionAddress and creator
+    // Name and symbol need to be fetched from the contract or set as defaults
+    const eventData: CollectionCreatedData = {
+      name: "ERC721 Collection", // Default name - could be fetched from contract
+      symbol: "ERC721", // Default symbol - could be fetched from contract
+      tokenType: "ERC721",
+      maxSupply: undefined, // Not available in event
+    };
+
+    // Validate with Zod schema
+    const validatedData = validateEventData("collection_created", eventData);
+
+    // Create event record (source of truth)
+    const eventResult = await eventRepo.createEvent({
+      eventType: "collection_created",
+      category: "collection",
+      actor: args.creator,
+      collection: args.collectionAddress,
+      data: validatedData,
+      contractName: "ERC721CollectionFactory",
+      event,
+    });
+
+    if (!eventResult.success) {
+      throw new Error(`Failed to create event: ${eventResult.error?.message}`);
+    }
 
     // Create or get account
     await accountRepo.getOrCreate(args.creator, event.block.timestamp);
@@ -71,7 +89,7 @@ export async function handleERC721Created({
       chainId: context.network.chainId,
       name: args.name || null,
       symbol: args.symbol || null,
-      tokenType: TokenType.ERC721,
+      tokenType: "ERC721",
       creator: normalizeAddress(args.creator),
       owner: normalizeAddress(args.creator),
       royaltyFee: 0,
@@ -83,13 +101,18 @@ export async function handleERC721Created({
       totalTrades: 0,
       totalVolume: "0",
       floorPrice: null,
+      createdAt: event.block.timestamp,
+      lastMintAt: null,
+      lastTradeAt: null,
       isVerified: false,
       isActive: true,
-      createdAt: event.block.timestamp,
-      lastTradeAt: null,
-      blockNumber: event.block.number,
-      transactionHash: event.transaction.hash,
+      deployBlockNumber: event.block.number,
+      deployTxHash: event.transaction.hash,
     });
+
+    // Update account aggregate (projection)
+    await accountRepo.getOrCreate(args.creator, event.block.timestamp);
+    await accountRepo.incrementCollectionsCreated(args.creator);
 
     logger.logEventSuccess("ERC721CollectionCreated", {
       collection: args.collectionAddress,

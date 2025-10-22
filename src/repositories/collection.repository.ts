@@ -4,11 +4,21 @@
  */
 
 import * as schema from "ponder:schema";
-import type { Address, Collection, Result, Timestamp } from "../shared/types";
-import { generateCollectionId, normalizeAddress } from "../shared/utils/helpers";
-import { BaseRepository, type DatabaseContext } from "../shared/base/base.repository";
+import type {
+  Address,
+  Result,
+  Timestamp,
+  CollectionEntity,
+} from "@/shared/types";
+import { generateCollectionId, normalizeAddress } from "@/shared/utils/helpers";
+import {
+  BaseRepository,
+  type DatabaseContext,
+} from "@/shared/base/base.repository";
 
-export class CollectionRepository extends BaseRepository<Collection> {
+export { type CollectionEntity } from "@/shared/types";
+
+export class CollectionRepository extends BaseRepository<CollectionEntity> {
   constructor(context: DatabaseContext) {
     super(context, "collection");
   }
@@ -23,14 +33,17 @@ export class CollectionRepository extends BaseRepository<Collection> {
   async findByAddressAndChain(
     address: Address,
     chainId: number
-  ): Promise<Result<Collection | null>> {
+  ): Promise<Result<CollectionEntity | null>> {
     try {
       const collectionId = generateCollectionId(chainId, address);
       return this.findById(collectionId);
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Find by address and chain failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Find by address and chain failed"),
       };
     }
   }
@@ -49,7 +62,7 @@ export class CollectionRepository extends BaseRepository<Collection> {
       if (!result.success || !result.data) {
         return {
           success: false,
-          error: new Error('Collection not found')
+          error: new Error("Collection not found"),
         };
       }
 
@@ -57,19 +70,20 @@ export class CollectionRepository extends BaseRepository<Collection> {
       const currentVolume = BigInt(collection.totalVolume);
       const newVolume = currentVolume + volume;
 
-      await this.db
-        .update(schema.collection, { id: collectionId })
-        .set({
-          totalTrades: collection.totalTrades + 1,
-          totalVolume: newVolume.toString(),
-          lastTradeAt: tradeTimestamp,
-        });
+      await this.db.update(schema.collection, { id: collectionId }).set({
+        totalTrades: collection.totalTrades + 1,
+        totalVolume: newVolume.toString(),
+        lastTradeAt: tradeTimestamp,
+      });
 
       return { success: true, data: true };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Increment trade stats failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Increment trade stats failed"),
       };
     }
   }
@@ -77,19 +91,24 @@ export class CollectionRepository extends BaseRepository<Collection> {
   /**
    * Update floor price
    */
-  async updateFloorPrice(collectionId: string, price: string): Promise<Result<boolean>> {
+  async updateFloorPrice(
+    collectionId: string,
+    price: string
+  ): Promise<Result<boolean>> {
     try {
       const result = await this.findById(collectionId);
 
       if (!result.success || !result.data) {
         return {
           success: false,
-          error: new Error('Collection not found')
+          error: new Error("Collection not found"),
         };
       }
 
       const collection = result.data;
-      const currentFloor = collection.floorPrice ? BigInt(collection.floorPrice) : null;
+      const currentFloor = collection.floorPrice
+        ? BigInt(collection.floorPrice)
+        : null;
       const newPrice = BigInt(price);
 
       // Update if no floor price or new price is lower
@@ -103,7 +122,10 @@ export class CollectionRepository extends BaseRepository<Collection> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Update floor price failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Update floor price failed"),
       };
     }
   }
@@ -122,7 +144,7 @@ export class CollectionRepository extends BaseRepository<Collection> {
       if (!result.success || !result.data) {
         return {
           success: false,
-          error: new Error('Collection not found')
+          error: new Error("Collection not found"),
         };
       }
 
@@ -135,19 +157,20 @@ export class CollectionRepository extends BaseRepository<Collection> {
       const newMinted = currentMinted + BigInt(minted);
       const newBurned = currentBurned + BigInt(burned);
 
-      await this.db
-        .update(schema.collection, { id: collectionId })
-        .set({
-          totalSupply: newSupply.toString(),
-          totalMinted: newMinted.toString(),
-          totalBurned: newBurned.toString(),
-        });
+      await this.db.update(schema.collection, { id: collectionId }).set({
+        totalSupply: newSupply.toString(),
+        totalMinted: newMinted.toString(),
+        totalBurned: newBurned.toString(),
+      });
 
       return { success: true, data: true };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Update supply metrics failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Update supply metrics failed"),
       };
     }
   }
@@ -155,7 +178,7 @@ export class CollectionRepository extends BaseRepository<Collection> {
   /**
    * Get collections by creator
    */
-  async findByCreator(creator: Address): Promise<Result<Collection[]>> {
+  async findByCreator(creator: Address): Promise<Result<CollectionEntity[]>> {
     try {
       const results = await this.db
         .select()
@@ -167,7 +190,8 @@ export class CollectionRepository extends BaseRepository<Collection> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Find by creator failed')
+        error:
+          error instanceof Error ? error : new Error("Find by creator failed"),
       };
     }
   }
@@ -175,11 +199,12 @@ export class CollectionRepository extends BaseRepository<Collection> {
   /**
    * Get top collections by volume
    */
-  async getTopByVolume(limit: number = 10, chainId?: number): Promise<Result<Collection[]>> {
+  async getTopByVolume(
+    limit: number = 10,
+    chainId?: number
+  ): Promise<Result<CollectionEntity[]>> {
     try {
-      let query = this.db
-        .select()
-        .from(schema.collection);
+      let query = this.db.select().from(schema.collection);
 
       if (chainId) {
         query = query.where((c: any) => c.chainId.equals(chainId));
@@ -194,7 +219,10 @@ export class CollectionRepository extends BaseRepository<Collection> {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error : new Error('Get top by volume failed')
+        error:
+          error instanceof Error
+            ? error
+            : new Error("Get top by volume failed"),
       };
     }
   }

@@ -3,10 +3,10 @@
  * Wraps event handlers with error handling, retry logic, and metrics
  */
 
-import type { ErrorContext } from "./error-handler";
-import { getErrorHandler } from "./error-handler";
-import { getEventLogger } from "../logging/event-logger";
-import { getMetrics, MetricNames } from "./metrics";
+import type { ErrorContext } from "@/infrastructure/monitoring/error-handler";
+import { getErrorHandler } from "@/infrastructure/monitoring/error-handler";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
+import { getMetrics, MetricNames } from "@/infrastructure/monitoring/metrics";
 
 const errorHandler = getErrorHandler();
 const logger = getEventLogger();

@@ -18,6 +18,12 @@
     "lib": ["ES2022"],
     "target": "ES2022",
 
+    // Path mapping
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
     // Skip type checking for node modules
     "skipLibCheck": true
   },

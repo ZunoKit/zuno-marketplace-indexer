@@ -1,14 +1,25 @@
 /**
  * ERC1155 Collection Created Handler
+ * Handles ERC1155 collection creation events
+ *
+ * Event Flow (v3.0):
+ * 1. Validate event data with Zod schema
+ * 2. Store event in event table (source of truth)
+ * 3. Create collection record (projection)
+ * 4. Update account aggregate (projection)
+ *
+ * @module domain/collection/handlers/erc1155-created
  */
 
 import * as schema from "ponder:schema";
-import { TokenType } from "../../../shared/types";
-import type { ERC1155CollectionCreatedEvent } from "../../../shared/types/events";
-import { getEventLogger } from "../../../infrastructure/logging/event-logger";
-import { generateCollectionId, normalizeAddress } from "../../../shared/utils/helpers";
-import { AccountRepository } from "../../account/repository";
-import { EventLogRepository } from "../../../repositories/event-log.repository";
+import type { ERC1155CollectionCreatedEvent } from "@/shared/types/events";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
+import { generateCollectionId, normalizeAddress } from "@/shared/utils/helpers";
+import { AccountRepository, EventRepository } from "@/repositories";
+import {
+  validateEventData,
+  type CollectionCreatedData,
+} from "@/shared/schemas/event.schemas";
 
 const logger = getEventLogger();
 
@@ -38,28 +49,37 @@ export async function handleERC1155Created({
       db: context.db,
       network: context.network,
     });
-    const eventLogRepo = new EventLogRepository({
+    const eventRepo = new EventRepository({
       db: context.db,
       network: context.network,
     });
 
-    // Log the event
-    await eventLogRepo.createFromEvent(
-      "ERC1155CollectionCreated",
-      contractAddress,
-      null,
-      args,
-      {
-        block: event.block,
-        transaction: event.transaction,
-        log: event.log,
-      }
-    );
+    // Prepare event data
+    const eventData: CollectionCreatedData = {
+      name: "ERC1155 Collection", // Default name for ERC1155
+      symbol: "ERC1155",
+      tokenType: "ERC1155",
+    };
 
-    // Create or get account
-    await accountRepo.getOrCreate(args.creator, event.block.timestamp);
+    // Validate with Zod schema
+    const validatedData = validateEventData("collection_created", eventData);
 
-    // Create collection record
+    // Create event record (source of truth)
+    const eventResult = await eventRepo.createEvent({
+      eventType: "collection_created",
+      category: "collection",
+      actor: args.creator,
+      collection: args.collectionAddress,
+      data: validatedData,
+      contractName: "ERC1155CollectionFactory",
+      event,
+    });
+
+    if (!eventResult.success) {
+      throw new Error(`Failed to create event: ${eventResult.error?.message}`);
+    }
+
+    // Create collection record (projection)
     const collectionId = generateCollectionId(
       context.network.chainId,
       args.collectionAddress
@@ -69,27 +89,32 @@ export async function handleERC1155Created({
       id: collectionId,
       address: normalizeAddress(args.collectionAddress),
       chainId: context.network.chainId,
-      name: null, // ERC1155 typically doesn't have name in creation event
-      symbol: null,
-      tokenType: TokenType.ERC1155,
+      name: "ERC1155 Collection",
+      symbol: "ERC1155",
+      tokenType: "ERC1155",
       creator: normalizeAddress(args.creator),
       owner: normalizeAddress(args.creator),
       royaltyFee: 0,
       royaltyRecipient: null,
-      maxSupply: null,
+      maxSupply: null, // ERC1155 can have unlimited supply
       totalSupply: "0",
       totalMinted: "0",
       totalBurned: "0",
       totalTrades: 0,
       totalVolume: "0",
       floorPrice: null,
+      createdAt: event.block.timestamp,
+      lastMintAt: null,
+      lastTradeAt: null,
       isVerified: false,
       isActive: true,
-      createdAt: event.block.timestamp,
-      lastTradeAt: null,
-      blockNumber: event.block.number,
-      transactionHash: event.transaction.hash,
+      deployBlockNumber: event.block.number,
+      deployTxHash: event.transaction.hash,
     });
+
+    // Update account aggregate (projection)
+    await accountRepo.getOrCreate(args.creator, event.block.timestamp);
+    await accountRepo.incrementCollectionsCreated(args.creator);
 
     logger.logEventSuccess("ERC1155CollectionCreated", {
       collection: args.collectionAddress,

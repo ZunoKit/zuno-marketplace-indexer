@@ -30,8 +30,9 @@ export enum TokenType {
 
 export enum TradeType {
   SALE = "sale",
-  OFFER_ACCEPTED = "offer_accepted",
-  AUCTION_WON = "auction_won",
+  AUCTION = "auction",
+  OFFER = "offer",
+  BUNDLE = "bundle",
 }
 
 export enum ListingStatus {
@@ -66,7 +67,7 @@ export interface Collection {
   chainId: ChainId;
   name: string | null;
   symbol: string | null;
-  tokenType: TokenType;
+  tokenType: string; // "ERC721" | "ERC1155"
   creator: Address | null;
   owner: Address | null;
   royaltyFee: number | null;
@@ -78,13 +79,17 @@ export interface Collection {
   totalTrades: number;
   totalVolume: string;
   floorPrice: string | null;
+  createdAt: Timestamp;
+  lastMintAt: Timestamp | null;
+  lastTradeAt: Timestamp | null;
   isVerified: boolean;
   isActive: boolean;
-  createdAt: Timestamp;
-  lastTradeAt: Timestamp | null;
-  blockNumber: BlockNumber;
-  transactionHash: Hash;
+  deployBlockNumber: BlockNumber;
+  deployTxHash: Hash;
 }
+
+// Export alias for repository compatibility
+export type CollectionEntity = Collection;
 
 export interface Token {
   id: string;
@@ -99,12 +104,12 @@ export interface Token {
   tradeCount: number;
   lastSalePrice: string | null;
   lastSaleToken: Address | null;
+  lastSaleTimestamp: Timestamp | null;
   isBurned: boolean;
   mintedAt: Timestamp;
   lastTransferAt: Timestamp;
-  lastTradeAt: Timestamp | null;
-  blockNumber: BlockNumber;
-  transactionHash: Hash;
+  mintBlockNumber: BlockNumber;
+  mintTxHash: Hash;
 }
 
 export interface Trade {
@@ -113,7 +118,7 @@ export interface Trade {
   taker: Address;
   collection: Address;
   tokenId: string;
-  tokenType: TokenType;
+  tokenType: string; // "ERC721" | "ERC1155"
   amount: string;
   price: string;
   paymentToken: Address;
@@ -121,9 +126,8 @@ export interface Trade {
   takerFee: string;
   royaltyFee: string;
   royaltyRecipient: Address | null;
-  orderHash: Hash | null;
-  listingId: string | null;
-  tradeType: TradeType;
+  tradeType: string; // "sale" | "auction" | "offer" | "bundle"
+  sourceEventId: string | null;
   blockNumber: BlockNumber;
   blockTimestamp: Timestamp;
   transactionHash: Hash;

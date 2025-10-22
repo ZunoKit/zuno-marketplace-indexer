@@ -3,7 +3,7 @@
  * Pure functions without external dependencies
  */
 
-import type { Address, Hash } from "../types/blockchain";
+import type { Address, Hash } from "@/shared/types/blockchain";
 
 // ============================================================================
 // ID Generation

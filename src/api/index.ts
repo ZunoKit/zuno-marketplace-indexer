@@ -8,15 +8,15 @@
 import { db } from "ponder:api";
 import schema from "ponder:schema";
 import { Hono } from "hono";
-import { client, graphql } from "ponder";
+import { getEventLogger } from "@/infrastructure/logging/event-logger";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 
 const app = new Hono();
 
-// Middleware
-app.use("*", logger());
 app.use("*", cors());
+app.use("*", logger());
+
 
 // ============================================================================
 // Health & Info Routes
@@ -39,7 +39,6 @@ app.get("/", (c) => {
     },
   });
 });
-
 
 // ============================================================================
 // REST API Routes - Simplified Implementation
@@ -71,7 +70,6 @@ app.get("/api/collections", async (c) => {
       },
     });
   } catch (error) {
-    console.error("Error fetching collections:", error);
     return c.json({ error: "Failed to fetch collections" }, 500);
   }
 });
@@ -102,7 +100,6 @@ app.get("/api/tokens", async (c) => {
       },
     });
   } catch (error) {
-    console.error("Error fetching tokens:", error);
     return c.json({ error: "Failed to fetch tokens" }, 500);
   }
 });
@@ -133,7 +130,6 @@ app.get("/api/trades", async (c) => {
       },
     });
   } catch (error) {
-    console.error("Error fetching trades:", error);
     return c.json({ error: "Failed to fetch trades" }, 500);
   }
 });
@@ -164,7 +160,6 @@ app.get("/api/accounts", async (c) => {
       },
     });
   } catch (error) {
-    console.error("Error fetching accounts:", error);
     return c.json({ error: "Failed to fetch accounts" }, 500);
   }
 });
@@ -180,7 +175,7 @@ app.get("/api/events", async (c) => {
 
     const events = await db
       .select()
-      .from(schema.eventLog)
+      .from(schema.event)
       .limit(limit)
       .offset(offset)
       .execute();
@@ -195,11 +190,9 @@ app.get("/api/events", async (c) => {
       },
     });
   } catch (error) {
-    console.error("Error fetching events:", error);
     return c.json({ error: "Failed to fetch events" }, 500);
   }
 });
-
 
 // ============================================================================
 // GraphQL Integration

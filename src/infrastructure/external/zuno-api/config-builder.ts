@@ -9,13 +9,9 @@ import type {
   ApiContract,
   ApiNetwork,
   Result,
-} from "../../../shared/types";
-import { sanitizeConfigKey } from "../../../shared/utils/helpers";
-import {
-  discoverIndexedContracts,
-  matchesDiscoveredContract,
-} from "../../../shared/utils/handler-discovery";
-import { getZunoApiClient } from "./client";
+} from "@/shared/types";
+import { sanitizeConfigKey } from "@/shared/utils/helpers";
+import { getZunoApiClient } from "@/infrastructure/external/zuno-api/client";
 
 export interface ChainConfig {
   id: number;
@@ -228,31 +224,13 @@ export class ConfigBuilderService {
     // Filter contracts by active networks
     const activeNetworkIds = new Set(networks.map((n) => n.id));
 
-    // Auto-discover contracts that have event handlers
-    const discoveredContracts = discoverIndexedContracts();
-
-    if (discoveredContracts.length === 0) {
-      console.warn(
-        "[ConfigBuilder] No contracts with handlers discovered. Check src/domain/*"
-      );
-      return {
-        success: false,
-        error: new Error(
-          "No contracts with event handlers found in src/domain"
-        ),
-      };
-    }
-
-    // Only include contracts that have event handlers
+    // Include all verified contracts (no handler filtering)
     const activeContracts = contracts.filter((c) => {
-      if (!activeNetworkIds.has(c.networkId) || !c.isVerified) return false;
-
-      // Check if contract name matches any discovered handler
-      return matchesDiscoveredContract(c.name, discoveredContracts);
+      return activeNetworkIds.has(c.networkId) && c.isVerified;
     });
 
     console.log(
-      `[ConfigBuilder] ${activeContracts.length} active contracts after filtering (only contracts with handlers)`
+      `[ConfigBuilder] ${activeContracts.length} active contracts (all verified contracts)`
     );
 
     // Fetch ABIs

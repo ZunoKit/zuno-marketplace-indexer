@@ -12,9 +12,8 @@ import type { Address, Hash } from "./index";
 export interface ERC721CollectionCreatedEvent {
   collectionAddress: Address;
   creator: Address;
-  name: string;
-  symbol: string;
-  maxSupply: bigint;
+  // Note: name, symbol, maxSupply are not emitted in the actual event
+  // They would need to be fetched from the contract if needed
 }
 
 export interface ERC1155CollectionCreatedEvent {
